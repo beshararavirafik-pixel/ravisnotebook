@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Q&amp;A — Ravi's Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--ivory:#FAFAF7;--warm-white:#F5F4EF;--ink:#1C1A16;--ink-light:#5C5850;--ink-faint:#9A9589;--gold:#B8924A;--gold-light:#D4AA6A;--border:#DDD9CE;--red:#8B2020;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--ivory);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,247,0.6);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border-bottom:1px solid rgba(216,212,202,0.5);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .nav-logo-cross{color:var(--gold);}
+  .nav-links{display:flex;gap:8px;list-style:none;align-items:center;}
+  .nav-links>li{position:relative;}
+  .nav-links>li>a{font-size:13px;color:var(--ink-light);text-decoration:none;padding:8px 14px;display:flex;align-items:center;gap:5px;border-radius:6px;transition:all 0.15s;}
+  .nav-links>li>a:hover{color:var(--ink);background:rgba(0,0,0,0.04);}
+  .nav-chevron{font-size:9px;opacity:0.5;transition:transform 0.2s;}
+  .nav-links>li:hover .nav-chevron{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(250,250,247,0.85);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border:1px solid rgba(216,212,202,0.6);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.1);padding:8px;min-width:180px;opacity:0;pointer-events:none;transition:opacity 0.2s ease,transform 0.2s ease;list-style:none;}
+  .nav-links>li:hover .nav-dropdown{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown li a{display:block;padding:9px 14px;font-size:13px;color:var(--ink-light);text-decoration:none;border-radius:6px;transition:all 0.15s;}
+  .nav-dropdown li a:hover{background:rgba(0,0,0,0.05);color:var(--ink);}
+
+  .page-hero{padding:130px 48px 64px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--border);}
+  .page-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+  .page-eyebrow-line{width:28px;height:1px;background:var(--gold);}
+  .page-eyebrow-text{font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-style:italic;color:var(--gold);font-weight:300;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;color:var(--ink);letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px;}
+  .page-desc{font-size:0.95rem;color:var(--ink-light);font-weight:300;line-height:1.75;max-width:520px;}
+
+  /* TWO-COL LAYOUT */
+  .qa-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:72px 48px;max-width:900px;margin:0 auto;}
+
+  /* FORM SIDE */
+  .qa-form-wrap{}
+  .qa-form-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:8px;}
+  .qa-form-sub{font-size:13px;color:var(--ink-faint);font-weight:300;margin-bottom:32px;line-height:1.6;}
+
+  .form-field{margin-bottom:20px;}
+  .form-label{display:block;font-size:11px;color:var(--ink-faint);font-weight:400;letter-spacing:0.04em;margin-bottom:8px;text-transform:uppercase;}
+  .form-input,.form-textarea,.form-select{
+    width:100%;
+    padding:12px 16px;
+    background:var(--warm-white);
+    border:1px solid var(--border);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:300;
+    outline:none;
+    transition:border-color 0.2s;
+    border-radius:0;
+    appearance:none;
+  }
+  .form-input::placeholder,.form-textarea::placeholder{color:var(--ink-faint);}
+  .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--gold);}
+  .form-textarea{resize:vertical;min-height:140px;line-height:1.6;}
+
+  .anon-note{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(184,146,74,0.06);border:1px solid rgba(184,146,74,0.18);margin-bottom:28px;}
+  .anon-icon{color:var(--gold);font-size:14px;margin-top:1px;flex-shrink:0;}
+  .anon-text{font-size:12px;color:var(--ink-faint);font-weight:300;line-height:1.6;}
+
+  .form-submit{
+    width:100%;
+    padding:13px 24px;
+    background:var(--ink);
+    color:var(--ivory);
+    border:none;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1rem;
+    font-weight:400;
+    cursor:pointer;
+    letter-spacing:0.02em;
+    transition:all 0.2s;
+  }
+  .form-submit:hover{background:#2e2a22;}
+
+  .form-success{
+    display:none;
+    padding:20px;
+    background:rgba(184,146,74,0.07);
+    border:1px solid rgba(184,146,74,0.25);
+    text-align:center;
+  }
+  .form-success p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ink-light);}
+
+  /* ANSWERED SIDE */
+  .qa-answered{}
+  .qa-answered-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:8px;}
+  .qa-answered-sub{font-size:13px;color:var(--ink-faint);font-weight:300;margin-bottom:32px;}
+
+  .qa-item{border-bottom:1px solid var(--border);padding:24px 0;}
+  .qa-item:first-of-type{border-top:1px solid var(--border);}
+
+  .qa-q{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);line-height:1.4;margin-bottom:12px;display:flex;gap:10px;}
+  .qa-q-mark{color:var(--gold);font-size:1.2rem;flex-shrink:0;line-height:1.3;}
+  .qa-a{font-size:13px;color:var(--ink-light);line-height:1.75;font-weight:300;padding-left:20px;border-left:1px solid var(--border);}
+  .qa-tag{display:inline-block;margin-top:10px;font-size:10px;color:var(--gold);font-weight:400;letter-spacing:0.04em;text-transform:uppercase;}
+
+  .qa-empty{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--ink-faint);font-weight:300;}
+
+  footer{border-top:1px solid var(--border);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .footer-left{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;font-style:italic;color:var(--ink-faint);}
+  .footer-cross{color:var(--gold);font-size:1.2rem;}
+  .footer-right{font-size:12px;color:var(--ink-faint);font-weight:300;}
+
+  @media(max-width:700px){
+    .qa-layout{grid-template-columns:1fr;gap:48px;padding:48px 24px;}
+    nav{padding:0 24px;}
+    .page-hero{padding:110px 24px 48px;}
+    footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-cross">☩</span> Ravi's Notebook</a>
+  <ul class="nav-links">
+    <li>
+      <a href="#">Learn <span class="nav-chevron">▼</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="hymnology.html">Hymnology</a></li>
+        <li><a href="rites.html">Rites &amp; History</a></li>
+        <li><a href="patristics.html">Patristics</a></li>
+        <li><a href="apologetics.html">Apologetics</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li><a href="qa.html">Q&amp;A</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span class="page-eyebrow-text">Learn</span></div>
+  <h1 class="page-title">Q&amp;A</h1>
+  <p class="page-desc">Ask a question anonymously. When answered, it will appear on this page.</p>
+</div>
+
+<div class="qa-layout">
+
+  <!-- FORM -->
+  <div class="qa-form-wrap">
+    <h2 class="qa-form-title">Submit a question</h2>
+    <p class="qa-form-sub">All questions are anonymous. No name or email required.</p>
+
+    <div class="anon-note">
+      <span class="anon-icon">🔒</span>
+      <span class="anon-text">Your question is submitted anonymously. No personal information is collected or stored.</span>
+    </div>
+
+    <form id="qaForm" onsubmit="submitQuestion(event)">
+      <div class="form-field">
+        <label class="form-label" for="qCategory">Topic</label>
+        <select class="form-select" id="qCategory">
+          <option value="">Select a topic…</option>
+          <option>Hymnology</option>
+          <option>Rites &amp; History</option>
+          <option>Patristics</option>
+          <option>Apologetics</option>
+          <option>Theology</option>
+          <option>Diaconate</option>
+          <option>General</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="qText">Your question</label>
+        <textarea class="form-textarea" id="qText" placeholder="Type your question here…" required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Submit Question</button>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <p>☩ Your question has been received. Thank you.</p>
+    </div>
+  </div>
+
+  <!-- ANSWERED Q&A -->
+  <div class="qa-answered">
+    <h2 class="qa-answered-title">Answered questions</h2>
+    <p class="qa-answered-sub">Questions that have been reviewed and answered.</p>
+
+    <div class="qa-item">
+      <div class="qa-q"><span class="qa-q-mark">Q</span>Why do we say "Kyrie eleison" so many times in the liturgy?</div>
+      <div class="qa-a">
+        "Kyrie eleison" is Greek for "Lord, have mercy." The repetition is intentional — it is not mere redundancy but an expression of continuous dependence on God's mercy. In the Coptic tradition, the 41-fold Kyrie during the liturgy corresponds to specific theological meanings, including the 41 years of Christ's earthly life (by Coptic reckoning). Repetition in liturgy is the language of the heart, not the intellect.
+        <div class="qa-tag">Hymnology · Liturgy</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q"><span class="qa-q-mark">Q</span>What is the difference between the Liturgy of St. Basil and the Liturgy of St. Gregory?</div>
+      <div class="qa-a">
+        The Liturgy of St. Basil is the standard Sunday liturgy and is used on most feast days. The Liturgy of St. Gregory is more elaborate and poetic — it is used only on the highest feasts: Christmas, Epiphany, and Easter Sunday. The Liturgy of St. Cyril (also called the Liturgy of St. Mark) is the oldest and is rarely used today, reserved for special occasions.
+        <div class="qa-tag">Rites &amp; History</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span class="footer-left">Freely you have received, freely give. — Matthew 10:8</span>
+  <span class="footer-cross">☩</span>
+  <span class="footer-right">Ravi's Notebook · Winter Springs, FL</span>
+</footer>
+
+<script>
+function submitQuestion(e) {
+  e.preventDefault();
+  const q = document.getElementById('qText').value.trim();
+  if (!q) return;
+  document.getElementById('qaForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+</script>
+
+</body>
+</html>

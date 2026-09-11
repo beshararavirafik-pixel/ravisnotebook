@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Patristics — Ravi's Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--ivory:#FAFAF7;--ink:#1C1A16;--ink-light:#5C5850;--ink-faint:#9A9589;--gold:#B8924A;--border:#DDD9CE;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--ivory);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,247,0.6);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border-bottom:1px solid rgba(216,212,202,0.5);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .nav-logo-cross{color:var(--gold);}
+  .nav-links{display:flex;gap:8px;list-style:none;align-items:center;}
+  .nav-links>li{position:relative;}
+  .nav-links>li>a{font-size:13px;color:var(--ink-light);text-decoration:none;padding:8px 14px;display:flex;align-items:center;gap:5px;border-radius:6px;transition:all 0.15s;}
+  .nav-links>li>a:hover{color:var(--ink);background:rgba(0,0,0,0.04);}
+  .nav-chevron{font-size:9px;opacity:0.5;transition:transform 0.2s;}
+  .nav-links>li:hover .nav-chevron{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(250,250,247,0.85);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border:1px solid rgba(216,212,202,0.6);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.1);padding:8px;min-width:180px;opacity:0;pointer-events:none;transition:opacity 0.2s ease,transform 0.2s ease;list-style:none;}
+  .nav-links>li:hover .nav-dropdown{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown li a{display:block;padding:9px 14px;font-size:13px;color:var(--ink-light);text-decoration:none;border-radius:6px;transition:all 0.15s;}
+  .nav-dropdown li a:hover{background:rgba(0,0,0,0.05);color:var(--ink);}
+  .page-hero{padding:130px 48px 64px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--border);}
+  .page-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+  .page-eyebrow-line{width:28px;height:1px;background:var(--gold);}
+  .page-eyebrow-text{font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-style:italic;color:var(--gold);font-weight:300;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;color:var(--ink);letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px;}
+  .page-desc{font-size:0.95rem;color:var(--ink-light);font-weight:300;line-height:1.75;max-width:520px;margin-bottom:28px;}
+  .page-verse{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;font-weight:300;color:var(--ink-faint);border-left:2px solid var(--gold);padding-left:20px;line-height:1.65;max-width:520px;}
+  .page-verse span{display:block;font-family:'Inter',sans-serif;font-size:11px;font-style:normal;color:var(--gold);margin-top:8px;letter-spacing:0.03em;}
+  .section{padding:72px 48px;max-width:900px;margin:0 auto;}
+  .coming-soon{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--ink-faint);font-weight:300;}
+  footer{border-top:1px solid var(--border);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .footer-left{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;font-style:italic;color:var(--ink-faint);}
+  .footer-cross{color:var(--gold);font-size:1.2rem;}
+  .footer-right{font-size:12px;color:var(--ink-faint);font-weight:300;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-cross">☩</span> Ravi's Notebook</a>
+  <ul class="nav-links">
+    <li>
+      <a href="#">Learn <span class="nav-chevron">▼</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="hymnology.html">Hymnology</a></li>
+        <li><a href="rites.html">Rites &amp; History</a></li>
+        <li><a href="patristics.html">Patristics</a></li>
+        <li><a href="apologetics.html">Apologetics</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li><a href="qa.html">Q&amp;A</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span class="page-eyebrow-text">Learn</span></div>
+  <h1 class="page-title">Patristics</h1>
+  <p class="page-desc">Read the lives, writings, and wisdom of the early Church fathers.</p>
+  <blockquote class="page-verse">
+    "For inquire, please, of the former age, and consider the things discovered by their fathers."
+    <span>Job 8:8</span>
+  </blockquote>
+</div>
+<div class="section">
+  <p class="coming-soon">Content coming soon — check back regularly.</p>
+</div>
+<footer>
+  <span class="footer-left">Freely you have received, freely give. — Matthew 10:8</span>
+  <span class="footer-cross">☩</span>
+  <span class="footer-right">Ravi's Notebook · Winter Springs, FL</span>
+</footer>
+</body>
+</html>

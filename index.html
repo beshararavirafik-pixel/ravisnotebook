@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ravi's Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ivory: #FAFAF7;
+    --warm-white: #F5F4EF;
+    --stone: #E8E6DE;
+    --ink: #1C1A16;
+    --ink-light: #5C5850;
+    --ink-faint: #9A9589;
+    --gold: #B8924A;
+    --gold-light: #D4AA6A;
+    --red-coptic: #8B2020;
+    --border: #DDD9CE;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,247,0.6);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border-bottom: 1px solid rgba(216,212,202,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo-cross {
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links > li {
+    position: relative;
+  }
+
+  .nav-links > li > a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-light);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 6px;
+  }
+
+  .nav-links > li > a:hover {
+    color: var(--ink);
+    background: rgba(0,0,0,0.04);
+  }
+
+  .nav-chevron {
+    font-size: 9px;
+    opacity: 0.5;
+    transition: transform 0.2s;
+  }
+
+  .nav-links > li:hover .nav-chevron { transform: rotate(180deg); }
+
+  /* DROPDOWN */
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(250,250,247,0.85);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border: 1px solid rgba(216,212,202,0.6);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    padding: 8px;
+    min-width: 180px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    list-style: none;
+  }
+
+  .nav-links > li:hover .nav-dropdown {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-dropdown li a {
+    display: block;
+    padding: 9px 14px;
+    font-size: 13px;
+    color: var(--ink-light);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.15s;
+    font-weight: 400;
+  }
+
+  .nav-dropdown li a:hover {
+    background: rgba(0,0,0,0.05);
+    color: var(--ink);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 160px 48px 100px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .hero-left {}
+
+  .hero-ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .hero-ornament-line {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-ornament-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    line-height: 1.75;
+    max-width: 380px;
+    font-weight: 300;
+  }
+
+  .hero-right {
+    padding-bottom: 8px;
+  }
+
+  .hero-coptic-block {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 36px;
+    position: relative;
+  }
+
+  .hero-coptic-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .coptic-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .coptic-ref {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+  }
+
+  /* SECTION BASE */
+  .section {
+    padding: 96px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-sep {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .section-count {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-weight: 300;
+  }
+
+  /* HYMNS */
+  .hymns-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hymn-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 120px;
+    align-items: center;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .hymn-row:first-child { border-top: 1px solid var(--border); }
+
+  .hymn-meta {}
+
+  .hymn-season {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  .hymn-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .hymn-coptic {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+
+  .hymn-player {
+    width: 100%;
+  }
+
+  .hymn-player audio {
+    width: 100%;
+    height: 32px;
+  }
+
+  .hymn-tag-wrap {
+    text-align: right;
+  }
+
+  .hymn-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  /* NOTES */
+  .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .note-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .note-item:first-child { border-top: 1px solid var(--border); }
+
+  .note-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 28px 0;
+    display: grid;
+    grid-template-columns: 1fr 36px;
+    align-items: center;
+    gap: 24px;
+    text-align: left;
+    transition: opacity 0.15s;
+  }
+
+  .note-trigger:hover { opacity: 0.7; }
+
+  .note-trigger-left {}
+
+  .note-cat {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  .note-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  .note-arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faint);
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+  }
+
+  .note-item.open .note-arrow {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--ivory);
+    transform: rotate(45deg);
+  }
+
+  .note-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+  }
+
+  .note-body-inner {
+    padding: 0 0 36px;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    line-height: 1.85;
+    max-width: 620px;
+    font-weight: 300;
+  }
+
+  .note-body-inner p { margin-bottom: 16px; }
+  .note-body-inner p:last-child { margin-bottom: 0; }
+
+  .note-body-inner strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* PDFS */
+  .pdf-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pdf-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.15s;
+  }
+
+  .pdf-row:first-child { border-top: 1px solid var(--border); }
+  .pdf-row:hover { opacity: 0.65; }
+
+  .pdf-icon-wrap {
+    width: 40px;
+    height: 40px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .pdf-info { flex: 1; }
+
+  .pdf-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .pdf-desc {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-weight: 300;
+  }
+
+  .pdf-dl {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-weight: 300;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-left {}
+
+  .about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+
+  .about-body {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .about-right {}
+
+  .about-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .about-detail {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .about-detail:first-child { border-top: 1px solid var(--border); }
+
+  .about-detail-label {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .about-detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .footer-left {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-faint);
+  }
+
+  .footer-cross {
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+
+  .footer-right {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-weight: 300;
+  }
+
+  /* SEARCH */
+  .search-row {
+    margin-bottom: 40px;
+  }
+
+  .search-input {
+    width: 280px;
+    padding: 10px 16px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input::placeholder { color: var(--ink-faint); }
+  .search-input:focus { border-color: var(--gold); }
+
+  /* TOPICS GRID */
+  #topics { padding: 80px 48px; max-width: 900px; margin: 0 auto; }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .topic-btn {
+    display: block;
+    padding: 28px 24px;
+    background: rgba(250,250,247,0.55);
+    backdrop-filter: blur(12px) saturate(1.5);
+    -webkit-backdrop-filter: blur(12px) saturate(1.5);
+    border: 1px solid rgba(184,146,74,0.2);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink-light);
+    transition: all 0.2s ease;
+    letter-spacing: -0.01em;
+  }
+
+  .topic-btn:hover {
+    background: rgba(184,146,74,0.07);
+    border-color: var(--gold);
+    color: var(--ink);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(184,146,74,0.1);
+  }
+
+  @media (max-width: 600px) {
+    .topics-grid { grid-template-columns: repeat(2, 1fr); }
+    #topics { padding: 56px 24px; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 48px; }
+    .section { padding: 64px 24px; }
+    .hymn-row { grid-template-columns: 1fr; gap: 16px; }
+    .hymn-tag-wrap { text-align: left; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-cross">☩</span>
+    Ravi's Notebook
+  </a>
+  <ul class="nav-links">
+    <li>
+      <a href="#">Learn <span class="nav-chevron">▼</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="hymnology.html">Hymnology</a></li>
+        <li><a href="rites.html">Rites &amp; History</a></li>
+        <li><a href="patristics.html">Patristics</a></li>
+        <li><a href="apologetics.html">Apologetics</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li><a href="qa.html">Q&amp;A</a></li>
+      </ul>
+    </li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-ornament">
+      <div class="hero-ornament-line"></div>
+      <span class="hero-ornament-text">Coptic Orthodox Learning</span>
+    </div>
+    <h1 class="hero-title">A place<br>to <em>learn</em><br>and grow.</h1>
+    <p class="hero-desc">Hymn recordings, liturgical rites and history, book notes, &amp; more.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-coptic-block">
+      <p class="coptic-verse">"Give instruction to a wise man, and he will be still wiser; Teach a just man, and he will increase in learning."</p>
+      <p class="coptic-ref">Proverbs 9:9</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-sep"/>
+
+<!-- TOPIC BUTTONS -->
+<div class="section" id="topics">
+  <div class="topics-grid">
+    <a class="topic-btn" href="hymnology.html">Hymnology</a>
+    <a class="topic-btn" href="rites.html">Rites &amp; History</a>
+    <a class="topic-btn" href="patristics.html">Patristics</a>
+    <a class="topic-btn" href="apologetics.html">Apologetics</a>
+    <a class="topic-btn" href="notes.html">Notes</a>
+    <a class="topic-btn" href="qa.html">Q&amp;A</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="section-head">
+    <h2 class="section-title">About this site</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-left">
+      <p class="about-text">"A personal effort to make Coptic Orthodox learning more accessible — for youth, seekers, and anyone who wants to grow deeper in the faith of our fathers."</p>
+      <p class="about-body">This site collects hymn recordings, teaching notes from Sunday school lessons, liturgical PDFs, and resources gathered over years of serving the Church. Everything here is freely shared. Nothing is sold. If something helps you pray better or understand your faith more deeply, that's enough.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-detail-list">
+        <div class="about-detail">
+          <div class="about-detail-label">Church</div>
+          <div class="about-detail-value">St. Anthony Coptic Orthodox Church, Winter Springs FL</div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-label">Diocese</div>
+          <div class="about-detail-value">Southern United States (SUS)</div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-label">Roles</div>
+          <div class="about-detail-value">Reader · Sunday School Teacher · IT Committee</div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-label">Updated</div>
+          <div class="about-detail-value">Ongoing — new content added regularly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-left">Freely you have received, freely give. — Matthew 10:8</span>
+  <span class="footer-cross">☩</span>
+  <span class="footer-right">Ravi's Notebook · Winter Springs, FL</span>
+</footer>
+
+</body>
+</html>
