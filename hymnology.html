@@ -3,135 +3,102 @@
 <head>
 <meta charset="UTF-8"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Hymnology — Ravi's Notebook</title>
-
+<title>Hymnology &mdash; Ravi's Notebook</title>
 <style>
-  :root {
-    --ivory: #FAFAF7;
-    --warm-white: #F5F4EF;
-    --stone: #E8E6DE;
-    --ink: #1C1A16;
-    --ink-light: #5C5850;
-    --ink-faint: #9A9589;
-    --gold: #B8924A;
-    --gold-light: #D4AA6A;
-    --border: #DDD9CE;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--ivory); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(250,250,247,0.6);
-    backdrop-filter: blur(24px) saturate(1.8);
-    -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border-bottom: 1px solid rgba(216,212,202,0.5);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px; height: 60px;
-  }
-  .nav-logo { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.25rem; font-weight: 400; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 10px; }
-  .nav-logo-cross { color: var(--gold); }
-  .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; }
-  .nav-links > li { position: relative; }
-  .nav-links > li > a { font-size: 13px; color: var(--ink-light); text-decoration: none; padding: 8px 14px; display: flex; align-items: center; gap: 5px; border-radius: 6px; transition: all 0.15s; }
-  .nav-links > li > a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
-  .nav-chevron { font-size: 9px; opacity: 0.5; transition: transform 0.2s; }
-  .nav-links > li:hover .nav-chevron { transform: rotate(180deg); }
-  .nav-dropdown { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-6px); background: rgba(250,250,247,0.85); backdrop-filter: blur(24px) saturate(1.8); -webkit-backdrop-filter: blur(24px) saturate(1.8); border: 1px solid rgba(216,212,202,0.6); border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); padding: 8px; min-width: 180px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; list-style: none; }
-  .nav-links > li:hover .nav-dropdown { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
-  .nav-dropdown li a { display: block; padding: 9px 14px; font-size: 13px; color: var(--ink-light); text-decoration: none; border-radius: 6px; transition: all 0.15s; }
-  .nav-dropdown li a:hover { background: rgba(0,0,0,0.05); color: var(--ink); }
-
-  .page-hero { padding: 130px 48px 64px; max-width: 900px; margin: 0 auto; border-bottom: 1px solid var(--border); }
-  .page-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
-  .page-eyebrow-line { width: 28px; height: 1px; background: var(--gold); }
-  .page-eyebrow-text { font-family: 'Libre Baskerville', Georgia, serif; font-size: 0.85rem; font-style: italic; color: var(--gold); font-weight: 300; }
-  .page-title { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 300; color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 20px; }
-  .page-desc { font-size: 0.95rem; color: var(--ink-light); font-weight: 300; line-height: 1.75; max-width: 520px; margin-bottom: 28px; }
-  .page-verse { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.1rem; font-style: italic; font-weight: 300; color: var(--ink-faint); border-left: 2px solid var(--gold); padding-left: 20px; line-height: 1.65; max-width: 520px; }
-  .page-verse span { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-style: normal; color: var(--gold); margin-top: 8px; letter-spacing: 0.03em; }
-
-  .section { padding: 72px 48px; max-width: 900px; margin: 0 auto; }
-  .section-title { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 32px; letter-spacing: -0.01em; }
-
-  .seasons-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .season-pill {
-    display: inline-block;
-    padding: 9px 18px;
-    background: rgba(250,250,247,0.55);
-    backdrop-filter: blur(12px) saturate(1.5);
-    -webkit-backdrop-filter: blur(12px) saturate(1.5);
-    border: 1px solid rgba(184,146,74,0.25);
-    border-radius: 100px;
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: var(--ink-light);
-    text-decoration: none;
-    transition: all 0.2s ease;
-    white-space: nowrap;
+  :root{--teal:#0f4454;--sand:#cab5a7;--cream:#f5efe8;--light:#e8ddd5;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--teal);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:90px;}
+  #mainNav{position:fixed;top:0.9rem;left:50%;transform:translateX(-50%);z-index:300;display:flex;align-items:center;justify-content:space-between;width:calc(100% - 48px);max-width:500px;padding:0.75rem 1.4rem;background:rgba(202,181,167,0.18);backdrop-filter:blur(32px) saturate(2.2) brightness(1.05);-webkit-backdrop-filter:blur(32px) saturate(2.2) brightness(1.05);border:1px solid rgba(202,181,167,0.35);border-radius:100px;box-shadow:0 8px 32px rgba(15,68,84,0.1),inset 0 1px 0 rgba(255,255,255,0.45);}
+  .nav-cross{font-family:serif;font-size:1.1rem;color:#8A5A44;text-decoration:none;flex-shrink:0;}
+  .nav-center{text-align:center;flex:1;}
+  .nav-brand{font-family:'Cinzel',serif;font-size:0.8rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);text-decoration:none;display:block;}
+  .nav-sub{font-size:0.48rem;letter-spacing:0.1em;color:rgba(15,68,84,0.45);text-transform:uppercase;margin-top:2px;font-family:'DM Sans',sans-serif;font-weight:300;}
+  .nav-menu-btn{background:none;border:none;color:rgba(15,68,84,0.6);cursor:pointer;display:flex;align-items:center;padding:4px;transition:color 0.2s;flex-shrink:0;}
+  .nav-menu-btn:hover{color:var(--teal);}
+  .drawer-overlay{position:fixed;inset:0;background:rgba(15,68,84,0.2);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:301;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+  .drawer-overlay.open{opacity:1;pointer-events:all;}
+  .drawer{position:fixed;top:0;right:0;width:300px;height:100%;background:linear-gradient(160deg,rgba(202,181,167,0.95) 0%,rgba(15,68,84,0.92) 100%);backdrop-filter:blur(32px) saturate(2);-webkit-backdrop-filter:blur(32px) saturate(2);border-left:1px solid rgba(202,181,167,0.3);z-index:302;padding:48px 36px;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 48px rgba(15,68,84,0.15);}
+  .drawer.open{transform:translateX(0);}
+  .drawer-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .drawer-close:hover{background:rgba(255,255,255,0.25);}
+  .drawer-label{font-family:'Libre Baskerville',serif;font-size:0.72rem;font-style:italic;color:rgba(255,255,255,0.55);letter-spacing:0.06em;margin-top:36px;margin-bottom:16px;}
+  .drawer-link{display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.12);font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.2s,padding-left 0.2s;}
+  .drawer-link:hover{color:var(--sand);padding-left:6px;}
+  .drawer-link-about{margin-top:24px;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.45);border-bottom:none;letter-spacing:0.03em;}
+  .page-hero-wrap{background:linear-gradient(155deg,#f5efe8 0%,#ddd0c8 45%,#b8cdd8 100%);padding-bottom:2px;}
+  .page-hero{padding:56px 48px 64px;max-width:900px;margin:0 auto;border-bottom:1px solid rgba(202,181,167,0.35);}
+  .page-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+  .page-eyebrow-line{width:28px;height:1px;background:var(--sand);}
+  .page-eyebrow-text{font-family:'Libre Baskerville',serif;font-size:0.85rem;font-style:italic;color:var(--sand);font-weight:400;}
+  .page-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:400;color:var(--teal);letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px;}
+  .page-desc{font-size:0.95rem;color:rgba(15,68,84,0.6);font-weight:300;line-height:1.75;max-width:520px;margin-bottom:28px;}
+  .page-verse{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-style:italic;font-weight:400;color:rgba(15,68,84,0.55);border-left:2px solid var(--sand);padding-left:20px;line-height:1.65;max-width:520px;}
+  .page-verse span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-style:normal;color:var(--sand);margin-top:8px;letter-spacing:0.04em;}
+  .section{padding:72px 48px;max-width:900px;margin:0 auto;}
+  .section-title{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:400;color:var(--teal);margin-bottom:32px;}
+  .coming-soon{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:rgba(15,68,84,0.4);font-weight:400;}
+  footer{background:var(--teal);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .footer-left{font-family:'Libre Baskerville',serif;font-size:0.9rem;font-style:italic;color:rgba(202,181,167,0.5);}
+  .footer-cross{color:var(--sand);font-size:1.1rem;opacity:0.6;}
+  .footer-right{font-size:11px;color:rgba(202,181,167,0.4);font-weight:300;}
+  @media(max-width:768px){
+    body{padding-top:76px;}
+    #mainNav{width:calc(100% - 24px);padding:0.6rem 0.9rem;top:0.6rem;}
+    .nav-brand{font-size:0.6rem;letter-spacing:0.12em;}
+    .nav-sub{display:none;}
+    .page-hero{padding:36px 20px 48px;}
+    .page-title{font-size:clamp(1.9rem,8vw,2.6rem);}
+    .page-desc{font-size:0.9rem;}
+    .page-verse{font-size:0.95rem;}
+    .section{padding:48px 20px;}
+    footer{flex-direction:column;gap:14px;text-align:center;padding:32px 20px;}
+    .footer-left{font-size:0.78rem;}
+    .drawer{width:100%;border-left:none;}
+    .drawer-link{font-size:1.4rem;padding:15px 0;}
   }
 
-  .season-pill:hover {
-    background: rgba(184,146,74,0.1);
-    border-color: var(--gold);
-    color: var(--ink);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(184,146,74,0.12);
-  }
-
-  footer { border-top: 1px solid var(--border); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; }
-  .footer-left { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1rem; font-weight: 300; font-style: italic; color: var(--ink-faint); }
-  .footer-cross { color: var(--gold); font-size: 1.2rem; }
-  .footer-right { font-size: 12px; color: var(--ink-faint); font-weight: 300; }
+.seasons-grid{display:flex;flex-wrap:wrap;gap:10px;}
+.season-pill{display:inline-block;padding:9px 18px;background:rgba(202,181,167,0.2);border:1px solid rgba(202,181,167,0.35);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:400;color:var(--teal);text-decoration:none;transition:all 0.2s ease;white-space:nowrap;}
+.season-pill:hover{background:rgba(15,68,84,0.08);border-color:var(--teal);transform:translateY(-1px);box-shadow:0 4px 14px rgba(15,68,84,0.08);}
+@media(max-width:768px){.seasons-grid{gap:8px;}.season-pill{font-size:0.8rem;padding:7px 13px;}}
 </style>
 </head>
 <body>
-
-<nav>
-  <a href="index.html" class="nav-logo"><span class="nav-logo-cross">☩</span> Ravi's Notebook</a>
-  <ul class="nav-links">
-    <li>
-      <a href="#">Learn <span class="nav-chevron">▼</span></a>
-      <ul class="nav-dropdown">
-        <li><a href="hymnology.html">Hymnology</a></li>
-        <li><a href="rites.html">Rites &amp; History</a></li>
-        <li><a href="patristics.html">Patristics</a></li>
-        <li><a href="apologetics.html">Apologetics</a></li>
-        <li><a href="notes.html">Notes</a></li>
-        <li><a href="qa.html">Q&amp;A</a></li>
-      </ul>
-    </li>
-    <li><a href="index.html#about">About</a></li>
-  </ul>
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-cross">☩</a>
+  <div class="nav-center">
+    <a href="index.html" class="nav-brand">RAVI'S NOTEBOOK</a>
+    <div class="nav-sub">Coptic Orthodox Learning</div>
+  </div>
+  <button class="nav-menu-btn" onclick="openDrawer()" aria-label="Menu">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+  </button>
 </nav>
 
-<div class="page-hero">
-  <div class="page-eyebrow">
-    <div class="page-eyebrow-line"></div>
-    <span class="page-eyebrow-text">Learn</span>
-  </div>
-  <h1 class="page-title">Hymnology</h1>
-  <p class="page-desc">Hymn recordings, texts, hazzat, and history.</p>
-  <blockquote class="page-verse">
-    "I will praise You, O Lord, with my whole heart; I will tell of all Your marvelous works."
-    <span>Psalm 9:1</span>
-  </blockquote>
+<!-- DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <p class="drawer-label">Learn</p>
+  <a class="drawer-link" href="hymnology.html">Hymnology</a>
+  <a class="drawer-link" href="rites.html">Rites &amp; History</a>
+  <a class="drawer-link" href="patristics.html">Patristics</a>
+  <a class="drawer-link" href="apologetics.html">Apologetics</a>
+  <a class="drawer-link" href="notes.html">Notes</a>
+  <a class="drawer-link" href="qa.html">Q&amp;A</a>
+  <a class="drawer-link drawer-link-about" href="#about">About</a>
 </div>
-
-<div class="section">
-  <h2 class="section-title">Browse by Season</h2>
-  <div class="seasons-grid">
-    <a class="season-pill" href="https://www.hazzat.com/Seasons/annual" target="_blank" rel="noopener">Annual</a>
+<div class="page-hero-wrap">
+  <div class="page-hero">
+    <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span class="page-eyebrow-text">Learn</span></div>
+    <h1 class="page-title">Hymnology</h1><p class="page-desc">Hymn recordings, texts, hazzat, and history.</p><blockquote class="page-verse">"I will praise You, O Lord, with my whole heart; I will tell of all Your marvelous works."<span>Psalm 9:1</span></blockquote>
+  </div>
+</div>
+<div class="section"><h2 class="section-title">Browse by Season</h2><div class="seasons-grid"><a class="season-pill" href="https://www.hazzat.com/Seasons/annual" target="_blank" rel="noopener">Annual</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/nairouz" target="_blank" rel="noopener">Nairouz</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/feast-of-the-cross" target="_blank" rel="noopener">Feast of the Cross</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/kiahk" target="_blank" rel="noopener">Kiahk</a>
@@ -144,12 +111,12 @@
     <a class="season-pill" href="https://www.hazzat.com/Seasons/the-lords-entry-into-the-temple" target="_blank" rel="noopener">The Lord's Entry into the Temple</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/ninevehs-fast" target="_blank" rel="noopener">Nineveh's Fast</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/ninevehs-feast" target="_blank" rel="noopener">Nineveh's Feast</a>
-    <a class="season-pill" href="https://www.hazzat.com/Seasons/great-lent-saturdays-sundays" target="_blank" rel="noopener">Great Lent — Saturdays &amp; Sundays</a>
-    <a class="season-pill" href="https://www.hazzat.com/Seasons/great-lent-weekdays" target="_blank" rel="noopener">Great Lent — Weekdays</a>
+    <a class="season-pill" href="https://www.hazzat.com/Seasons/great-lent-saturdays-sundays" target="_blank" rel="noopener">Great Lent - Saturdays &amp; Sundays</a>
+    <a class="season-pill" href="https://www.hazzat.com/Seasons/great-lent-weekdays" target="_blank" rel="noopener">Great Lent - Weekdays</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/annunciation" target="_blank" rel="noopener">Annunciation</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/lazarus-saturday" target="_blank" rel="noopener">Lazarus Saturday</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/the-lords-entry-into-jerusalem-palm-sunday" target="_blank" rel="noopener">Palm Sunday</a>
-    <a class="season-pill" href="https://www.hazzat.com/Seasons/passion-week-general-hours" target="_blank" rel="noopener">Passion Week — General Hours</a>
+    <a class="season-pill" href="https://www.hazzat.com/Seasons/passion-week-general-hours" target="_blank" rel="noopener">Passion Week - General Hours</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/passion-pascha-week-covenant-thursday" target="_blank" rel="noopener">Covenant Thursday</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/passion-pascha-week-good-friday" target="_blank" rel="noopener">Good Friday</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/bright-saturday" target="_blank" rel="noopener">Bright Saturday</a>
@@ -160,19 +127,20 @@
     <a class="season-pill" href="https://www.hazzat.com/Seasons/apostles-feast" target="_blank" rel="noopener">Apostles Feast</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/saint-marys-fastfeast" target="_blank" rel="noopener">Saint Mary's Fast/Feast</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/transfiguration" target="_blank" rel="noopener">Transfiguration</a>
-    <a class="season-pill" href="#" rel="noopener">Venerations</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/coptic-weddings" target="_blank" rel="noopener">Coptic Weddings</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/funeral" target="_blank" rel="noopener">Funeral</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/papal" target="_blank" rel="noopener">Papal</a>
     <a class="season-pill" href="https://www.hazzat.com/Seasons/reception-of-new-priest" target="_blank" rel="noopener">Reception of New Priest</a>
-  </div>
-</div>
-
+    <a class="season-pill" href="#">Venerations</a></div></div>
 <footer>
   <span class="footer-left">Freely you have received, freely give. — Matthew 10:8</span>
   <span class="footer-cross">☩</span>
-  <span class="footer-right">Ravi's Notebook · Winter Springs, FL</span>
+  <span class="footer-right">Ravi's Notebook</span>
 </footer>
-
+<script>
+function openDrawer(){document.getElementById("drawer").classList.add("open");document.getElementById("drawerOverlay").classList.add("open");document.body.style.overflow="hidden";}
+function closeDrawer(){document.getElementById("drawer").classList.remove("open");document.getElementById("drawerOverlay").classList.remove("open");document.body.style.overflow="";}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
+</script>
 </body>
 </html>
