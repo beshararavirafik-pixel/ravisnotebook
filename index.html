@@ -195,14 +195,42 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.9; } }
 
-  @media (max-width: 680px) {
-    #mainNav { width: calc(100% - 32px); }
-    .hero { padding: 1.5rem 1.5rem 4rem; }
-    .topics-section, .about-section { padding: 64px 24px; }
-    .topics-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 768px) {
+    #mainNav { width: calc(100% - 28px); padding: 0.65rem 1rem; top: 0.75rem; }
+    .nav-brand { font-size: 0.65rem; letter-spacing: 0.14em; }
+    .nav-sub { display: none; }
+    .nav-cross { font-size: 0.95rem; }
+
+    .hero { padding: 7rem 1.5rem 3.5rem; min-height: 100svh; justify-content: flex-end; }
+    .hero-watermark { display: none; }
+    .hero-title { font-size: clamp(2rem, 9vw, 2.8rem); margin-bottom: 28px; line-height: 1.15; }
+    .hero-eyebrow { margin-bottom: 16px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.9rem; }
+    .scroll-hint { display: none; }
+
+    .topics-section { padding: 56px 20px; }
+    .topics-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .topic-card { padding: 22px 16px 40px; border-radius: 12px; }
+    .topic-card-name { font-size: 1rem; }
+    .topic-card-arrow { opacity: 1; transform: translateX(0); bottom: 14px; right: 14px; font-size: 12px; }
+    .section-title { font-size: 1.6rem; margin-bottom: 32px; }
+
     .verse-strip { padding: 56px 24px; }
-    .about-inner { grid-template-columns: 1fr; gap: 48px; }
-    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+    .verse-strip::before { font-size: 10rem; }
+
+    .about-section { padding: 56px 20px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-title { font-size: 1.6rem; }
+
+    footer { flex-direction: column; gap: 14px; text-align: center; padding: 32px 24px; }
+    .footer-left { font-size: 0.8rem; }
+
+    .drawer { width: 100%; border-left: none; }
+    .drawer-link { font-size: 1.5rem; padding: 16px 0; }
+
+    .search-overlay { padding-top: 80px; padding-left: 16px; padding-right: 16px; }
+    .search-input { font-size: 1rem; }
   }
 </style>
 </head>
