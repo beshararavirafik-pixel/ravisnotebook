@@ -3,194 +3,157 @@
 <head>
 <meta charset="UTF-8"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Notes — Ravi's Notebook</title>
-
+<title>Notes &mdash; Ravi's Notebook</title>
 <style>
-  :root{--ivory:#FAFAF7;--warm-white:#F5F4EF;--ink:#1C1A16;--ink-light:#5C5850;--ink-faint:#9A9589;--gold:#B8924A;--border:#DDD9CE;}
+
+  :root{--teal:#0f4454;--sand:#cab5a7;--cream:#f5efe8;--light:#e8ddd5;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--ivory);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,247,0.6);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border-bottom:1px solid rgba(216,212,202,0.5);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;}
-  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;}
-  .nav-logo-cross{color:var(--gold);}
-  .nav-links{display:flex;gap:8px;list-style:none;align-items:center;}
-  .nav-links>li{position:relative;}
-  .nav-links>li>a{font-size:13px;color:var(--ink-light);text-decoration:none;padding:8px 14px;display:flex;align-items:center;gap:5px;border-radius:6px;transition:all 0.15s;}
-  .nav-links>li>a:hover{color:var(--ink);background:rgba(0,0,0,0.04);}
-  .nav-chevron{font-size:9px;opacity:0.5;transition:transform 0.2s;}
-  .nav-links>li:hover .nav-chevron{transform:rotate(180deg);}
-  .nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(250,250,247,0.85);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border:1px solid rgba(216,212,202,0.6);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.1);padding:8px;min-width:180px;opacity:0;pointer-events:none;transition:opacity 0.2s ease,transform 0.2s ease;list-style:none;}
-  .nav-links>li:hover .nav-dropdown{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
-  .nav-dropdown li a{display:block;padding:9px 14px;font-size:13px;color:var(--ink-light);text-decoration:none;border-radius:6px;transition:all 0.15s;}
-  .nav-dropdown li a:hover{background:rgba(0,0,0,0.05);color:var(--ink);}
-  .page-hero{padding:130px 48px 64px;max-width:900px;margin:0 auto;border-bottom:1px solid var(--border);}
-  .page-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
-  .page-eyebrow-line{width:28px;height:1px;background:var(--gold);}
-  .page-eyebrow-text{font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-style:italic;color:var(--gold);font-weight:300;}
-  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;color:var(--ink);letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px;}
-  .page-desc{font-size:0.95rem;color:var(--ink-light);font-weight:300;line-height:1.75;max-width:520px;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--teal);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:90px;}
+  #mainNav{position:fixed;top:0.9rem;left:50%;transform:translateX(-50%);z-index:300;display:flex;align-items:center;justify-content:space-between;width:calc(100% - 48px);max-width:500px;padding:0.75rem 1.4rem;background:rgba(202,181,167,0.18);backdrop-filter:blur(32px) saturate(2.2) brightness(1.05);-webkit-backdrop-filter:blur(32px) saturate(2.2) brightness(1.05);border:1px solid rgba(202,181,167,0.35);border-radius:100px;box-shadow:0 8px 32px rgba(15,68,84,0.1),inset 0 1px 0 rgba(255,255,255,0.45);}
+  .nav-cross{font-family:serif;font-size:1.1rem;color:#8A5A44;text-decoration:none;flex-shrink:0;}
+  .nav-center{text-align:center;flex:1;}
+  .nav-brand{font-family:'Cinzel',serif;font-size:0.8rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);text-decoration:none;display:block;}
+  .nav-sub{font-size:0.48rem;letter-spacing:0.1em;color:rgba(15,68,84,0.45);text-transform:uppercase;margin-top:2px;font-family:'DM Sans',sans-serif;font-weight:300;}
+  .nav-menu-btn{background:none;border:none;color:rgba(15,68,84,0.6);cursor:pointer;display:flex;align-items:center;padding:4px;transition:color 0.2s;flex-shrink:0;}
+  .nav-menu-btn:hover{color:var(--teal);}
+  .drawer-overlay{position:fixed;inset:0;background:rgba(15,68,84,0.2);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:301;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+  .drawer-overlay.open{opacity:1;pointer-events:all;}
+  .drawer{position:fixed;top:0;right:0;width:300px;height:100%;background:linear-gradient(160deg,rgba(202,181,167,0.95) 0%,rgba(15,68,84,0.92) 100%);backdrop-filter:blur(32px) saturate(2);-webkit-backdrop-filter:blur(32px) saturate(2);border-left:1px solid rgba(202,181,167,0.3);z-index:302;padding:48px 36px;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 48px rgba(15,68,84,0.15);}
+  .drawer.open{transform:translateX(0);}
+  .drawer-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .drawer-close:hover{background:rgba(255,255,255,0.25);}
+  .drawer-label{font-family:'Libre Baskerville',serif;font-size:0.72rem;font-style:italic;color:rgba(255,255,255,0.55);letter-spacing:0.06em;margin-top:36px;margin-bottom:16px;}
+  .drawer-link{display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.12);font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.2s,padding-left 0.2s;}
+  .drawer-link:hover{color:var(--sand);padding-left:6px;}
+  .drawer-link-about{margin-top:24px;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.45);border-bottom:none;letter-spacing:0.03em;}
+  .page-hero-wrap{background:linear-gradient(155deg,#f5efe8 0%,#ddd0c8 45%,#b8cdd8 100%);padding-bottom:2px;}
+  .page-hero{padding:56px 48px 64px;max-width:900px;margin:0 auto;border-bottom:1px solid rgba(202,181,167,0.35);}
+  .page-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+  .page-eyebrow-line{width:28px;height:1px;background:var(--sand);}
+  .page-eyebrow-text{font-family:'Libre Baskerville',serif;font-size:0.85rem;font-style:italic;color:var(--sand);font-weight:400;}
+  .page-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:400;color:var(--teal);letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px;}
+  .page-desc{font-size:0.95rem;color:rgba(15,68,84,0.6);font-weight:300;line-height:1.75;max-width:520px;margin-bottom:28px;}
+  .page-verse{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-style:italic;font-weight:400;color:rgba(15,68,84,0.55);border-left:2px solid var(--sand);padding-left:20px;line-height:1.65;max-width:520px;}
+  .page-verse span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-style:normal;color:var(--sand);margin-top:8px;letter-spacing:0.04em;}
   .section{padding:72px 48px;max-width:900px;margin:0 auto;}
-  .notes-list{display:flex;flex-direction:column;gap:0;}
-  .note-item{border-bottom:1px solid var(--border);}
-  .note-item:first-child{border-top:1px solid var(--border);}
-  .note-trigger{width:100%;background:none;border:none;cursor:pointer;padding:28px 0;display:grid;grid-template-columns:1fr 36px;align-items:center;gap:24px;text-align:left;transition:opacity 0.15s;}
-  .note-trigger:hover{opacity:0.7;}
-  .note-cat{font-size:11px;color:var(--gold);font-weight:400;margin-bottom:6px;letter-spacing:0.03em;}
-  .note-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--ink);line-height:1.35;}
-  .note-arrow{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--ink-faint);font-size:16px;flex-shrink:0;transition:all 0.25s ease;}
-  .note-item.open .note-arrow{background:var(--ink);border-color:var(--ink);color:var(--ivory);transform:rotate(45deg);}
-  .note-body{overflow:hidden;max-height:0;transition:max-height 0.35s ease;}
-  .note-body-inner{padding:0 0 36px;font-size:0.95rem;color:var(--ink-light);line-height:1.85;max-width:620px;font-weight:300;}
-  .note-body-inner p{margin-bottom:16px;}
-  .note-body-inner p:last-child{margin-bottom:0;}
-  .note-body-inner strong{color:var(--ink);font-weight:500;}
-  footer{border-top:1px solid var(--border);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;}
-  .footer-left{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;font-style:italic;color:var(--ink-faint);}
-  .footer-cross{color:var(--gold);font-size:1.2rem;}
-  .footer-right{font-size:12px;color:var(--ink-faint);font-weight:300;}
-  .ivory{color:var(--ivory);}
+  .section-title{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:400;color:var(--teal);margin-bottom:32px;}
+  .coming-soon{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:rgba(15,68,84,0.4);font-weight:400;}
+  footer{background:var(--teal);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .footer-left{font-family:'Libre Baskerville',serif;font-size:0.9rem;font-style:italic;color:rgba(202,181,167,0.5);}
+  .footer-cross{color:var(--sand);font-size:1.1rem;opacity:0.6;}
+  .footer-right{font-size:11px;color:rgba(202,181,167,0.4);font-weight:300;}
+  @media(max-width:768px){
+    body{padding-top:76px;}
+    #mainNav{width:calc(100% - 24px);padding:0.6rem 0.9rem;top:0.6rem;}
+    .nav-brand{font-size:0.6rem;letter-spacing:0.12em;}
+    .nav-sub{display:none;}
+    .page-hero{padding:36px 20px 48px;}
+    .page-title{font-size:clamp(1.9rem,8vw,2.6rem);}
+    .page-desc{font-size:0.9rem;}
+    .page-verse{font-size:0.95rem;}
+    .section{padding:48px 20px;}
+    footer{flex-direction:column;gap:14px;text-align:center;padding:32px 20px;}
+    .footer-left{font-size:0.78rem;}
+    .drawer{width:100%;border-left:none;}
+    .drawer-link{font-size:1.4rem;padding:15px 0;}
+  }
+
+.notes-list{display:flex;flex-direction:column;}
+.note-item{border-bottom:1px solid rgba(202,181,167,0.3);}
+.note-item:first-child{border-top:1px solid rgba(202,181,167,0.3);}
+.note-trigger{width:100%;background:none;border:none;cursor:pointer;padding:24px 0;display:grid;grid-template-columns:1fr 36px;align-items:center;gap:20px;text-align:left;transition:opacity 0.15s;}
+.note-trigger:hover{opacity:0.7;}
+.note-cat{font-size:10px;color:var(--sand);font-weight:400;margin-bottom:5px;letter-spacing:0.05em;text-transform:uppercase;}
+.note-title{font-family:'Libre Baskerville',serif;font-size:1.15rem;font-weight:400;color:var(--teal);line-height:1.35;}
+.note-arrow{width:32px;height:32px;border:1px solid rgba(202,181,167,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--sand);font-size:16px;flex-shrink:0;transition:all 0.25s ease;}
+.note-item.open .note-arrow{background:var(--teal);border-color:var(--teal);color:var(--cream);transform:rotate(45deg);}
+.note-body{overflow:hidden;max-height:0;transition:max-height 0.35s ease;}
+.note-body-inner{padding:0 0 32px;font-size:0.9rem;color:rgba(15,68,84,0.65);line-height:1.85;max-width:620px;font-weight:300;}
+.note-body-inner p{margin-bottom:14px;}
+.note-body-inner strong{color:var(--teal);font-weight:500;}
+@media(max-width:768px){.note-title{font-size:1rem;}.note-trigger{padding:20px 0;}.note-arrow{width:28px;height:28px;}}
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo"><span class="nav-logo-cross">☩</span> Ravi's Notebook</a>
-  <ul class="nav-links">
-    <li>
-      <a href="#">Learn <span class="nav-chevron">▼</span></a>
-      <ul class="nav-dropdown">
-        <li><a href="hymnology.html">Hymnology</a></li>
-        <li><a href="rites.html">Rites &amp; History</a></li>
-        <li><a href="patristics.html">Patristics</a></li>
-        <li><a href="apologetics.html">Apologetics</a></li>
-        <li><a href="notes.html">Notes</a></li>
-        <li><a href="qa.html">Q&amp;A</a></li>
-      </ul>
-    </li>
-    <li><a href="index.html#about">About</a></li>
-  </ul>
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-cross">☩</a>
+  <div class="nav-center">
+    <a href="index.html" class="nav-brand">RAVI'S NOTEBOOK</a>
+    <div class="nav-sub">Coptic Orthodox Learning</div>
+  </div>
+  <button class="nav-menu-btn" onclick="openDrawer()" aria-label="Menu">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+  </button>
 </nav>
-<div class="page-hero">
-  <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span class="page-eyebrow-text">Learn</span></div>
-  <h1 class="page-title">Notes</h1>
-  <p class="page-desc">Lessons, reflections, and studies compiled over time.</p>
+
+<!-- DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <p class="drawer-label">Learn</p>
+  <a class="drawer-link" href="hymnology.html">Hymnology</a>
+  <a class="drawer-link" href="rites.html">Rites &amp; History</a>
+  <a class="drawer-link" href="patristics.html">Patristics</a>
+  <a class="drawer-link" href="apologetics.html">Apologetics</a>
+  <a class="drawer-link" href="notes.html">Notes</a>
+  <a class="drawer-link" href="qa.html">Q&amp;A</a>
+  <a class="drawer-link drawer-link-about" href="#about">About</a>
+</div>
+<div class="page-hero-wrap">
+  <div class="page-hero">
+    <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span class="page-eyebrow-text">Learn</span></div>
+    <h1 class="page-title">Notes</h1><p class="page-desc">Lessons, reflections, and studies compiled over time.</p>
+  </div>
 </div>
 <div class="section">
   <div class="notes-list">
-
     <div class="note-item">
-      <button class="note-trigger" onclick="toggleNote(this)">
-        <div>
-          <div class="note-cat">Sunday School · Grades 7–8</div>
-          <div class="note-title">Chastity and the Saints — living pure in a fallen world</div>
-        </div>
-        <div class="note-arrow">+</div>
-      </button>
-      <div class="note-body">
-        <div class="note-body-inner">
-          <p>This lesson was taught to the 7th and 8th grade Sunday school class. The goal was to show students that chastity is not just a rule, but a way of life modeled by real people who struggled and won through faith.</p>
-          <p><strong>St. Moses the Strong</strong> — Originally a violent criminal, Moses had a dramatic conversion and became one of the greatest Desert Fathers. His story shows that no one is beyond God's mercy, and that strength once directed at sin can be transformed toward holiness.</p>
-          <p><strong>St. Mary of Egypt</strong> — A woman who spent years in sinful living, she experienced a miraculous call to repentance at the Church of the Holy Sepulchre. She spent the rest of her life in the desert in prayer and fasting.</p>
-          <p><strong>The Prophet Joseph</strong> — When tempted by Potiphar's wife, he fled and said: "How then can I do this great wickedness, and sin against God?" (Gen. 39:9). He kept his purity at the cost of his freedom — and God honored him greatly.</p>
-          <p>Key lesson: Chastity is not weakness. It is the strength to say no to the world and yes to God.</p>
-        </div>
-      </div>
+      <button class="note-trigger" onclick="toggleNote(this)"><div><div class="note-cat">Sunday School - Grades 7-8</div><div class="note-title">Chastity and the Saints</div></div><div class="note-arrow">+</div></button>
+      <div class="note-body"><div class="note-body-inner"><p>This lesson was taught to the 7th and 8th grade Sunday school class. Chastity is not just a rule, but a way of life modeled by people who struggled and won through faith.</p><p><strong>St. Moses the Strong</strong> - His dramatic conversion and becoming one of the greatest Desert Fathers shows no one is beyond God's mercy.</p><p><strong>St. Mary of Egypt</strong> - She experienced a miraculous call to repentance at the Church of the Holy Sepulchre and spent the rest of her life in the desert.</p><p><strong>The Prophet Joseph</strong> - When tempted, he fled and said: How then can I do this great wickedness, and sin against God? (Gen. 39:9). He kept his purity at the cost of his freedom.</p></div></div>
     </div>
-
     <div class="note-item">
-      <button class="note-trigger" onclick="toggleNote(this)">
-        <div>
-          <div class="note-cat">Theology · Patristics</div>
-          <div class="note-title">St. Athanasius and the defense of Orthodoxy</div>
-        </div>
-        <div class="note-arrow">+</div>
-      </button>
-      <div class="note-body">
-        <div class="note-body-inner">
-          <p>St. Athanasius of Alexandria (c. 296–373 AD) is one of the greatest theologians in Christian history. His Latin title is <em>Athanasius contra mundum</em> — Athanasius against the world.</p>
-          <p>At the Council of Nicaea in 325 AD, the Arian heresy claimed that the Son of God was a created being. Athanasius argued passionately for <em>homoousios</em> — of the same substance — to describe the Son's relationship to the Father.</p>
-          <p>He was exiled five times by four different Roman emperors. His most important work, <em>On the Incarnation</em>, explains why God became man: "He became what we are, that He might make us what He is."</p>
-        </div>
-      </div>
+      <button class="note-trigger" onclick="toggleNote(this)"><div><div class="note-cat">Theology - Patristics</div><div class="note-title">St. Athanasius and the defense of Orthodoxy</div></div><div class="note-arrow">+</div></button>
+      <div class="note-body"><div class="note-body-inner"><p>St. Athanasius of Alexandria (c. 296-373 AD) is one of the greatest theologians in Christian history. His Latin title is Athanasius contra mundum.</p><p>At the Council of Nicaea in 325 AD he argued for homoousios - of the same substance - to describe the Son's relationship to the Father, against the Arian heresy.</p><p>He was exiled five times. His most important work, On the Incarnation: "He became what we are, that He might make us what He is."</p></div></div>
     </div>
-
     <div class="note-item">
-      <button class="note-trigger" onclick="toggleNote(this)">
-        <div>
-          <div class="note-cat">Diaconate Studies</div>
-          <div class="note-title">The Order of Reader — roles and responsibilities</div>
-        </div>
-        <div class="note-arrow">+</div>
-      </button>
-      <div class="note-body">
-        <div class="note-body-inner">
-          <p>The Oghnostos (Reader) is a rank in the Minor Orders of the Coptic Orthodox Church diaconate. The word comes from the Greek <em>anagnostes</em>, meaning one who reads.</p>
-          <p><strong>Liturgical role</strong> — The Reader proclaims the Epistle, the Praxis (Acts), and selected Psalms during the Divine Liturgy in Coptic, Arabic, or English depending on the congregation.</p>
-          <p><strong>Spiritual calling</strong> — The Reader must prepare in advance, understand what he proclaims, and live in a manner worthy of the altar.</p>
-        </div>
-      </div>
+      <button class="note-trigger" onclick="toggleNote(this)"><div><div class="note-cat">Diaconate Studies</div><div class="note-title">The Order of Reader - roles and responsibilities</div></div><div class="note-arrow">+</div></button>
+      <div class="note-body"><div class="note-body-inner"><p>The Oghnostos (Reader) is a rank in the Minor Orders of the Coptic Orthodox Church diaconate, from the Greek anagnostes, meaning one who reads.</p><p><strong>Liturgical role</strong> - The Reader proclaims the Epistle, the Praxis (Acts), and selected Psalms during the Divine Liturgy.</p><p><strong>Spiritual calling</strong> - The Reader must prepare in advance, understand what he proclaims, and live in a manner worthy of the altar.</p></div></div>
     </div>
-
     <div class="note-item">
-      <button class="note-trigger" onclick="toggleNote(this)">
-        <div>
-          <div class="note-cat">Hagiography</div>
-          <div class="note-title">St. Macarius the Great — Desert Father of Egypt</div>
-        </div>
-        <div class="note-arrow">+</div>
-      </button>
-      <div class="note-body">
-        <div class="note-body-inner">
-          <p>St. Macarius the Great (c. 300–391 AD) is one of the most revered Desert Fathers and a pillar of Coptic spirituality, commemorated on Parmoute 27.</p>
-          <p>Born in Upper Egypt, he became a disciple of St. Anthony the Great and settled in Wadi El Natrun, where the Macarian Monasteries still stand today.</p>
-          <p>His famous saying: <em>"If you are quiet, you will have peace wherever you live."</em> His <em>Macarian Homilies</em> deeply influenced Eastern Christian spirituality.</p>
-        </div>
-      </div>
+      <button class="note-trigger" onclick="toggleNote(this)"><div><div class="note-cat">Hagiography</div><div class="note-title">St. Macarius the Great - Desert Father of Egypt</div></div><div class="note-arrow">+</div></button>
+      <div class="note-body"><div class="note-body-inner"><p>St. Macarius the Great (c. 300-391 AD) is one of the most revered Desert Fathers, commemorated on Parmoute 27.</p><p>Born in Upper Egypt, he became a disciple of St. Anthony the Great and settled in Wadi El Natrun, where the Macarian Monasteries still stand today.</p><p>His famous saying: "If you are quiet, you will have peace wherever you live."</p></div></div>
     </div>
-
     <div class="note-item">
-      <button class="note-trigger" onclick="toggleNote(this)">
-        <div>
-          <div class="note-cat">Liturgy</div>
-          <div class="note-title">Understanding the Divine Liturgy of St. Basil</div>
-        </div>
-        <div class="note-arrow">+</div>
-      </button>
-      <div class="note-body">
-        <div class="note-body-inner">
-          <p>The Liturgy of St. Basil is the primary Eucharistic liturgy of the Coptic Orthodox Church, used on most Sundays and feast days throughout the year.</p>
-          <p><strong>The Liturgy of the Word</strong> — Readings from the Pauline Epistle, Catholic Epistle, Acts, and Holy Gospel, each proclaimed by different orders of the diaconate.</p>
-          <p><strong>The Anaphora</strong> — The central prayer of consecration in which the bread and wine become the Body and Blood of Christ.</p>
-          <p><strong>Holy Communion</strong> — The faithful receive the Body from the priest and the Blood from the deacon via chalice.</p>
-        </div>
-      </div>
+      <button class="note-trigger" onclick="toggleNote(this)"><div><div class="note-cat">Liturgy</div><div class="note-title">Understanding the Divine Liturgy of St. Basil</div></div><div class="note-arrow">+</div></button>
+      <div class="note-body"><div class="note-body-inner"><p>The Liturgy of St. Basil is the primary Eucharistic liturgy of the Coptic Orthodox Church, used on most Sundays and feast days.</p><p><strong>The Liturgy of the Word</strong> - Readings from the Pauline Epistle, Catholic Epistle, Acts, and Holy Gospel.</p><p><strong>The Anaphora</strong> - The central prayer of consecration in which the bread and wine become the Body and Blood of Christ.</p></div></div>
     </div>
-
   </div>
 </div>
-
+<script>
+function toggleNote(btn){
+  var item=btn.closest(".note-item");
+  var body=item.querySelector(".note-body");
+  var inner=item.querySelector(".note-body-inner");
+  var isOpen=item.classList.contains("open");
+  document.querySelectorAll(".note-item.open").forEach(function(el){
+    el.classList.remove("open");
+    el.querySelector(".note-body").style.maxHeight="0";
+  });
+  if(!isOpen){item.classList.add("open");body.style.maxHeight=inner.scrollHeight+"px";}
+}
+</script>
 <footer>
   <span class="footer-left">Freely you have received, freely give. — Matthew 10:8</span>
   <span class="footer-cross">☩</span>
-  <span class="footer-right">Ravi's Notebook · Winter Springs, FL</span>
+  <span class="footer-right">Ravi's Notebook</span>
 </footer>
-
 <script>
-function toggleNote(btn) {
-  const item = btn.closest('.note-item');
-  const body = item.querySelector('.note-body');
-  const inner = item.querySelector('.note-body-inner');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.note-item.open').forEach(el => {
-    el.classList.remove('open');
-    el.querySelector('.note-body').style.maxHeight = '0';
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    body.style.maxHeight = inner.scrollHeight + 'px';
-  }
-}
+function openDrawer(){document.getElementById("drawer").classList.add("open");document.getElementById("drawerOverlay").classList.add("open");document.body.style.overflow="hidden";}
+function closeDrawer(){document.getElementById("drawer").classList.remove("open");document.getElementById("drawerOverlay").classList.remove("open");document.body.style.overflow="";}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
 </script>
 </body>
 </html>
