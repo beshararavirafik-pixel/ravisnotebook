@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin — Ravi's Notebook</title>
+<style>
+  :root{--teal:#0f4454;--sand:#cab5a7;--cream:#f5efe8;--light:#e8ddd5;--danger:#8b2020;--success:#1a5c3a;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--teal);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+  /* LOGIN SCREEN */
+  #loginScreen{position:fixed;inset:0;background:linear-gradient(160deg,#f5efe8 0%,#e4d5cb 35%,#b8cdd8 70%,#0f4454 100%);display:flex;align-items:center;justify-content:center;z-index:999;padding:24px;}
+  .login-box{background:rgba(245,239,232,0.65);backdrop-filter:blur(32px) saturate(2);-webkit-backdrop-filter:blur(32px) saturate(2);border:1px solid rgba(202,181,167,0.45);border-radius:20px;padding:52px 44px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(15,68,84,0.15);}
+  .login-cross{text-align:center;font-size:1.5rem;color:#8A5A44;margin-bottom:20px;opacity:0.7;}
+  .login-title{font-family:'Cinzel',serif;font-size:1rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);text-align:center;margin-bottom:6px;}
+  .login-sub{font-family:'Libre Baskerville',serif;font-size:0.8rem;font-style:italic;color:rgba(15,68,84,0.45);text-align:center;margin-bottom:36px;}
+  .login-field{margin-bottom:16px;}
+  .login-label{display:block;font-size:10px;color:var(--sand);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;font-weight:400;}
+  .login-input{width:100%;padding:12px 16px;background:rgba(255,255,255,0.5);border:1px solid rgba(202,181,167,0.4);border-radius:10px;color:var(--teal);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+  .login-input:focus{border-color:var(--teal);}
+  .login-btn{width:100%;padding:13px;background:var(--teal);color:var(--cream);border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:400;cursor:pointer;margin-top:8px;transition:all 0.2s;letter-spacing:0.02em;}
+  .login-btn:hover{background:#0a2e3a;}
+  .login-error{display:none;margin-top:12px;padding:10px 14px;background:rgba(139,32,32,0.1);border:1px solid rgba(139,32,32,0.25);border-radius:8px;font-size:13px;color:var(--danger);text-align:center;}
+
+  /* ADMIN SHELL */
+  #adminShell{display:none;}
+
+  /* TOP BAR */
+  .admin-bar{position:fixed;top:0;left:0;right:0;height:56px;background:var(--teal);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100;box-shadow:0 2px 16px rgba(15,68,84,0.2);}
+  .admin-bar-logo{font-family:'Cinzel',serif;font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(202,181,167,0.9);}
+  .admin-bar-right{display:flex;align-items:center;gap:16px;}
+  .admin-bar-site{font-size:12px;color:rgba(202,181,167,0.5);text-decoration:none;transition:color 0.2s;font-weight:300;}
+  .admin-bar-site:hover{color:var(--sand);}
+  .admin-logout{background:rgba(202,181,167,0.12);border:1px solid rgba(202,181,167,0.2);color:rgba(202,181,167,0.7);padding:6px 14px;border-radius:100px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+  .admin-logout:hover{background:rgba(202,181,167,0.2);color:var(--sand);}
+
+  /* SIDEBAR */
+  .admin-layout{display:flex;padding-top:56px;min-height:100vh;}
+  .admin-sidebar{width:220px;background:#f0e9e0;border-right:1px solid rgba(202,181,167,0.3);padding:28px 0;flex-shrink:0;position:fixed;top:56px;left:0;bottom:0;overflow-y:auto;}
+  .sidebar-section-label{font-size:10px;color:rgba(15,68,84,0.4);letter-spacing:0.08em;text-transform:uppercase;padding:16px 20px 8px;font-weight:400;}
+  .sidebar-link{display:flex;align-items:center;gap:10px;padding:11px 20px;color:rgba(15,68,84,0.6);text-decoration:none;font-size:13px;font-weight:400;transition:all 0.15s;cursor:pointer;border:none;background:none;width:100%;text-align:left;}
+  .sidebar-link:hover{background:rgba(202,181,167,0.2);color:var(--teal);}
+  .sidebar-link.active{background:rgba(15,68,84,0.08);color:var(--teal);font-weight:500;border-right:2px solid var(--teal);}
+  .sidebar-icon{font-size:15px;width:20px;text-align:center;}
+
+  /* MAIN CONTENT */
+  .admin-main{margin-left:220px;flex:1;padding:36px 40px;max-width:calc(100vw - 220px);}
+
+  /* PANELS */
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .panel-header{margin-bottom:32px;}
+  .panel-title{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:400;color:var(--teal);margin-bottom:6px;letter-spacing:-0.01em;}
+  .panel-desc{font-size:0.88rem;color:rgba(15,68,84,0.5);font-weight:300;}
+
+  /* CARDS */
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+  .stat-card{background:#fff;border:1px solid rgba(202,181,167,0.3);border-radius:14px;padding:24px;text-align:center;}
+  .stat-num{font-family:'Libre Baskerville',serif;font-size:2.2rem;font-weight:400;color:var(--teal);line-height:1;}
+  .stat-label{font-size:11px;color:rgba(15,68,84,0.45);margin-top:6px;text-transform:uppercase;letter-spacing:0.05em;}
+
+  /* TABLE */
+  .table-wrap{background:#fff;border:1px solid rgba(202,181,167,0.3);border-radius:14px;overflow:hidden;margin-bottom:28px;}
+  .table-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(202,181,167,0.2);}
+  .table-head-title{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:400;color:var(--teal);}
+  table{width:100%;border-collapse:collapse;}
+  th{text-align:left;padding:12px 20px;font-size:11px;font-weight:500;color:rgba(15,68,84,0.45);letter-spacing:0.05em;text-transform:uppercase;border-bottom:1px solid rgba(202,181,167,0.2);background:rgba(245,239,232,0.4);}
+  td{padding:14px 20px;font-size:13px;color:var(--teal);border-bottom:1px solid rgba(202,181,167,0.1);vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:rgba(245,239,232,0.4);}
+  .td-meta{font-size:11px;color:rgba(15,68,84,0.4);margin-top:2px;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:400;}
+  .badge-teal{background:rgba(15,68,84,0.08);color:var(--teal);}
+  .badge-sand{background:rgba(202,181,167,0.2);color:#7a6050;}
+  .badge-new{background:rgba(15,68,84,0.1);color:var(--teal);font-weight:500;}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:100px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.2s;border:none;font-weight:400;}
+  .btn-teal{background:var(--teal);color:var(--cream);}
+  .btn-teal:hover{background:#0a2e3a;}
+  .btn-outline{background:transparent;color:var(--teal);border:1px solid rgba(15,68,84,0.2);}
+  .btn-outline:hover{background:rgba(15,68,84,0.05);}
+  .btn-danger{background:transparent;color:var(--danger);border:1px solid rgba(139,32,32,0.2);font-size:12px;padding:6px 14px;}
+  .btn-danger:hover{background:rgba(139,32,32,0.06);}
+  .btn-sm{padding:6px 14px;font-size:12px;}
+  .btn-group{display:flex;gap:8px;}
+
+  /* FORMS */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-grid-full{grid-column:1/-1;}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+  .field label{font-size:11px;color:var(--sand);letter-spacing:0.05em;text-transform:uppercase;font-weight:400;}
+  .field input,.field select,.field textarea{padding:10px 14px;background:rgba(245,239,232,0.6);border:1px solid rgba(202,181,167,0.4);border-radius:10px;color:var(--teal);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;appearance:none;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);}
+  .field textarea{resize:vertical;min-height:120px;line-height:1.6;}
+  .field input[type="file"]{padding:8px;font-size:13px;}
+
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,68,84,0.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+  .modal-overlay.open{opacity:1;pointer-events:all;}
+  .modal{background:#fff;border-radius:18px;padding:36px;width:100%;max-width:560px;max-height:85vh;overflow-y:auto;transform:translateY(16px);transition:transform 0.25s;box-shadow:0 20px 60px rgba(15,68,84,0.15);}
+  .modal-overlay.open .modal{transform:translateY(0);}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+  .modal-title{font-family:'Libre Baskerville',serif;font-size:1.2rem;font-weight:400;color:var(--teal);}
+  .modal-close{background:none;border:none;font-size:18px;color:rgba(15,68,84,0.35);cursor:pointer;padding:4px;transition:color 0.2s;}
+  .modal-close:hover{color:var(--teal);}
+  .modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(202,181,167,0.2);}
+
+  /* TOAST */
+  .toast{position:fixed;bottom:28px;right:28px;background:var(--teal);color:var(--cream);padding:12px 20px;border-radius:100px;font-size:13px;font-weight:400;z-index:600;transform:translateY(60px);opacity:0;transition:all 0.3s ease;box-shadow:0 8px 24px rgba(15,68,84,0.2);}
+  .toast.show{transform:translateY(0);opacity:1;}
+
+  /* Q&A SPECIFIC */
+  .qa-question-card{background:#fff;border:1px solid rgba(202,181,167,0.3);border-radius:14px;padding:22px;margin-bottom:12px;}
+  .qa-q-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .qa-q-text{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:400;color:var(--teal);margin-bottom:14px;line-height:1.5;}
+  .qa-answer-field{width:100%;padding:10px 14px;background:rgba(245,239,232,0.6);border:1px solid rgba(202,181,167,0.4);border-radius:10px;color:var(--teal);font-family:'DM Sans',sans-serif;font-size:13px;min-height:80px;outline:none;resize:vertical;line-height:1.6;}
+  .qa-answer-field:focus{border-color:var(--teal);}
+  .qa-answered{background:rgba(26,92,58,0.06);border-color:rgba(26,92,58,0.2);}
+  .qa-answered-label{font-size:11px;color:var(--success);font-weight:500;letter-spacing:0.03em;}
+
+  /* EMPTY STATE */
+  .empty-state{text-align:center;padding:56px 24px;}
+  .empty-icon{font-size:2.5rem;margin-bottom:16px;opacity:0.3;}
+  .empty-text{font-family:'Libre Baskerville',serif;font-size:1rem;font-style:italic;color:rgba(15,68,84,0.4);}
+
+  /* SECTION DIVIDER */
+  .divider{height:1px;background:rgba(202,181,167,0.25);margin:28px 0;}
+
+  @media(max-width:768px){
+    .admin-sidebar{display:none;}
+    .admin-main{margin-left:0;padding:24px 16px;max-width:100%;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .form-grid{grid-template-columns:1fr;}
+    .admin-bar{padding:0 16px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-cross">&#9769;</div>
+    <div class="login-title">Ravi's Notebook</div>
+    <div class="login-sub">Admin access only</div>
+    <div class="login-field">
+      <label class="login-label">Username</label>
+      <input class="login-input" type="text" id="loginUser" placeholder="Enter username" autocomplete="username"/>
+    </div>
+    <div class="login-field">
+      <label class="login-label">Password</label>
+      <input class="login-input" type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="loginError">Incorrect username or password.</div>
+  </div>
+</div>
+
+<!-- ADMIN SHELL -->
+<div id="adminShell">
+
+  <!-- TOP BAR -->
+  <div class="admin-bar">
+    <span class="admin-bar-logo">&#9769; Admin Panel</span>
+    <div class="admin-bar-right">
+      <a class="admin-bar-site" href="index.html" target="_blank">&#8592; View site</a>
+      <button class="admin-logout" onclick="doLogout()">Sign out</button>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-section-label">Overview</div>
+      <button class="sidebar-link active" onclick="showPanel('dashboard',this)"><span class="sidebar-icon">&#9636;</span> Dashboard</button>
+
+      <div class="sidebar-section-label">Content</div>
+      <button class="sidebar-link" onclick="showPanel('notes',this)"><span class="sidebar-icon">&#128196;</span> Notes</button>
+      <button class="sidebar-link" onclick="showPanel('pdfs',this)"><span class="sidebar-icon">&#128451;</span> PDFs</button>
+      <button class="sidebar-link" onclick="showPanel('hymns',this)"><span class="sidebar-icon">&#127925;</span> Hymns</button>
+      <button class="sidebar-link" onclick="showPanel('qa',this)"><span class="sidebar-icon">&#10067;</span> Q&amp;A</button>
+
+      <div class="sidebar-section-label">Settings</div>
+      <button class="sidebar-link" onclick="showPanel('settings',this)"><span class="sidebar-icon">&#9881;</span> Settings</button>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="admin-main">
+
+      <!-- DASHBOARD -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="panel-header">
+          <h1 class="panel-title">Dashboard</h1>
+          <p class="panel-desc">Welcome back. Here is an overview of your site.</p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-num" id="stat-notes">0</div><div class="stat-label">Notes</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-pdfs">0</div><div class="stat-label">PDFs</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-hymns">0</div><div class="stat-label">Hymns</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-qa">0</div><div class="stat-label">Questions</div></div>
+        </div>
+        <div class="table-wrap">
+          <div class="table-head"><span class="table-head-title">Recent Questions</span><button class="btn btn-outline btn-sm" onclick="showPanel('qa',document.querySelector('[onclick*=\'qa\']'))">View all</button></div>
+          <div id="dash-qa-list"><div class="empty-state"><div class="empty-icon">&#10067;</div><div class="empty-text">No questions yet</div></div></div>
+        </div>
+      </div>
+
+      <!-- NOTES -->
+      <div class="panel" id="panel-notes">
+        <div class="panel-header">
+          <h1 class="panel-title">Notes</h1>
+          <p class="panel-desc">Manage your lessons and written notes.</p>
+        </div>
+        <div style="margin-bottom:20px"><button class="btn btn-teal" onclick="openModal('modal-add-note')">&#43; Add Note</button></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Title</th><th>Category</th><th>Added</th><th></th></tr></thead>
+            <tbody id="notes-table-body"></tbody>
+          </table>
+          <div id="notes-empty" class="empty-state" style="display:none"><div class="empty-icon">&#128196;</div><div class="empty-text">No notes yet. Add your first one.</div></div>
+        </div>
+      </div>
+
+      <!-- PDFS -->
+      <div class="panel" id="panel-pdfs">
+        <div class="panel-header">
+          <h1 class="panel-title">PDFs</h1>
+          <p class="panel-desc">Manage downloadable documents.</p>
+        </div>
+        <div style="margin-bottom:20px"><button class="btn btn-teal" onclick="openModal('modal-add-pdf')">&#43; Add PDF</button></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Description</th><th>Link</th><th>Added</th><th></th></tr></thead>
+            <tbody id="pdfs-table-body"></tbody>
+          </table>
+          <div id="pdfs-empty" class="empty-state" style="display:none"><div class="empty-icon">&#128451;</div><div class="empty-text">No PDFs yet. Add your first one.</div></div>
+        </div>
+      </div>
+
+      <!-- HYMNS -->
+      <div class="panel" id="panel-hymns">
+        <div class="panel-header">
+          <h1 class="panel-title">Hymns</h1>
+          <p class="panel-desc">Manage hymn recordings and links.</p>
+        </div>
+        <div style="margin-bottom:20px"><button class="btn btn-teal" onclick="openModal('modal-add-hymn')">&#43; Add Hymn</button></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Season</th><th>Type</th><th>Added</th><th></th></tr></thead>
+            <tbody id="hymns-table-body"></tbody>
+          </table>
+          <div id="hymns-empty" class="empty-state" style="display:none"><div class="empty-icon">&#127925;</div><div class="empty-text">No hymns yet. Add your first one.</div></div>
+        </div>
+      </div>
+
+      <!-- Q&A -->
+      <div class="panel" id="panel-qa">
+        <div class="panel-header">
+          <h1 class="panel-title">Q&amp;A</h1>
+          <p class="panel-desc">Review submitted questions and publish answers.</p>
+        </div>
+        <div style="display:flex;gap:10px;margin-bottom:24px;">
+          <button class="btn btn-outline btn-sm" onclick="filterQA('all',this)" style="background:rgba(15,68,84,0.07)">All</button>
+          <button class="btn btn-outline btn-sm" onclick="filterQA('pending',this)">Pending</button>
+          <button class="btn btn-outline btn-sm" onclick="filterQA('answered',this)">Answered</button>
+        </div>
+        <div id="qa-list"></div>
+        <div id="qa-empty" class="empty-state" style="display:none"><div class="empty-icon">&#10067;</div><div class="empty-text">No questions yet</div></div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="panel" id="panel-settings">
+        <div class="panel-header">
+          <h1 class="panel-title">Settings</h1>
+          <p class="panel-desc">Manage your admin password and site info.</p>
+        </div>
+        <div class="table-wrap" style="padding:28px;border-radius:14px;">
+          <h3 style="font-family:'Libre Baskerville',serif;font-weight:400;color:var(--teal);margin-bottom:20px;font-size:1rem;">Change Password</h3>
+          <div class="field"><label>Current Password</label><input type="password" id="curr-pass"/></div>
+          <div class="field"><label>New Password</label><input type="password" id="new-pass"/></div>
+          <div class="field"><label>Confirm New Password</label><input type="password" id="confirm-pass"/></div>
+          <button class="btn btn-teal" onclick="changePassword()">Update Password</button>
+          <div class="divider"></div>
+          <h3 style="font-family:'Libre Baskerville',serif;font-weight:400;color:var(--teal);margin-bottom:8px;font-size:1rem;">Export Data</h3>
+          <p style="font-size:13px;color:rgba(15,68,84,0.5);margin-bottom:16px;font-weight:300;">Download all your content as a JSON file for backup.</p>
+          <button class="btn btn-outline" onclick="exportData()">&#8595; Export all data</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- MODALS -->
+
+<!-- Add Note -->
+<div class="modal-overlay" id="modal-add-note">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Add Note</span>
+      <button class="modal-close" onclick="closeModal('modal-add-note')">&#x2715;</button>
+    </div>
+    <div class="field"><label>Title</label><input type="text" id="note-title" placeholder="Note title"/></div>
+    <div class="field"><label>Category</label>
+      <select id="note-cat">
+        <option>Sunday School</option><option>Theology</option><option>Patristics</option>
+        <option>Hagiography</option><option>Liturgy</option><option>Diaconate Studies</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label>Content</label><textarea id="note-body" placeholder="Write your note here..."></textarea></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-add-note')">Cancel</button>
+      <button class="btn btn-teal" onclick="saveNote()">Save Note</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add PDF -->
+<div class="modal-overlay" id="modal-add-pdf">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Add PDF</span>
+      <button class="modal-close" onclick="closeModal('modal-add-pdf')">&#x2715;</button>
+    </div>
+    <div class="field"><label>Document Name</label><input type="text" id="pdf-name" placeholder="e.g. The Agpeya — Book of Hours"/></div>
+    <div class="field"><label>Description</label><input type="text" id="pdf-desc" placeholder="Brief description"/></div>
+    <div class="field"><label>Link or File Path</label><input type="text" id="pdf-link" placeholder="e.g. pdfs/agpeya.pdf or https://..."/></div>
+    <div class="field"><label>Category</label>
+      <select id="pdf-cat">
+        <option>Liturgy</option><option>Prayer</option><option>Sunday School</option>
+        <option>Theology</option><option>Study Guide</option><option>Other</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-add-pdf')">Cancel</button>
+      <button class="btn btn-teal" onclick="savePDF()">Save PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Hymn -->
+<div class="modal-overlay" id="modal-add-hymn">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Add Hymn</span>
+      <button class="modal-close" onclick="closeModal('modal-add-hymn')">&#x2715;</button>
+    </div>
+    <div class="field"><label>Hymn Name</label><input type="text" id="hymn-name" placeholder="e.g. Pi-Epnevma Ethowab"/></div>
+    <div class="field"><label>Coptic / Arabic Name (optional)</label><input type="text" id="hymn-coptic" placeholder="e.g. Ⲡⲓⲡⲛⲉⲩⲙⲁ"/></div>
+    <div class="field"><label>Season</label>
+      <select id="hymn-season">
+        <option>General</option><option>Kiahk</option><option>Nativity</option><option>Epiphany</option>
+        <option>Great Lent</option><option>Holy Week</option><option>Resurrection</option>
+        <option>Pentecost</option><option>Apostles Fast</option><option>Saint Mary</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label>Audio File Path or URL</label><input type="text" id="hymn-src" placeholder="e.g. hymns/pi-epnevma.mp3"/></div>
+    <div class="field"><label>Tag (optional)</label><input type="text" id="hymn-tag" placeholder="e.g. Coptic, Greek, Arabic"/></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-add-hymn')">Cancel</button>
+      <button class="btn btn-teal" onclick="saveHymn()">Save Hymn</button>
+    </div>
+  </div>
+</div>
+
+<!-- View/Edit Note -->
+<div class="modal-overlay" id="modal-view-note">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Edit Note</span>
+      <button class="modal-close" onclick="closeModal('modal-view-note')">&#x2715;</button>
+    </div>
+    <div class="field"><label>Title</label><input type="text" id="edit-note-title"/></div>
+    <div class="field"><label>Category</label><input type="text" id="edit-note-cat"/></div>
+    <div class="field"><label>Content</label><textarea id="edit-note-body" style="min-height:180px"></textarea></div>
+    <input type="hidden" id="edit-note-id"/>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-view-note')">Cancel</button>
+      <button class="btn btn-teal" onclick="updateNote()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── STORAGE KEYS ──
+const KEYS = {
+  notes:'rn_notes', pdfs:'rn_pdfs', hymns:'rn_hymns',
+  qa:'rn_qa', pass:'rn_admin_pass', auth:'rn_auth'
+};
+
+// Default password (change in Settings after first login)
+const DEFAULT_PASS = 'coptic2025';
+
+function getPass(){ return localStorage.getItem(KEYS.pass) || DEFAULT_PASS; }
+function getData(k){ try{ return JSON.parse(localStorage.getItem(k)||'[]'); }catch(e){ return []; } }
+function setData(k,v){ localStorage.setItem(k, JSON.stringify(v)); }
+
+// ── AUTH ──
+function doLogin(){
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  if(u === 'admin' && p === getPass()){
+    localStorage.setItem(KEYS.auth,'1');
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('adminShell').style.display='block';
+    loadAll();
+  } else {
+    document.getElementById('loginError').style.display='block';
+  }
+}
+function doLogout(){
+  localStorage.removeItem(KEYS.auth);
+  location.reload();
+}
+
+// Check if already logged in
+if(localStorage.getItem(KEYS.auth)==='1'){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('adminShell').style.display='block';
+}
+
+// ── PANELS ──
+function showPanel(id, el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-link').forEach(l=>l.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(el) el.classList.add('active');
+  if(id==='dashboard') loadDashboard();
+  if(id==='notes') renderNotes();
+  if(id==='pdfs') renderPDFs();
+  if(id==='hymns') renderHymns();
+  if(id==='qa') renderQA('all');
+}
+
+// ── MODALS ──
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  // Clear inputs
+  document.getElementById(id).querySelectorAll('input,textarea').forEach(el=>{ if(el.type!=='hidden') el.value=''; });
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open')); });
+
+// ── TOAST ──
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ── NOTES ──
+function saveNote(){
+  const title=document.getElementById('note-title').value.trim();
+  const body=document.getElementById('note-body').value.trim();
+  const cat=document.getElementById('note-cat').value;
+  if(!title||!body){ toast('Please fill in title and content'); return; }
+  const notes=getData(KEYS.notes);
+  notes.unshift({id:Date.now(),title,body,cat,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});
+  setData(KEYS.notes,notes);
+  closeModal('modal-add-note');
+  renderNotes();
+  updateStats();
+  toast('Note saved');
+}
+
+function renderNotes(){
+  const notes=getData(KEYS.notes);
+  const tbody=document.getElementById('notes-table-body');
+  const empty=document.getElementById('notes-empty');
+  if(!notes.length){ tbody.innerHTML=''; if(empty) empty.style.display='block'; return; }
+  if(empty) empty.style.display='none';
+  tbody.innerHTML=notes.map(n=>`
+    <tr>
+      <td><div style="font-family:'Libre Baskerville',serif;font-size:0.95rem">${n.title}</div><div class="td-meta">${n.body.substring(0,60)}...</div></td>
+      <td><span class="badge badge-sand">${n.cat}</span></td>
+      <td style="font-size:12px;color:rgba(15,68,84,0.4)">${n.date}</td>
+      <td><div class="btn-group">
+        <button class="btn btn-outline btn-sm" onclick="editNote(${n.id})">Edit</button>
+        <button class="btn btn-danger" onclick="deleteItem('${KEYS.notes}',${n.id},'notes')">Delete</button>
+      </div></td>
+    </tr>`).join('');
+}
+
+function editNote(id){
+  const notes=getData(KEYS.notes);
+  const n=notes.find(x=>x.id===id); if(!n) return;
+  document.getElementById('edit-note-title').value=n.title;
+  document.getElementById('edit-note-cat').value=n.cat;
+  document.getElementById('edit-note-body').value=n.body;
+  document.getElementById('edit-note-id').value=id;
+  openModal('modal-view-note');
+}
+
+function updateNote(){
+  const id=parseInt(document.getElementById('edit-note-id').value);
+  const notes=getData(KEYS.notes);
+  const idx=notes.findIndex(x=>x.id===id); if(idx<0) return;
+  notes[idx].title=document.getElementById('edit-note-title').value.trim();
+  notes[idx].cat=document.getElementById('edit-note-cat').value.trim();
+  notes[idx].body=document.getElementById('edit-note-body').value.trim();
+  setData(KEYS.notes,notes);
+  closeModal('modal-view-note');
+  renderNotes();
+  toast('Note updated');
+}
+
+// ── PDFs ──
+function savePDF(){
+  const name=document.getElementById('pdf-name').value.trim();
+  const desc=document.getElementById('pdf-desc').value.trim();
+  const link=document.getElementById('pdf-link').value.trim();
+  const cat=document.getElementById('pdf-cat').value;
+  if(!name||!link){ toast('Please fill in name and link'); return; }
+  const pdfs=getData(KEYS.pdfs);
+  pdfs.unshift({id:Date.now(),name,desc,link,cat,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});
+  setData(KEYS.pdfs,pdfs);
+  closeModal('modal-add-pdf');
+  renderPDFs();
+  updateStats();
+  toast('PDF saved');
+}
+
+function renderPDFs(){
+  const pdfs=getData(KEYS.pdfs);
+  const tbody=document.getElementById('pdfs-table-body');
+  const empty=document.getElementById('pdfs-empty');
+  if(!pdfs.length){ tbody.innerHTML=''; if(empty) empty.style.display='block'; return; }
+  if(empty) empty.style.display='none';
+  tbody.innerHTML=pdfs.map(p=>`
+    <tr>
+      <td style="font-family:'Libre Baskerville',serif">${p.name}</td>
+      <td style="font-size:13px;color:rgba(15,68,84,0.6)">${p.desc||'-'}</td>
+      <td><a href="${p.link}" target="_blank" style="color:var(--teal);font-size:12px;text-decoration:underline;text-underline-offset:3px">Open &#8599;</a></td>
+      <td style="font-size:12px;color:rgba(15,68,84,0.4)">${p.date}</td>
+      <td><button class="btn btn-danger" onclick="deleteItem('${KEYS.pdfs}',${p.id},'pdfs')">Delete</button></td>
+    </tr>`).join('');
+}
+
+// ── HYMNS ──
+function saveHymn(){
+  const name=document.getElementById('hymn-name').value.trim();
+  const coptic=document.getElementById('hymn-coptic').value.trim();
+  const season=document.getElementById('hymn-season').value;
+  const src=document.getElementById('hymn-src').value.trim();
+  const tag=document.getElementById('hymn-tag').value.trim();
+  if(!name||!src){ toast('Please fill in name and audio source'); return; }
+  const hymns=getData(KEYS.hymns);
+  hymns.unshift({id:Date.now(),name,coptic,season,src,tag,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});
+  setData(KEYS.hymns,hymns);
+  closeModal('modal-add-hymn');
+  renderHymns();
+  updateStats();
+  toast('Hymn saved');
+}
+
+function renderHymns(){
+  const hymns=getData(KEYS.hymns);
+  const tbody=document.getElementById('hymns-table-body');
+  const empty=document.getElementById('hymns-empty');
+  if(!hymns.length){ tbody.innerHTML=''; if(empty) empty.style.display='block'; return; }
+  if(empty) empty.style.display='none';
+  tbody.innerHTML=hymns.map(h=>`
+    <tr>
+      <td><div style="font-family:'Libre Baskerville',serif">${h.name}</div>${h.coptic?`<div class="td-meta">${h.coptic}</div>`:''}</td>
+      <td><span class="badge badge-teal">${h.season}</span></td>
+      <td style="font-size:12px;color:rgba(15,68,84,0.5)">${h.src.substring(0,30)}${h.src.length>30?'...':''}</td>
+      <td style="font-size:12px;color:rgba(15,68,84,0.4)">${h.date}</td>
+      <td><button class="btn btn-danger" onclick="deleteItem('${KEYS.hymns}',${h.id},'hymns')">Delete</button></td>
+    </tr>`).join('');
+}
+
+// ── Q&A ──
+let qaFilter='all';
+function filterQA(f, el){
+  qaFilter=f;
+  document.querySelectorAll('[onclick*="filterQA"]').forEach(b=>b.style.background='');
+  if(el) el.style.background='rgba(15,68,84,0.07)';
+  renderQA(f);
+}
+
+function renderQA(filter){
+  let qa=getData(KEYS.qa);
+  if(filter==='pending') qa=qa.filter(q=>!q.answer);
+  if(filter==='answered') qa=qa.filter(q=>q.answer);
+  const container=document.getElementById('qa-list');
+  const empty=document.getElementById('qa-empty');
+  if(!qa.length){ container.innerHTML=''; if(empty) empty.style.display='block'; return; }
+  if(empty) empty.style.display='none';
+  container.innerHTML=qa.map(q=>`
+    <div class="qa-question-card ${q.answer?'qa-answered':''}">
+      <div class="qa-q-meta">
+        <span class="badge badge-sand">${q.topic||'General'}</span>
+        ${q.answer?'<span class="qa-answered-label">&#10003; Answered</span>':'<span class="badge badge-new">New</span>'}
+        <span style="font-size:11px;color:rgba(15,68,84,0.35);margin-left:auto">${q.date}</span>
+      </div>
+      <div class="qa-q-text">${q.question}</div>
+      ${q.answer?
+        `<div style="font-size:13px;color:rgba(15,68,84,0.6);background:rgba(245,239,232,0.6);padding:12px 14px;border-radius:8px;line-height:1.6;margin-bottom:10px">${q.answer}</div>`
+        :`<textarea class="qa-answer-field" id="qa-ans-${q.id}" placeholder="Type your answer here..."></textarea>`}
+      <div class="btn-group" style="margin-top:10px">
+        ${!q.answer?`<button class="btn btn-teal btn-sm" onclick="publishAnswer(${q.id})">Publish Answer</button>`:''}
+        ${q.answer?`<button class="btn btn-outline btn-sm" onclick="editAnswer(${q.id})">Edit Answer</button>`:''}
+        <button class="btn btn-danger" onclick="deleteItem('${KEYS.qa}',${q.id},'qa')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function publishAnswer(id){
+  const ansEl=document.getElementById('qa-ans-'+id);
+  if(!ansEl||!ansEl.value.trim()){ toast('Please write an answer first'); return; }
+  const qa=getData(KEYS.qa);
+  const idx=qa.findIndex(q=>q.id===id); if(idx<0) return;
+  qa[idx].answer=ansEl.value.trim();
+  setData(KEYS.qa,qa);
+  renderQA(qaFilter);
+  toast('Answer published');
+}
+
+function editAnswer(id){
+  const qa=getData(KEYS.qa);
+  const idx=qa.findIndex(q=>q.id===id); if(idx<0) return;
+  const ans=prompt('Edit your answer:',qa[idx].answer);
+  if(ans===null) return;
+  qa[idx].answer=ans;
+  setData(KEYS.qa,qa);
+  renderQA(qaFilter);
+  toast('Answer updated');
+}
+
+// ── DELETE ──
+function deleteItem(key, id, panel){
+  if(!confirm('Are you sure you want to delete this item?')) return;
+  let data=getData(key);
+  data=data.filter(x=>x.id!==id);
+  setData(key,data);
+  if(panel==='notes') renderNotes();
+  if(panel==='pdfs') renderPDFs();
+  if(panel==='hymns') renderHymns();
+  if(panel==='qa') renderQA(qaFilter);
+  updateStats();
+  toast('Deleted');
+}
+
+// ── STATS ──
+function updateStats(){
+  document.getElementById('stat-notes').textContent=getData(KEYS.notes).length;
+  document.getElementById('stat-pdfs').textContent=getData(KEYS.pdfs).length;
+  document.getElementById('stat-hymns').textContent=getData(KEYS.hymns).length;
+  document.getElementById('stat-qa').textContent=getData(KEYS.qa).length;
+}
+
+function loadDashboard(){
+  updateStats();
+  const qa=getData(KEYS.qa).slice(0,4);
+  const container=document.getElementById('dash-qa-list');
+  if(!qa.length){
+    container.innerHTML='<div class="empty-state"><div class="empty-icon">&#10067;</div><div class="empty-text">No questions yet</div></div>';
+    return;
+  }
+  container.innerHTML='<table><thead><tr><th>Question</th><th>Topic</th><th>Status</th><th>Date</th></tr></thead><tbody>'+
+    qa.map(q=>`<tr>
+      <td style="max-width:300px">${q.question.substring(0,80)}${q.question.length>80?'...':''}</td>
+      <td><span class="badge badge-sand">${q.topic||'General'}</span></td>
+      <td>${q.answer?'<span class="badge badge-teal">Answered</span>':'<span class="badge badge-new">Pending</span>'}</td>
+      <td style="font-size:12px;color:rgba(15,68,84,0.4)">${q.date}</td>
+    </tr>`).join('')+'</tbody></table>';
+}
+
+// ── SETTINGS ──
+function changePassword(){
+  const curr=document.getElementById('curr-pass').value;
+  const newP=document.getElementById('new-pass').value;
+  const conf=document.getElementById('confirm-pass').value;
+  if(curr!==getPass()){ toast('Current password is incorrect'); return; }
+  if(newP!==conf){ toast('New passwords do not match'); return; }
+  if(newP.length<6){ toast('Password must be at least 6 characters'); return; }
+  localStorage.setItem(KEYS.pass,newP);
+  document.getElementById('curr-pass').value='';
+  document.getElementById('new-pass').value='';
+  document.getElementById('confirm-pass').value='';
+  toast('Password updated');
+}
+
+function exportData(){
+  const data={
+    notes:getData(KEYS.notes),
+    pdfs:getData(KEYS.pdfs),
+    hymns:getData(KEYS.hymns),
+    qa:getData(KEYS.qa),
+    exported:new Date().toISOString()
+  };
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='ravis-notebook-export.json';
+  a.click();
+  toast('Data exported');
+}
+
+// ── LOAD FROM PUBLIC Q&A FORM (bridge) ──
+// Listen for questions submitted on the main site via localStorage
+function loadAll(){
+  loadDashboard();
+  renderNotes();
+  renderPDFs();
+  renderHymns();
+  renderQA('all');
+}
+
+// Sync any new questions from the public Q&A page
+window.addEventListener('storage', function(e){
+  if(e.key===KEYS.qa) renderQA(qaFilter);
+});
+
+// Auto-load on page load if authed
+document.addEventListener('DOMContentLoaded', function(){
+  if(localStorage.getItem(KEYS.auth)==='1') loadAll();
+});
+</script>
+</body>
+</html>
