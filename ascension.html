@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ascension — Hymnology — Ravi's Notebook</title>
+<style>
+  :root{--teal:#0f4454;--sand:#7a5e50;--cream:#f5efe8;--light:#e8ddd5;--text:#1c2b33;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:90px;padding-bottom:0;min-height:100vh;display:flex;flex-direction:column;}
+
+  /* NAV */
+  #mainNav{position:fixed;top:0.9rem;left:50%;transform:translateX(-50%);z-index:300;display:flex;align-items:center;justify-content:space-between;width:calc(100% - 48px);max-width:500px;padding:0.75rem 1.4rem;background:rgba(245,239,232,0.45);backdrop-filter:blur(32px) saturate(2) brightness(1.04);-webkit-backdrop-filter:blur(32px) saturate(2) brightness(1.04);border:1px solid rgba(202,181,167,0.4);border-radius:100px;box-shadow:0 6px 28px rgba(15,68,84,0.08),inset 0 1px 0 rgba(255,255,255,0.5);}
+  .nav-cross{font-family:serif;font-size:1rem;color:#8A5A44;text-decoration:none;flex-shrink:0;}
+  .nav-center{text-align:center;flex:1;}
+  .nav-brand{font-family:'Cinzel',serif;font-size:0.78rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);text-decoration:none;display:block;}
+  .nav-sub{font-size:0.46rem;letter-spacing:0.1em;color:rgba(15,68,84,0.6);text-transform:uppercase;margin-top:2px;font-family:'DM Sans',sans-serif;font-weight:300;}
+  .nav-menu-btn{background:none;border:none;color:rgba(15,68,84,0.6);cursor:pointer;display:flex;align-items:center;padding:4px;transition:color 0.2s;flex-shrink:0;}
+  .nav-menu-btn:hover{color:var(--teal);}
+
+  /* DRAWER */
+  .drawer-overlay{position:fixed;inset:0;background:rgba(15,68,84,0.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:301;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+  .drawer-overlay.open{opacity:1;pointer-events:all;}
+  .drawer{position:fixed;top:0;right:0;width:300px;height:100%;background:linear-gradient(170deg,#f5efe8 0%,#ddd0c8 40%,#0f4454 100%);backdrop-filter:blur(32px) saturate(2);-webkit-backdrop-filter:blur(32px) saturate(2);border-left:1px solid rgba(202,181,167,0.25);z-index:302;padding:52px 36px;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 48px rgba(15,68,84,0.12);}
+  .drawer.open{transform:translateX(0);}
+  .drawer-close{position:absolute;top:20px;right:20px;background:rgba(15,68,84,0.1);border:1px solid rgba(15,68,84,0.15);color:var(--teal);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .drawer-close:hover{background:rgba(15,68,84,0.15);}
+  .drawer-label{font-family:'Libre Baskerville',serif;font-size:0.7rem;font-style:italic;color:rgba(15,68,84,0.55);letter-spacing:0.06em;margin-top:36px;margin-bottom:14px;}
+  .drawer-link{display:block;padding:14px 0;border-bottom:1px solid rgba(15,68,84,0.08);font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;color:var(--teal);text-decoration:none;transition:color 0.2s,padding-left 0.2s;}
+  .drawer-link:hover{color:#8A5A44;padding-left:6px;}
+
+  /* PAGE HERO */
+  .page-hero-wrap{background:linear-gradient(160deg,#f5efe8 0%,#e4d5cb 30%,#c8d8e0 65%,#a8c4d0 100%);}
+  .page-hero{padding:48px 48px 40px;max-width:900px;margin:0 auto;}
+  .breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:12px;color:rgba(15,68,84,0.45);}
+  .breadcrumb a{color:rgba(15,68,84,0.5);text-decoration:none;transition:color 0.15s;}
+  .breadcrumb a:hover{color:var(--teal);}
+  .breadcrumb-sep{opacity:0.35;}
+  .page-title{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:400;color:var(--teal);letter-spacing:-0.02em;line-height:1.1;margin-bottom:10px;}
+  .page-subtitle{font-size:0.9rem;color:#2d4a5a;font-weight:300;font-style:italic;}
+
+  /* SEASON CONTENT */
+  .season-content{flex:1;display:flex;flex-direction:column;background:var(--cream);}
+
+  /* EMBED BAR */
+  .embed-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 48px;background:rgba(15,68,84,0.04);border-bottom:1px solid rgba(202,181,167,0.25);max-width:none;}
+  .embed-bar-text{font-size:12px;color:rgba(15,68,84,0.45);font-weight:300;}
+  .embed-bar-link{font-size:12px;color:var(--teal);text-decoration:none;font-weight:400;border:1px solid rgba(15,68,84,0.15);padding:4px 12px;border-radius:100px;transition:all 0.15s;}
+  .embed-bar-link:hover{background:rgba(15,68,84,0.06);border-color:rgba(15,68,84,0.25);}
+
+  /* IFRAME */
+  .iframe-wrap{flex:1;position:relative;min-height:calc(100vh - 280px);}
+  .iframe-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block;}
+  .iframe-fallback{display:none;position:absolute;inset:0;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;}
+  .iframe-fallback p{font-family:'Libre Baskerville',serif;font-size:1rem;color:rgba(15,68,84,0.5);font-style:italic;}
+  .fallback-btn{display:inline-flex;align-items:center;gap:6px;padding:11px 24px;background:var(--teal);color:var(--cream);text-decoration:none;border-radius:100px;font-size:14px;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+  .fallback-btn:hover{background:#0a2e3a;}
+
+  /* COMING SOON */
+  .coming-card{padding:80px 48px;text-align:center;}
+  .coming-text{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:rgba(15,68,84,0.4);}
+
+  /* FOOTER */
+  footer{background:var(--teal);padding:40px 24px;margin-top:auto;}
+  .footer-inner{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+  .footer-verse{font-family:'Libre Baskerville',serif;font-size:0.88rem;font-style:italic;color:rgba(202,181,167,0.8);max-width:380px;line-height:1.6;}
+  .footer-cross{color:#cab5a7;font-size:1.3rem;opacity:0.8;display:block;}
+  .footer-name{font-family:'Libre Baskerville',serif;font-size:0.9rem;font-style:italic;color:rgba(202,181,167,0.6);}
+
+  @media(max-width:768px){
+    body{padding-top:76px;}
+    #mainNav{width:calc(100% - 24px);padding:0.6rem 0.9rem;top:0.6rem;}
+    .nav-brand{font-size:0.6rem;letter-spacing:0.12em;}
+    .nav-sub{display:none;}
+    .page-hero{padding:32px 20px 28px;}
+    .embed-bar{padding:10px 20px;flex-direction:column;align-items:flex-start;gap:6px;}
+    .drawer{width:100%;border-left:none;}
+    .drawer-link{font-size:1.4rem;padding:15px 0;}
+  }
+</style>
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-cross">&#9769;</a>
+  <div class="nav-center">
+    <a href="index.html" class="nav-brand">RAVI'S NOTEBOOK</a>
+    <div class="nav-sub">Coptic Orthodox Learning</div>
+  </div>
+  <button class="nav-menu-btn" onclick="openDrawer()" aria-label="Menu">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+  </button>
+</nav>
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">&#x2715;</button>
+  <p class="drawer-label">Learn</p>
+  <a class="drawer-link" href="hymnology.html">Hymnology</a>
+  <a class="drawer-link" href="rites.html">Rites &amp; History</a>
+  <a class="drawer-link" href="patristics.html">Patristics</a>
+  <a class="drawer-link" href="apologetics.html">Apologetics</a>
+  <a class="drawer-link" href="notes.html">Notes</a>
+  <a class="drawer-link" href="qa.html">Q&amp;A</a>
+  <a class="drawer-link" href="admin.html" style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(15,68,84,0.08);border-bottom:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:rgba(15,68,84,0.45);display:flex;align-items:center;gap:8px;">&#128274; Admin</a>
+</div>
+
+<div class="page-hero-wrap">
+  <div class="page-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="hymnology.html">Hymnology</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span>Ascension</span>
+    </div>
+    <h1 class="page-title">Ascension</h1>
+    <p class="page-subtitle">Forty Days After Resurrection</p>
+  </div>
+</div>
+
+
+  <div class="season-content">
+    <div class="embed-bar">
+      <span class="embed-bar-text">Hymn texts and recordings sourced from Hazzat.com</span>
+      <a href="https://www.hazzat.com/Seasons/ascension" target="_blank" class="embed-bar-link">Open in Hazzat &#8599;</a>
+    </div>
+    <div class="iframe-wrap">
+      <iframe
+        src="https://www.hazzat.com/Seasons/ascension"
+        title="Ascension — Hazzat"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+      <div class="iframe-fallback">
+        <p>Unable to load content inline.</p>
+        <a href="https://www.hazzat.com/Seasons/ascension" target="_blank" class="fallback-btn">Open Ascension on Hazzat.com &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-verse">Freely you have received, freely give. &mdash; Matthew 10:8</span>
+    <span class="footer-cross">&#9769;</span>
+    <span class="footer-name">Ravi's Notebook</span>
+  </div>
+</footer>
+<script>
+function openDrawer(){document.getElementById("drawer").classList.add("open");document.getElementById("drawerOverlay").classList.add("open");document.body.style.overflow="hidden";}
+function closeDrawer(){document.getElementById("drawer").classList.remove("open");document.getElementById("drawerOverlay").classList.remove("open");document.body.style.overflow="";}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
+</script>
+</body>
+</html>
