@@ -10,14 +10,14 @@
   :root{--teal:#0f4454;--sand:#7a5e50;--cream:#f5efe8;--light:#e8ddd5;--mid:#c8d8e0;--text:#1c2b33;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{background:var(--cream);color:#1c2b33;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:90px;}
+  body{background:var(--cream);color:#1c2b33;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:90px;padding-bottom:60px;}
 
   /* NAV */
   #mainNav{position:fixed;top:0.9rem;left:50%;transform:translateX(-50%);z-index:300;display:flex;align-items:center;justify-content:space-between;width:calc(100% - 48px);max-width:500px;padding:0.75rem 1.4rem;background:rgba(245,239,232,0.45);backdrop-filter:blur(32px) saturate(2) brightness(1.04);-webkit-backdrop-filter:blur(32px) saturate(2) brightness(1.04);border:1px solid rgba(202,181,167,0.4);border-radius:100px;box-shadow:0 6px 28px rgba(15,68,84,0.08),inset 0 1px 0 rgba(255,255,255,0.5);}
   .nav-cross{font-family:serif;font-size:1rem;color:#8A5A44;text-decoration:none;flex-shrink:0;}
   .nav-center{text-align:center;flex:1;}
   .nav-brand{font-family:'Cinzel',serif;font-size:0.78rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);text-decoration:none;display:block;}
-  .nav-sub{font-size:0.46rem;letter-spacing:0.1em;color:#4a6070;text-transform:uppercase;margin-top:2px;font-family:'DM Sans',sans-serif;font-weight:300;}
+  .nav-sub{font-size:0.46rem;letter-spacing:0.1em;color:#2d4a5a;text-transform:uppercase;margin-top:2px;font-family:'DM Sans',sans-serif;font-weight:300;}
   .nav-menu-btn{background:none;border:none;color:#2d4a5a;cursor:pointer;display:flex;align-items:center;padding:4px;transition:color 0.2s;flex-shrink:0;}
   .nav-menu-btn:hover{color:var(--teal);}
 
@@ -28,7 +28,7 @@
   .drawer.open{transform:translateX(0);}
   .drawer-close{position:absolute;top:20px;right:20px;background:rgba(15,68,84,0.1);border:1px solid rgba(15,68,84,0.15);color:var(--teal);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
   .drawer-close:hover{background:rgba(15,68,84,0.15);}
-  .drawer-label{font-family:'Libre Baskerville',serif;font-size:0.7rem;font-style:italic;color:#3a5566;letter-spacing:0.06em;margin-top:36px;margin-bottom:14px;}
+  .drawer-label{font-family:'Libre Baskerville',serif;font-size:0.7rem;font-style:italic;color:#2d4a5a;letter-spacing:0.06em;margin-top:36px;margin-bottom:14px;}
   .drawer-link{display:block;padding:14px 0;border-bottom:1px solid rgba(15,68,84,0.08);font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;color:var(--teal);text-decoration:none;transition:color 0.2s,padding-left 0.2s;}
   .drawer-link:hover{color:#8A5A44;padding-left:6px;}
 
@@ -50,7 +50,7 @@
   .section{padding:72px 48px;max-width:900px;margin:0 auto;}
   .section-bg{background:linear-gradient(180deg,#c8d8e0 0%,#dde8ee 30%,#eaf0f4 60%,var(--cream) 100%);}
   .section-title{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:400;color:var(--teal);margin-bottom:32px;}
-  .coming-soon{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:#4a6070;font-weight:400;}
+  .coming-soon{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:#2d4a5a;font-weight:400;}
 
   /* FOOTER - centered, cohesive */
   footer{background:var(--teal);padding:48px 24px;}
@@ -77,7 +77,7 @@
 
   .qa-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:72px 48px;max-width:900px;margin:0 auto;}
   .qa-col-title{font-family:'Libre Baskerville',serif;font-size:1.35rem;font-weight:400;color:var(--teal);margin-bottom:8px;}
-  .qa-col-sub{font-size:0.85rem;color:#3a5566;font-weight:300;margin-bottom:28px;line-height:1.6;}
+  .qa-col-sub{font-size:0.85rem;color:#2d4a5a;font-weight:300;margin-bottom:28px;line-height:1.6;}
   .form-field{margin-bottom:18px;}
   .form-label{display:block;font-size:10px;color:#6a5040;font-weight:500;letter-spacing:0.06em;margin-bottom:7px;text-transform:uppercase;}
   .form-select,.form-textarea{width:100%;padding:11px 14px;background:rgba(245,239,232,0.6);border:1px solid rgba(202,181,167,0.4);border-radius:10px;color:#1c2b33;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;outline:none;transition:border-color 0.2s;appearance:none;}
@@ -87,12 +87,266 @@
   .form-submit:hover{background:#0a2e3a;}
   .form-success{display:none;padding:20px;background:rgba(202,181,167,0.15);border:1px solid rgba(202,181,167,0.3);border-radius:12px;text-align:center;margin-top:16px;}
   .form-success p{font-family:'Libre Baskerville',serif;font-size:1rem;font-style:italic;color:var(--teal);}
-  .qa-empty{font-family:'Libre Baskerville',serif;font-size:1rem;font-style:italic;color:#4a6070;}
+  .qa-empty{font-family:'Libre Baskerville',serif;font-size:1rem;font-style:italic;color:#2d4a5a;}
   .qa-answer-item{padding:20px;background:rgba(245,239,232,0.5);border:1px solid rgba(202,181,167,0.25);border-radius:12px;margin-bottom:12px;}
 .qa-badge{font-size:10px;color:var(--sand);letter-spacing:0.05em;text-transform:uppercase;display:inline-block;margin-bottom:10px;}
 .qa-answer-q{font-family:"Libre Baskerville",serif;font-size:0.95rem;color:var(--teal);margin-bottom:10px;line-height:1.5;}
 .qa-answer-a{font-size:0.88rem;color:#2d4a5a;line-height:1.75;font-weight:300;}
 @media(max-width:768px){.qa-layout{grid-template-columns:1fr;gap:48px;padding:48px 20px;}}
+
+
+/* ═══════════════════════════════════════
+   ADMIN ENGINE - injected on every page
+   Only visible when ?admin=1 or authed
+   ═══════════════════════════════════════ */
+
+/* Admin bar */
+.ab {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 52px;
+  background: #0f2d3d;
+  border-top: 2px solid #cab5a7;
+  z-index: 9000;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+  box-shadow: 0 -4px 24px rgba(15,68,84,0.3);
+}
+.ab.on { display: flex; }
+.ab-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #cab5a7;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ab-div { width: 1px; height: 20px; background: rgba(202,181,167,0.2); }
+.ab-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s;
+  white-space: nowrap;
+  font-weight: 400;
+}
+.ab-btn-add { background: #cab5a7; color: #0f2d3d; font-weight: 500; }
+.ab-btn-add:hover { background: #ddd0c0; }
+.ab-btn-ghost { background: rgba(202,181,167,0.1); color: rgba(202,181,167,0.8); border: 1px solid rgba(202,181,167,0.2); }
+.ab-btn-ghost:hover { background: rgba(202,181,167,0.18); color: #cab5a7; }
+.ab-btn-pub { background: #1a5c3a; color: #fff; }
+.ab-btn-pub:hover { background: #145030; }
+.ab-btn-danger { background: rgba(139,32,32,0.15); color: #e87070; border: 1px solid rgba(139,32,32,0.25); }
+.ab-right { margin-left: auto; display: flex; gap: 8px; }
+.ab-page-name { font-size: 12px; color: rgba(202,181,167,0.5); font-weight: 300; }
+
+/* Admin mode indicator on nav */
+body.admin-mode #mainNav { border-color: rgba(202,181,167,0.6); box-shadow: 0 0 0 2px rgba(202,181,167,0.3), 0 6px 28px rgba(15,68,84,0.08); }
+
+/* Editable block wrappers */
+.ed-block {
+  position: relative;
+}
+body.admin-mode .ed-block {
+  outline: 2px dashed transparent;
+  outline-offset: 4px;
+  transition: outline-color 0.15s;
+}
+body.admin-mode .ed-block:hover {
+  outline-color: rgba(202,181,167,0.5);
+}
+
+/* Block action bar (appears on hover in admin mode) */
+.ed-actions {
+  display: none;
+  position: absolute;
+  top: -14px; right: 12px;
+  z-index: 500;
+  flex-direction: row;
+  gap: 4px;
+}
+body.admin-mode .ed-block:hover .ed-actions { display: flex; }
+.ed-act {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  font-weight: 400;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.ed-act-edit { background: #0f4454; color: #fff; }
+.ed-act-edit:hover { background: #0a2e3a; }
+.ed-act-del { background: #8b2020; color: #fff; }
+.ed-act-del:hover { background: #6e1a1a; }
+.ed-act-up, .ed-act-dn { background: rgba(15,68,84,0.85); color: #fff; }
+.ed-act-up:hover, .ed-act-dn:hover { background: #0a2e3a; }
+
+/* Add block button (between blocks) */
+.add-between {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+}
+body.admin-mode .add-between { display: flex; }
+.add-between-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px dashed rgba(15,68,84,0.25);
+  background: rgba(245,239,232,0.7);
+  color: rgba(15,68,84,0.5);
+  font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 400;
+}
+.add-between-btn:hover { border-color: #0f4454; color: #0f4454; background: rgba(245,239,232,0.95); }
+
+/* ── MODALS ── */
+.am-overlay {
+  position: fixed; inset: 0;
+  background: rgba(15,68,84,0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9100;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.22s;
+}
+.am-overlay.open { opacity: 1; pointer-events: all; }
+
+/* Block picker */
+.am-picker {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px;
+  width: 100%; max-width: 620px;
+  max-height: 85vh; overflow-y: auto;
+  transform: translateY(12px);
+  transition: transform 0.22s;
+  box-shadow: 0 20px 60px rgba(15,68,84,0.18);
+}
+.am-overlay.open .am-picker { transform: translateY(0); }
+.am-picker-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.1rem; font-weight: 400; color: #0f4454;
+  margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.am-close { background: none; border: none; cursor: pointer; font-size: 18px; color: rgba(15,68,84,0.3); transition: color 0.15s; }
+.am-close:hover { color: #0f4454; }
+.am-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.am-block-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 18px 10px;
+  background: #f5efe8;
+  border: 1px solid rgba(202,181,167,0.35);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 11px; font-weight: 400;
+  color: rgba(15,68,84,0.65);
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.18s;
+  text-align: center;
+}
+.am-block-btn:hover { background: #fff; border-color: #0f4454; color: #0f4454; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(15,68,84,0.1); }
+.am-block-icon { font-size: 26px; }
+
+/* Edit modal */
+.am-editor {
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px;
+  width: 100%; max-width: 580px;
+  max-height: 88vh; overflow-y: auto;
+  transform: translateY(12px);
+  transition: transform 0.22s;
+  box-shadow: 0 20px 60px rgba(15,68,84,0.18);
+}
+.am-overlay.open .am-editor { transform: translateY(0); }
+.am-editor-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.1rem; font-weight: 400; color: #0f4454;
+  margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.am-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+.am-field label { font-size: 10px; color: #7a5e50; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+.am-field input, .am-field select, .am-field textarea {
+  padding: 10px 14px;
+  background: rgba(245,239,232,0.5);
+  border: 1px solid rgba(202,181,167,0.4);
+  border-radius: 10px;
+  color: #0f4454;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  appearance: none;
+}
+.am-field textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+.am-field input:focus, .am-field select:focus, .am-field textarea:focus { border-color: #0f4454; }
+.am-field-hint { font-size: 11px; color: rgba(15,68,84,0.4); margin-top: 4px; line-height: 1.5; }
+.am-preview { margin-top: 10px; border-radius: 10px; overflow: hidden; background: rgba(245,239,232,0.4); border: 1px solid rgba(202,181,167,0.2); }
+.am-preview img { width: 100%; max-height: 160px; object-fit: cover; display: block; }
+.am-preview audio, .am-preview video, .am-preview iframe { width: 100%; display: block; }
+.am-footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(202,181,167,0.2); }
+.am-btn { display: inline-flex; align-items: center; gap: 5px; padding: 9px 20px; border-radius: 100px; font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; transition: all 0.18s; font-weight: 400; }
+.am-btn-save { background: #0f4454; color: #fff; }
+.am-btn-save:hover { background: #0a2e3a; }
+.am-btn-cancel { background: none; border: 1px solid rgba(202,181,167,0.4); color: rgba(15,68,84,0.6); }
+.am-btn-cancel:hover { background: rgba(245,239,232,0.8); }
+
+/* Login gate */
+.am-login {
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(202,181,167,0.4);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 100%; max-width: 360px;
+  box-shadow: 0 20px 60px rgba(15,68,84,0.15);
+  text-align: center;
+}
+.am-login-cross { font-size: 1.4rem; color: #8A5A44; margin-bottom: 14px; opacity: 0.7; }
+.am-login-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #0f4454; margin-bottom: 4px; }
+.am-login-sub { font-family: 'Libre Baskerville', serif; font-size: 0.78rem; font-style: italic; color: rgba(15,68,84,0.4); margin-bottom: 28px; }
+.am-login input { display: block; width: 100%; margin-bottom: 12px; padding: 11px 14px; background: rgba(245,239,232,0.7); border: 1px solid rgba(202,181,167,0.4); border-radius: 10px; color: #0f4454; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; }
+.am-login input:focus { border-color: #0f4454; }
+.am-login-btn { width: 100%; padding: 11px; background: #0f4454; color: #f5efe8; border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; }
+.am-login-btn:hover { background: #0a2e3a; }
+.am-login-err { display: none; margin-top: 10px; font-size: 12px; color: #8b2020; }
+
+/* Publish flash */
+.am-flash { position: fixed; bottom: 72px; left: 50%; transform: translateX(-50%) translateY(40px); background: #1a5c3a; color: #fff; padding: 10px 22px; border-radius: 100px; font-size: 13px; z-index: 9200; opacity: 0; transition: all 0.25s; pointer-events: none; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+.am-flash.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 600px) {
+  .am-grid { grid-template-columns: repeat(2, 1fr); }
+  .ab { padding: 0 12px; gap: 8px; }
+  .ab-page-name { display: none; }
+}
 
 </style>
 </head>
@@ -117,7 +371,7 @@
   <a class="drawer-link" href="apologetics.html">Apologetics</a>
   <a class="drawer-link" href="notes.html">Notes</a>
   <a class="drawer-link" href="qa.html">Q&amp;A</a>
-  <a class="drawer-link drawer-admin-link" href="admin.html" style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(15,68,84,0.08);border-bottom:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:#4a6070;display:flex;align-items:center;gap:8px;">&#128274; Admin</a>
+  <a class="drawer-link drawer-admin-link" href="admin.html" style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(15,68,84,0.08);border-bottom:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:#2d4a5a;display:flex;align-items:center;gap:8px;">&#128274; Admin</a>
 </div>
 <div class="page-hero-wrap">
   <div class="page-hero">
@@ -193,6 +447,10 @@ function loadAnswers(){
 document.addEventListener("DOMContentLoaded", loadAnswers);
 </script>
 </div>
+<!-- Extra blocks container (rendered after page content) -->
+<div id="rn-extra-blocks-wrap" style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div id="rn-extra-blocks"></div>
+</div>
 <footer>
   <div class="footer-inner">
     <span class="footer-verse">Freely you have received, freely give. &mdash; Matthew 10:8</span>
@@ -205,5 +463,517 @@ function openDrawer(){document.getElementById("drawer").classList.add("open");do
 function closeDrawer(){document.getElementById("drawer").classList.remove("open");document.getElementById("drawerOverlay").classList.remove("open");document.body.style.overflow="";}
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
 </script>
+
+<!-- ═══ ADMIN ENGINE HTML ═══ -->
+
+<!-- Admin bar (bottom) -->
+<div class="ab" id="adminBar">
+  <span class="ab-logo">✏️ RAVI'S NOTEBOOK</span>
+  <div class="ab-div"></div>
+  <span class="ab-page-name" id="ab-status"></span>
+  <button class="ab-btn ab-btn-add" id="ab-add" style="display:none" onclick="ADM.openPicker(null)">＋ Add Block</button>
+  <div class="ab-right">
+    <button class="ab-btn ab-btn-pub" id="ab-publish" style="display:none" onclick="ADM.flash('✓ Published — upload this file to GitHub to go live')">✓ Publish</button>
+    <button class="ab-btn ab-btn-ghost" id="ab-exit" style="display:none" onclick="ADM.logout()">Exit Admin</button>
+    <button class="ab-btn ab-btn-ghost" id="ab-login" onclick="document.getElementById('am-login-overlay').classList.add('open')">🔐 Admin Login</button>
+  </div>
+</div>
+
+
+
+<!-- Block picker overlay -->
+<div class="am-overlay" id="am-picker-overlay" onclick="if(event.target===this)ADM.closePicker()">
+  <div class="am-picker">
+    <div class="am-picker-title">
+      <span>Choose a block type</span>
+      <button class="am-close" onclick="ADM.closePicker()">✕</button>
+    </div>
+    <div class="am-grid">
+      <div class="am-block-btn" onclick="ADM.pickBlock('note')"><div class="am-block-icon">📝</div>Note / Lesson</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('text')"><div class="am-block-icon">✏️</div>Text</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('quote')"><div class="am-block-icon">💬</div>Scripture / Quote</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('audio')"><div class="am-block-icon">🎵</div>Audio</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('hymn')"><div class="am-block-icon">🎶</div>Hymn</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('youtube')"><div class="am-block-icon">▶️</div>YouTube</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('soundcloud')"><div class="am-block-icon">☁️</div>SoundCloud</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('video')"><div class="am-block-icon">🎬</div>Video</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('image')"><div class="am-block-icon">🖼️</div>Image</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('pdf')"><div class="am-block-icon">📄</div>PDF</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('link')"><div class="am-block-icon">🔗</div>Link</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('divider')"><div class="am-block-icon">〰️</div>Divider</div>
+    </div>
+  </div>
+</div>
+
+<!-- Editor overlay -->
+<div class="am-overlay" id="am-editor-overlay" onclick="if(event.target===this)ADM.closeEditor()">
+  <div class="am-editor" id="am-editor"></div>
+</div>
+
+<!-- Login overlay -->
+<div class="am-overlay" id="am-login-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="am-login">
+    <div class="am-login-cross">☩</div>
+    <div class="am-login-title">Admin Login</div>
+    <div class="am-login-sub">Ravi's Notebook</div>
+    <input type="text" id="am-lu" placeholder="Username" autocomplete="username"/>
+    <input type="password" id="am-lp" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')ADM.login()"/>
+    <button class="am-login-btn" onclick="ADM.login()">Sign In</button>
+    <div class="am-login-err" id="am-lerr">Incorrect credentials.</div>
+  </div>
+</div>
+
+<!-- Publish flash -->
+<div class="am-flash" id="am-flash"></div>
+
+
+<script>
+// ═══════════════════════════════════════
+// RAVI'S NOTEBOOK — INLINE ADMIN ENGINE
+// ═══════════════════════════════════════
+const ADM = {
+  K: { pass:'rn_pass', auth:'rn_auth', data:'rn_page_' },
+  DEF_PASS: 'coptic2025',
+  active: false,
+  insertAfter: null, // index to insert after, null = append
+  editingId: null,
+  PAGE: document.title.replace(' — Ravi\'s Notebook','').trim(),
+
+  getPass(){ return localStorage.getItem(this.K.pass)||this.DEF_PASS; },
+  isAuth(){ return localStorage.getItem(this.K.auth)==='1'; },
+  setAuth(v){ localStorage.setItem(this.K.auth, v?'1':'0'); },
+
+  // Persistent block data per page
+  pageKey(){ return this.K.data + this.PAGE; },
+  loadBlocks(){ try{ return JSON.parse(localStorage.getItem(this.pageKey())||'[]'); }catch(e){ return []; } },
+  saveBlocks(b){ localStorage.setItem(this.pageKey(), JSON.stringify(b)); },
+  uid(){ return Date.now()+Math.floor(Math.random()*999); },
+
+  init(){
+    // Show the admin bar toggle always (clicking prompts login)
+    document.getElementById('adminBar').classList.add('on');
+    if(this.isAuth()) this.activate();
+    this.loadExtraBlocks();
+  },
+
+  activate(){
+    this.active = true;
+    document.body.classList.add('admin-mode');
+    document.getElementById('ab-status').textContent = '✏️ Editing';
+    document.getElementById('ab-exit').style.display = 'inline-flex';
+    document.getElementById('ab-add').style.display = 'inline-flex';
+    document.getElementById('ab-publish').style.display = 'inline-flex';
+    document.getElementById('ab-login').style.display = 'none';
+    // Wrap existing blocks
+    this.wrapBlocks();
+    this.renderAddButtons();
+  },
+
+  deactivate(){
+    this.active = false;
+    document.body.classList.remove('admin-mode');
+    document.getElementById('ab-status').textContent = '';
+    document.getElementById('ab-exit').style.display = 'none';
+    document.getElementById('ab-add').style.display = 'none';
+    document.getElementById('ab-publish').style.display = 'none';
+    document.getElementById('ab-login').style.display = 'inline-flex';
+    document.querySelectorAll('.ed-actions').forEach(e=>e.remove());
+    document.querySelectorAll('.add-between').forEach(e=>e.remove());
+  },
+
+  // Wrap native page blocks with ed-block class + action bar
+  wrapBlocks(){
+    // Wrap note-items
+    document.querySelectorAll('.note-item:not(.ed-wrapped)').forEach((el,i)=>{
+      el.classList.add('ed-block','ed-wrapped');
+      el.dataset.edId = 'native-note-'+i;
+      el.dataset.edType = 'note';
+      const acts = document.createElement('div');
+      acts.className = 'ed-actions';
+      acts.innerHTML = `
+        <button class="ed-act ed-act-edit" onclick="ADM.openEdit(this.closest('.ed-block'))">✏️ Edit</button>
+        <button class="ed-act ed-act-del" onclick="ADM.deleteNative(this.closest('.ed-block'))">🗑</button>
+      `;
+      el.style.position='relative';
+      el.prepend(acts);
+    });
+
+    // Wrap section cards (hymns, pdfs etc)
+    document.querySelectorAll('.season-card:not(.ed-wrapped)').forEach((el,i)=>{
+      el.classList.add('ed-block','ed-wrapped');
+      el.dataset.edId = 'native-season-'+i;
+      el.dataset.edType = 'link';
+      el.style.position='relative';
+      const acts = document.createElement('div');
+      acts.className = 'ed-actions';
+      acts.innerHTML = `<button class="ed-act ed-act-edit" onclick="ADM.openEdit(this.closest('.ed-block'))">✏️ Edit</button>`;
+      el.prepend(acts);
+    });
+
+    // Wrap extra blocks added via admin
+    document.querySelectorAll('.rn-block:not(.ed-wrapped)').forEach(el=>{
+      el.classList.add('ed-block','ed-wrapped');
+      el.style.position='relative';
+      const acts = document.createElement('div');
+      acts.className = 'ed-actions';
+      const id = el.dataset.rnId;
+      acts.innerHTML = `
+        <button class="ed-act ed-act-up" onclick="ADM.moveBlock('${id}',-1)">↑</button>
+        <button class="ed-act ed-act-dn" onclick="ADM.moveBlock('${id}',1)">↓</button>
+        <button class="ed-act ed-act-edit" onclick="ADM.openEditById('${id}')">✏️ Edit</button>
+        <button class="ed-act ed-act-del" onclick="ADM.deleteBlock('${id}')">🗑</button>
+      `;
+      el.prepend(acts);
+    });
+  },
+
+  renderAddButtons(){
+    document.querySelectorAll('.add-between').forEach(e=>e.remove());
+    const container = document.getElementById('rn-extra-blocks');
+    if(!container) return;
+    // Add button at very top of extra area
+    const top = document.createElement('div');
+    top.className = 'add-between';
+    top.innerHTML = `<button class="add-between-btn" onclick="ADM.openPicker(0)">＋ Add block here</button>`;
+    container.parentNode.insertBefore(top, container);
+    // Add button after each extra block
+    const blocks = container.querySelectorAll('.rn-block');
+    blocks.forEach((bl,i)=>{
+      const btn = document.createElement('div');
+      btn.className = 'add-between';
+      btn.innerHTML = `<button class="add-between-btn" onclick="ADM.openPicker(${i+1})">＋ Add block here</button>`;
+      bl.after(btn);
+    });
+    if(!blocks.length){
+      const end = document.createElement('div');
+      end.className = 'add-between';
+      end.innerHTML = `<button class="add-between-btn" onclick="ADM.openPicker(0)">＋ Add first block</button>`;
+      container.after(end);
+    }
+  },
+
+  // Load and render extra blocks from localStorage
+  loadExtraBlocks(){
+    const container = document.getElementById('rn-extra-blocks');
+    if(!container) return;
+    const blocks = this.loadBlocks();
+    container.innerHTML = blocks.map(b=>this.renderBlock(b)).join('');
+    if(this.active){ this.wrapBlocks(); this.renderAddButtons(); }
+    // Re-init accordions
+    if(window.toggleNote) document.querySelectorAll('.note-trigger').forEach(btn=>{ btn.onclick=function(){ toggleNote(this); }; });
+  },
+
+  renderBlock(b){
+    const id = b.id;
+    switch(b.type){
+      case 'note':
+        return `<div class="note-item rn-block" data-rn-id="${id}">
+          <button class="note-trigger" onclick="toggleNote(this)">
+            <div><div class="note-cat">${b.cat||''}</div><div class="note-title">${b.title||''}</div></div>
+            <div class="note-arrow">+</div>
+          </button>
+          <div class="note-body"><div class="note-body-inner"><p>${(b.body||'').replace(/\n/g,'</p><p>')}</p></div></div>
+        </div>`;
+      case 'text':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:28px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          ${b.heading?`<h3 style="font-family:'Libre Baskerville',serif;font-size:1.2rem;font-weight:400;color:#0f4454;margin-bottom:12px;">${b.heading}</h3>`:''}
+          <p style="font-size:0.95rem;color:#1c3a48;line-height:1.8;font-weight:400;">${(b.body||'').replace(/\n/g,'<br/>')}</p>
+        </div>`;
+      case 'audio':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:10px;">${b.title}</div>`:''}
+          <audio controls style="width:100%;"><source src="${b.src||''}"/>Your browser does not support audio.</audio>
+        </div>`;
+      case 'youtube':
+        const vid = ADM.ytId(b.url||'');
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:12px;">${b.title}</div>`:''}
+          ${vid?`<div style="position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden;"><iframe style="position:absolute;inset:0;width:100%;height:100%;" src="https://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen></iframe></div>`:'<p style="color:#8b2020;font-size:13px;">Invalid YouTube URL</p>'}
+        </div>`;
+      case 'soundcloud':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:12px;">${b.title}</div>`:''}
+          <iframe width="100%" height="120" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(b.url||'')}&color=%230f4454&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_teaser=false" style="border-radius:8px;"></iframe>
+        </div>`;
+      case 'video':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:12px;">${b.title}</div>`:''}
+          <video controls style="width:100%;border-radius:10px;"><source src="${b.src||''}"/>Your browser does not support video.</video>
+        </div>`;
+      case 'image':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          <img src="${b.src||''}" alt="${b.alt||''}" style="width:100%;border-radius:10px;display:block;"/>
+          ${b.alt?`<p style="font-size:12px;color:#6a5040;margin-top:8px;font-style:italic;text-align:center;">${b.alt}</p>`:''}
+        </div>`;
+      case 'link':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:20px 0;border-bottom:1px solid rgba(202,181,167,0.25);display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <a href="${b.url||'#'}" target="_blank" style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;text-decoration:underline;text-underline-offset:3px;">${b.label||b.url||'Link'}</a>
+            ${b.desc?`<p style="font-size:13px;color:#2d4a5a;margin-top:4px;">${b.desc}</p>`:''}
+          </div>
+          <span style="color:#7a5e50;font-size:13px;margin-left:16px;">&#8599;</span>
+        </div>`;
+      case 'pdf':
+        return `<div class="rn-block" data-rn-id="${id}" style="display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          <div style="width:40px;height:40px;background:rgba(139,32,32,0.08);border:1px solid rgba(139,32,32,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📄</div>
+          <div style="flex:1;">
+            <div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;">${b.name||'Document'}</div>
+            ${b.desc?`<div style="font-size:12px;color:#2d4a5a;margin-top:2px;">${b.desc}</div>`:''}
+          </div>
+          <a href="${b.src||'#'}" target="_blank" style="font-size:12px;color:#0f4454;text-decoration:none;border:1px solid rgba(15,68,84,0.2);padding:6px 14px;border-radius:100px;transition:all 0.15s;" onmouseover="this.style.background='rgba(15,68,84,0.05)'" onmouseout="this.style.background=''">Download ↓</a>
+        </div>`;
+      case 'hymn':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          <div style="font-size:10px;color:#6a5040;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">${b.season||'General'}</div>
+          <div style="font-family:'Libre Baskerville',serif;font-size:1.1rem;color:#0f4454;margin-bottom:4px;">${b.name||''}</div>
+          ${b.coptic?`<div style="font-size:12px;color:#2d4a5a;margin-bottom:12px;">${b.coptic}</div>`:''}
+          <audio controls style="width:100%;"><source src="${b.src||''}"/>Your browser does not support audio.</audio>
+          ${b.tag?`<span style="display:inline-block;margin-top:8px;padding:3px 10px;border:1px solid rgba(202,181,167,0.4);font-size:11px;color:#6a5040;border-radius:100px;">${b.tag}</span>`:''}
+        </div>`;
+      case 'divider':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:16px 0;"><hr style="border:none;border-top:1px solid rgba(202,181,167,0.4);"/></div>`;
+      case 'quote':
+        return `<div class="rn-block" data-rn-id="${id}" style="padding:28px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
+          <blockquote style="font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:#1c3a48;border-left:2px solid #8a6a55;padding-left:20px;line-height:1.65;">
+            "${b.text||''}"
+            ${b.ref?`<span style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-style:normal;color:#6a5040;margin-top:8px;letter-spacing:0.04em;">${b.ref}</span>`:''}
+          </blockquote>
+        </div>`;
+      default:
+        return '';
+    }
+  },
+
+  ytId(url){
+    const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([A-Za-z0-9_-]{11})/);
+    if(m) return m[1];
+    if(/^[A-Za-z0-9_-]{11}$/.test(url.trim())) return url.trim();
+    return null;
+  },
+
+  // BLOCK PICKER
+  openPicker(insertIdx){
+    this.insertAfter = insertIdx;
+    const o = document.getElementById('am-picker-overlay');
+    o.classList.add('open');
+  },
+  closePicker(){
+    document.getElementById('am-picker-overlay').classList.remove('open');
+  },
+  pickBlock(type){
+    this.closePicker();
+    this.editingId = null;
+    this.openEditorFor(type, null);
+  },
+
+  // EDITOR MODAL
+  BLOCK_DEFS: {
+    note:       { label:'Note / Lesson', icon:'📝', fields:[
+                  {id:'title',label:'Title',type:'text',ph:'e.g. Chastity and the Saints'},
+                  {id:'cat',label:'Category',type:'select',opts:['Sunday School','Theology','Patristics','Hagiography','Liturgy','Diaconate Studies','Other']},
+                  {id:'body',label:'Content (new line = new paragraph)',type:'textarea',ph:'Write your lesson here...'}]},
+    text:       { label:'Text Block', icon:'✏️', fields:[
+                  {id:'heading',label:'Heading (optional)',type:'text',ph:'Section heading'},
+                  {id:'body',label:'Body Text',type:'textarea',ph:'Write content here...'}]},
+    audio:      { label:'Audio', icon:'🎵', fields:[
+                  {id:'title',label:'Title',type:'text',ph:'Hymn or recording name'},
+                  {id:'src',label:'File path or URL',type:'text',ph:'hymns/file.mp3 or https://...',hint:'Upload .mp3 to /hymns/ folder on GitHub, then enter the path.'}]},
+    youtube:    { label:'YouTube', icon:'▶️', fields:[
+                  {id:'title',label:'Title (optional)',type:'text',ph:'Video title'},
+                  {id:'url',label:'YouTube URL or video ID',type:'text',ph:'https://youtube.com/watch?v=... or video ID',hint:'Paste the full YouTube URL or just the 11-character video ID.'}]},
+    soundcloud: { label:'SoundCloud', icon:'☁️', fields:[
+                  {id:'title',label:'Title (optional)',type:'text',ph:'Track name'},
+                  {id:'url',label:'SoundCloud track URL',type:'text',ph:'https://soundcloud.com/artist/track'}]},
+    video:      { label:'Video', icon:'🎬', fields:[
+                  {id:'title',label:'Title (optional)',type:'text',ph:'Video title'},
+                  {id:'src',label:'File path or URL',type:'text',ph:'videos/file.mp4 or https://...',hint:'Upload .mp4 to /videos/ on GitHub.'}]},
+    image:      { label:'Image', icon:'🖼️', fields:[
+                  {id:'alt',label:'Caption / alt text',type:'text',ph:'Describe the image'},
+                  {id:'src',label:'Image URL or path',type:'text',ph:'images/photo.jpg or https://...',hint:'Upload to /images/ on GitHub, or use any direct image URL.'}]},
+    link:       { label:'Link', icon:'🔗', fields:[
+                  {id:'label',label:'Link text',type:'text',ph:'e.g. Visit Tasbeha.org'},
+                  {id:'url',label:'URL',type:'text',ph:'https://...'},
+                  {id:'desc',label:'Description (optional)',type:'text',ph:'What is this link?'}]},
+    pdf:        { label:'PDF', icon:'📄', fields:[
+                  {id:'name',label:'Document name',type:'text',ph:'e.g. The Agpeya — Book of Hours'},
+                  {id:'desc',label:'Description',type:'text',ph:'What is this document?'},
+                  {id:'src',label:'File path or URL',type:'text',ph:'pdfs/file.pdf or https://...',hint:'Upload PDFs to /pdfs/ on GitHub.'}]},
+    hymn:       { label:'Hymn', icon:'🎶', fields:[
+                  {id:'name',label:'Hymn name',type:'text',ph:'e.g. Pi-Epnevma Ethowab'},
+                  {id:'coptic',label:'Coptic / Arabic name (optional)',type:'text',ph:'e.g. Ⲡⲓⲡⲛⲉⲩⲙⲁ'},
+                  {id:'season',label:'Season',type:'select',opts:['General','Kiahk','Nativity','Epiphany','Great Lent','Holy Week','Resurrection','Pentecost','Apostles Fast','Saint Mary','Other']},
+                  {id:'src',label:'Audio file path or URL',type:'text',ph:'hymns/file.mp3',hint:'Upload to /hymns/ on GitHub.'},
+                  {id:'tag',label:'Tag (optional)',type:'text',ph:'e.g. Coptic, Greek, Arabic'}]},
+    quote:      { label:'Scripture / Quote', icon:'💬', fields:[
+                  {id:'text',label:'Quote text',type:'textarea',ph:'Enter the scripture or quote...'},
+                  {id:'ref',label:'Reference',type:'text',ph:'e.g. Psalm 42:2'}]},
+    divider:    { label:'Divider', icon:'〰️', fields:[]},
+  },
+
+  openEditorFor(type, data){
+    const def = this.BLOCK_DEFS[type];
+    if(!def) return;
+    const overlay = document.getElementById('am-editor-overlay');
+    const editor = document.getElementById('am-editor');
+    editor.innerHTML = `
+      <div class="am-editor-title">
+        <span>${def.icon} ${def.label}</span>
+        <button class="am-close" onclick="ADM.closeEditor()">✕</button>
+      </div>
+      ${def.fields.map(f=>`
+        <div class="am-field">
+          <label>${f.label}</label>
+          ${f.type==='select'
+            ? `<select id="aef-${f.id}">${(f.opts||[]).map(o=>`<option${data&&data[f.id]===o?' selected':''}>${o}</option>`).join('')}</select>`
+            : f.type==='textarea'
+              ? `<textarea id="aef-${f.id}" placeholder="${f.ph||''}">${data?data[f.id]||'':''}</textarea>`
+              : `<input type="text" id="aef-${f.id}" placeholder="${f.ph||''}" value="${data?data[f.id]||'':''}" />`
+          }
+          ${f.hint?`<div class="am-field-hint">💡 ${f.hint}</div>`:''}
+        </div>`).join('')}
+      <div id="am-live-preview"></div>
+      <div class="am-footer">
+        <button class="am-btn am-btn-cancel" onclick="ADM.closeEditor()">Cancel</button>
+        <button class="am-btn am-btn-save" onclick="ADM.saveBlock('${type}')">✓ Save Block</button>
+      </div>`;
+    overlay.classList.add('open');
+    // Live preview on src/url change
+    def.fields.forEach(f=>{
+      const el = document.getElementById('aef-'+f.id);
+      if(el && (f.id==='src'||f.id==='url')) el.addEventListener('input', ()=>ADM.updatePreview(type));
+    });
+    if(data) setTimeout(()=>this.updatePreview(type), 50);
+  },
+
+  updatePreview(type){
+    const pre = document.getElementById('am-live-preview');
+    if(!pre) return;
+    const src = document.getElementById('aef-src')?.value||'';
+    const url = document.getElementById('aef-url')?.value||'';
+    if(type==='audio'||type==='hymn'){
+      if(src) pre.innerHTML=`<div class="am-preview"><audio controls><source src="${src}"/>Browser does not support audio.</audio></div>`;
+    } else if(type==='youtube'){
+      const vid=ADM.ytId(url);
+      if(vid) pre.innerHTML=`<div class="am-preview"><iframe height="180" src="https://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen></iframe></div>`;
+    } else if(type==='soundcloud'){
+      if(url) pre.innerHTML=`<div class="am-preview"><iframe height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%230f4454&auto_play=false"></iframe></div>`;
+    } else if(type==='image'){
+      if(src) pre.innerHTML=`<div class="am-preview"><img src="${src}" alt="preview"/></div>`;
+    } else if(type==='video'){
+      if(src) pre.innerHTML=`<div class="am-preview"><video controls><source src="${src}"/></video></div>`;
+    }
+  },
+
+  closeEditor(){
+    document.getElementById('am-editor-overlay').classList.remove('open');
+    this.editingId = null;
+  },
+
+  saveBlock(type){
+    const def = this.BLOCK_DEFS[type];
+    const data = { type, id: this.editingId||this.uid() };
+    def.fields.forEach(f=>{ const el=document.getElementById('aef-'+f.id); if(el) data[f.id]=el.value; });
+    const blocks = this.loadBlocks();
+    if(this.editingId){
+      const idx = blocks.findIndex(b=>b.id===this.editingId);
+      if(idx>=0) blocks[idx]=data; else blocks.push(data);
+    } else {
+      const insertAt = typeof this.insertAfter==='number' ? this.insertAfter : blocks.length;
+      blocks.splice(insertAt, 0, data);
+    }
+    this.saveBlocks(blocks);
+    this.closeEditor();
+    this.loadExtraBlocks();
+    this.flash('Block saved');
+  },
+
+  openEdit(el){
+    // Native block edit (notes)
+    const type = el.dataset.edType||'note';
+    if(type==='note'){
+      const cat = el.querySelector('.note-cat')?.textContent||'';
+      const title = el.querySelector('.note-title')?.textContent||'';
+      const body = el.querySelector('.note-body-inner')?.innerText||'';
+      this.editingId = null; // mark as native - no ID
+      this._nativeEl = el;
+      this._nativeType = 'note';
+      this.openEditorFor('note',{cat,title,body});
+      // Override save to edit native
+      setTimeout(()=>{
+        const saveBtn = document.querySelector('#am-editor .am-btn-save');
+        if(saveBtn) saveBtn.onclick = ()=>this.saveNative('note');
+      },50);
+    }
+  },
+
+  saveNative(type){
+    if(!this._nativeEl) return;
+    if(type==='note'){
+      const cat=document.getElementById('aef-cat')?.value||'';
+      const title=document.getElementById('aef-title')?.value||'';
+      const body=document.getElementById('aef-body')?.value||'';
+      const el=this._nativeEl;
+      if(el.querySelector('.note-cat')) el.querySelector('.note-cat').textContent=cat;
+      if(el.querySelector('.note-title')) el.querySelector('.note-title').textContent=title;
+      if(el.querySelector('.note-body-inner')) el.querySelector('.note-body-inner').innerHTML='<p>'+body.replace(/\n/g,'</p><p>')+'</p>';
+    }
+    this.closeEditor();
+    this.flash('Saved');
+  },
+
+  deleteNative(el){ if(confirm('Delete this block?')){ el.remove(); this.flash('Deleted'); } },
+
+  openEditById(id){
+    const blocks = this.loadBlocks();
+    const b = blocks.find(x=>String(x.id)===String(id));
+    if(!b) return;
+    this.editingId = b.id;
+    this.openEditorFor(b.type, b);
+  },
+
+  deleteBlock(id){
+    if(!confirm('Delete this block?')) return;
+    let blocks = this.loadBlocks();
+    blocks = blocks.filter(b=>String(b.id)!==String(id));
+    this.saveBlocks(blocks);
+    this.loadExtraBlocks();
+    this.flash('Deleted');
+  },
+
+  moveBlock(id, dir){
+    const blocks = this.loadBlocks();
+    const idx = blocks.findIndex(b=>String(b.id)===String(id));
+    const swap = idx+dir;
+    if(swap<0||swap>=blocks.length) return;
+    [blocks[idx],blocks[swap]]=[blocks[swap],blocks[idx]];
+    this.saveBlocks(blocks);
+    this.loadExtraBlocks();
+  },
+
+  flash(msg){ const f=document.getElementById('am-flash'); f.textContent=msg; f.classList.add('show'); clearTimeout(f._t); f._t=setTimeout(()=>f.classList.remove('show'),2200); },
+
+  login(){
+    const u=document.getElementById('am-lu')?.value.trim();
+    const p=document.getElementById('am-lp')?.value;
+    if(u==='admin'&&p===this.getPass()){
+      this.setAuth(true);
+      document.getElementById('am-login-overlay').classList.remove('open');
+      this.activate();
+      this.flash('Welcome back');
+    } else {
+      const err=document.getElementById('am-lerr'); if(err){ err.style.display='block'; }
+    }
+  },
+  logout(){ this.setAuth(false); this.deactivate(); this.flash('Signed out'); },
+};
+
+document.addEventListener('DOMContentLoaded', ()=>{ ADM.init(); });
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.am-overlay').forEach(o=>o.classList.remove('open'));
+  }
+});
+</script>
+
 </body>
 </html>
