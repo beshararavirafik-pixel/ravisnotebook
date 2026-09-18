@@ -34,8 +34,8 @@
   .nav-cross { font-family: serif; font-size: 1.1rem; color: #8A5A44; text-decoration: none; flex-shrink: 0; }
   .nav-center { text-align: center; flex: 1; }
   .nav-brand { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: block; }
-  .nav-sub { font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(15,68,84,0.45); text-transform: uppercase; margin-top: 2px; font-family: 'DM Sans', sans-serif; font-weight: 300; }
-  .nav-menu-btn { background: none; border: none; color: rgba(15,68,84,0.6); cursor: pointer; display: flex; align-items: center; padding: 4px; transition: color 0.2s; flex-shrink: 0; }
+  .nav-sub { font-size: 0.48rem; letter-spacing: 0.1em; color:#3a5a6a; text-transform: uppercase; margin-top: 2px; font-family: 'DM Sans', sans-serif; font-weight: 300; }
+  .nav-menu-btn { background: none; border: none; color:#1c3a48; cursor: pointer; display: flex; align-items: center; padding: 4px; transition: color 0.2s; flex-shrink: 0; }
   .nav-menu-btn:hover { color: var(--teal); }
 
   /* ── DRAWER ── */
@@ -116,7 +116,7 @@
   .btn-secondary:hover { background: rgba(202,181,167,0.4); border-color: var(--sand); transform: translateY(-2px); }
 
   .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeIn 1s ease 1.6s forwards; }
-  .scroll-hint-text { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(15,68,84,0.35); font-weight: 300; }
+  .scroll-hint-text { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color:#4a6878; font-weight: 300; }
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(202,181,167,0.7), transparent); animation: scrollPulse 2s ease infinite; }
 
   /* ── TOPICS ── */
@@ -159,7 +159,7 @@
   }
   .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .about-title { font-family: 'Libre Baskerville', serif; font-size: 2rem; font-weight: 400; color: var(--teal); letter-spacing: -0.015em; margin-bottom: 20px; line-height: 1.15; }
-  .about-text { font-size: 0.9rem; color: rgba(15,68,84,0.65); line-height: 1.85; font-weight: 300; }
+  .about-text { font-size: 0.9rem; color:#1c3a48; line-height: 1.85; font-weight: 300; }
   .about-detail { padding: 18px 0; border-bottom: 1px solid rgba(202,181,167,0.35); }
   .about-detail:first-child { border-top: 1px solid rgba(202,181,167,0.35); }
   .about-detail-label { font-size: 10px; color: var(--sand); font-weight: 400; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 4px; }
@@ -167,9 +167,9 @@
 
   /* ── FOOTER ── */
   footer { background: var(--teal); border-top: none; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; }
-  .footer-left { font-family: 'Libre Baskerville', serif; font-size: 0.9rem; font-style: italic; color: rgba(202,181,167,0.5); }
+  .footer-left { font-family: 'Libre Baskerville', serif; font-size: 0.9rem; font-style: italic; color:#6e5448; }
   .footer-cross { color: var(--sand); font-size: 1.1rem; opacity: 0.6; }
-  .footer-right { font-size: 11px; color: rgba(202,181,167,0.4); font-weight: 300; }
+  .footer-right { font-size: 11px; color:#7a5e50; font-weight: 300; }
 
   /* ── SEARCH ── */
   .search-overlay { position: fixed; inset: 0; background: rgba(245,239,232,0.65); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); z-index: 400; display: flex; flex-direction: column; align-items: center; padding-top: 120px; padding-left: 24px; padding-right: 24px; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
@@ -178,8 +178,8 @@
   .search-input-wrap { display: flex; align-items: center; gap: 12px; background: rgba(245,239,232,0.85); border: 1px solid rgba(202,181,167,0.5); border-radius: 100px; padding: 0 20px; box-shadow: 0 8px 40px rgba(15,68,84,0.1); }
   .search-input-wrap svg { flex-shrink: 0; color: var(--sand); }
   .search-input { flex: 1; padding: 16px 4px; background: none; border: none; outline: none; font-family: 'Libre Baskerville', serif; font-size: 1.2rem; font-weight: 400; color: var(--teal); }
-  .search-input::placeholder { color: rgba(15,68,84,0.3); }
-  .search-close-btn { background: none; border: none; cursor: pointer; color: rgba(15,68,84,0.4); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.06em; padding: 4px 8px; transition: color 0.2s; }
+  .search-input::placeholder { color:#4a6878; }
+  .search-close-btn { background: none; border: none; cursor: pointer; color:#3a5a6a; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.06em; padding: 4px 8px; transition: color 0.2s; }
   .search-close-btn:hover { color: var(--teal); }
   .search-results { width: 100%; max-width: 600px; margin-top: 10px; display: flex; flex-direction: column; gap: 2px; }
   .search-result-item { display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: rgba(245,239,232,0.85); border: 1px solid rgba(202,181,167,0.25); text-decoration: none; color: var(--teal); transition: all 0.15s; border-radius: 10px; }
@@ -187,8 +187,8 @@
   .search-result-tag { font-size: 10px; color: var(--sand); font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; min-width: 80px; }
   .search-result-name { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 400; color: var(--teal); flex: 1; }
   .search-result-arrow { color: var(--sand); font-size: 13px; flex-shrink: 0; }
-  .search-empty { padding: 24px 20px; font-family: 'Libre Baskerville', serif; font-size: 1rem; font-style: italic; color: rgba(15,68,84,0.4); text-align: center; }
-  .search-hint { margin-top: 20px; font-size: 11px; color: rgba(15,68,84,0.3); letter-spacing: 0.08em; text-transform: uppercase; }
+  .search-empty { padding: 24px 20px; font-family: 'Libre Baskerville', serif; font-size: 1rem; font-style: italic; color:#3a5a6a; text-align: center; }
+  .search-hint { margin-top: 20px; font-size: 11px; color:#4a6878; letter-spacing: 0.08em; text-transform: uppercase; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -259,7 +259,7 @@
   <a class="drawer-link" href="apologetics.html">Apologetics</a>
   <a class="drawer-link" href="notes.html">Notes</a>
   <a class="drawer-link" href="qa.html">Q&amp;A</a>
-  
+  <a class="drawer-link" href="admin.html" style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(15,68,84,0.08);border-bottom:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:#4a6070;display:flex;align-items:center;gap:8px;">&#128274; Admin</a>
 </div>
 
 <!-- SEARCH -->
