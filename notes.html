@@ -91,259 +91,6 @@
   @media(max-width:768px){.note-title{font-size:1rem;}.note-trigger{padding:20px 0;}.note-arrow{width:28px;height:28px;}}
 
 
-/* ═══════════════════════════════════════
-   ADMIN ENGINE - injected on every page
-   Only visible when ?admin=1 or authed
-   ═══════════════════════════════════════ */
-
-/* Admin bar */
-.ab {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  height: 52px;
-  background: #0f2d3d;
-  border-top: 2px solid #cab5a7;
-  z-index: 9000;
-  align-items: center;
-  padding: 0 20px;
-  gap: 12px;
-  box-shadow: 0 -4px 24px rgba(15,68,84,0.3);
-}
-.ab.on { display: flex; }
-.ab-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: #cab5a7;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.ab-div { width: 1px; height: 20px; background: rgba(202,181,167,0.2); }
-.ab-btn {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 6px 14px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  border: none;
-  transition: all 0.18s;
-  white-space: nowrap;
-  font-weight: 400;
-}
-.ab-btn-add { background: #cab5a7; color: #0f2d3d; font-weight: 500; }
-.ab-btn-add:hover { background: #ddd0c0; }
-.ab-btn-ghost { background: rgba(202,181,167,0.1); color: rgba(202,181,167,0.8); border: 1px solid rgba(202,181,167,0.2); }
-.ab-btn-ghost:hover { background: rgba(202,181,167,0.18); color: #cab5a7; }
-.ab-btn-pub { background: #1a5c3a; color: #fff; }
-.ab-btn-pub:hover { background: #145030; }
-.ab-btn-danger { background: rgba(139,32,32,0.15); color: #e87070; border: 1px solid rgba(139,32,32,0.25); }
-.ab-right { margin-left: auto; display: flex; gap: 8px; }
-.ab-page-name { font-size: 12px; color: rgba(202,181,167,0.5); font-weight: 300; }
-
-/* Admin mode indicator on nav */
-body.admin-mode #mainNav { border-color: rgba(202,181,167,0.6); box-shadow: 0 0 0 2px rgba(202,181,167,0.3), 0 6px 28px rgba(15,68,84,0.08); }
-
-/* Editable block wrappers */
-.ed-block {
-  position: relative;
-}
-body.admin-mode .ed-block {
-  outline: 2px dashed transparent;
-  outline-offset: 4px;
-  transition: outline-color 0.15s;
-}
-body.admin-mode .ed-block:hover {
-  outline-color: rgba(202,181,167,0.5);
-}
-
-/* Block action bar (appears on hover in admin mode) */
-.ed-actions {
-  display: none;
-  position: absolute;
-  top: -14px; right: 12px;
-  z-index: 500;
-  flex-direction: row;
-  gap: 4px;
-}
-body.admin-mode .ed-block:hover .ed-actions { display: flex; }
-.ed-act {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 4px 10px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  border: none;
-  font-weight: 400;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-.ed-act-edit { background: #0f4454; color: #fff; }
-.ed-act-edit:hover { background: #0a2e3a; }
-.ed-act-del { background: #8b2020; color: #fff; }
-.ed-act-del:hover { background: #6e1a1a; }
-.ed-act-up, .ed-act-dn { background: rgba(15,68,84,0.85); color: #fff; }
-.ed-act-up:hover, .ed-act-dn:hover { background: #0a2e3a; }
-
-/* Add block button (between blocks) */
-.add-between {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  cursor: pointer;
-}
-body.admin-mode .add-between { display: flex; }
-.add-between-btn {
-  display: flex; align-items: center; gap: 6px;
-  padding: 6px 16px;
-  border-radius: 100px;
-  border: 1px dashed rgba(15,68,84,0.25);
-  background: rgba(245,239,232,0.7);
-  color: rgba(15,68,84,0.5);
-  font-size: 11px;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-weight: 400;
-}
-.add-between-btn:hover { border-color: #0f4454; color: #0f4454; background: rgba(245,239,232,0.95); }
-
-/* ── MODALS ── */
-.am-overlay {
-  position: fixed; inset: 0;
-  background: rgba(15,68,84,0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 9100;
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.22s;
-}
-.am-overlay.open { opacity: 1; pointer-events: all; }
-
-/* Block picker */
-.am-picker {
-  background: #fff;
-  border-radius: 18px;
-  padding: 28px;
-  width: 100%; max-width: 620px;
-  max-height: 85vh; overflow-y: auto;
-  transform: translateY(12px);
-  transition: transform 0.22s;
-  box-shadow: 0 20px 60px rgba(15,68,84,0.18);
-}
-.am-overlay.open .am-picker { transform: translateY(0); }
-.am-picker-title {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.1rem; font-weight: 400; color: #0f4454;
-  margin-bottom: 20px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.am-close { background: none; border: none; cursor: pointer; font-size: 18px; color: rgba(15,68,84,0.3); transition: color 0.15s; }
-.am-close:hover { color: #0f4454; }
-.am-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-.am-block-btn {
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  padding: 18px 10px;
-  background: #f5efe8;
-  border: 1px solid rgba(202,181,167,0.35);
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 11px; font-weight: 400;
-  color: rgba(15,68,84,0.65);
-  font-family: 'DM Sans', sans-serif;
-  transition: all 0.18s;
-  text-align: center;
-}
-.am-block-btn:hover { background: #fff; border-color: #0f4454; color: #0f4454; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(15,68,84,0.1); }
-.am-block-icon { font-size: 26px; }
-
-/* Edit modal */
-.am-editor {
-  background: #fff;
-  border-radius: 18px;
-  padding: 32px;
-  width: 100%; max-width: 580px;
-  max-height: 88vh; overflow-y: auto;
-  transform: translateY(12px);
-  transition: transform 0.22s;
-  box-shadow: 0 20px 60px rgba(15,68,84,0.18);
-}
-.am-overlay.open .am-editor { transform: translateY(0); }
-.am-editor-title {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.1rem; font-weight: 400; color: #0f4454;
-  margin-bottom: 24px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.am-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
-.am-field label { font-size: 10px; color: #7a5e50; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
-.am-field input, .am-field select, .am-field textarea {
-  padding: 10px 14px;
-  background: rgba(245,239,232,0.5);
-  border: 1px solid rgba(202,181,167,0.4);
-  border-radius: 10px;
-  color: #0f4454;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s;
-  width: 100%;
-  appearance: none;
-}
-.am-field textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-.am-field input:focus, .am-field select:focus, .am-field textarea:focus { border-color: #0f4454; }
-.am-field-hint { font-size: 11px; color: rgba(15,68,84,0.4); margin-top: 4px; line-height: 1.5; }
-.am-preview { margin-top: 10px; border-radius: 10px; overflow: hidden; background: rgba(245,239,232,0.4); border: 1px solid rgba(202,181,167,0.2); }
-.am-preview img { width: 100%; max-height: 160px; object-fit: cover; display: block; }
-.am-preview audio, .am-preview video, .am-preview iframe { width: 100%; display: block; }
-.am-footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(202,181,167,0.2); }
-.am-btn { display: inline-flex; align-items: center; gap: 5px; padding: 9px 20px; border-radius: 100px; font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; transition: all 0.18s; font-weight: 400; }
-.am-btn-save { background: #0f4454; color: #fff; }
-.am-btn-save:hover { background: #0a2e3a; }
-.am-btn-cancel { background: none; border: 1px solid rgba(202,181,167,0.4); color: rgba(15,68,84,0.6); }
-.am-btn-cancel:hover { background: rgba(245,239,232,0.8); }
-
-/* Login gate */
-.am-login {
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(202,181,167,0.4);
-  border-radius: 20px;
-  padding: 44px 40px;
-  width: 100%; max-width: 360px;
-  box-shadow: 0 20px 60px rgba(15,68,84,0.15);
-  text-align: center;
-}
-.am-login-cross { font-size: 1.4rem; color: #8A5A44; margin-bottom: 14px; opacity: 0.7; }
-.am-login-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #0f4454; margin-bottom: 4px; }
-.am-login-sub { font-family: 'Libre Baskerville', serif; font-size: 0.78rem; font-style: italic; color: rgba(15,68,84,0.4); margin-bottom: 28px; }
-.am-login input { display: block; width: 100%; margin-bottom: 12px; padding: 11px 14px; background: rgba(245,239,232,0.7); border: 1px solid rgba(202,181,167,0.4); border-radius: 10px; color: #0f4454; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; }
-.am-login input:focus { border-color: #0f4454; }
-.am-login-btn { width: 100%; padding: 11px; background: #0f4454; color: #f5efe8; border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; }
-.am-login-btn:hover { background: #0a2e3a; }
-.am-login-err { display: none; margin-top: 10px; font-size: 12px; color: #8b2020; }
-
-/* Publish flash */
-.am-flash { position: fixed; bottom: 72px; left: 50%; transform: translateX(-50%) translateY(40px); background: #1a5c3a; color: #fff; padding: 10px 22px; border-radius: 100px; font-size: 13px; z-index: 9200; opacity: 0; transition: all 0.25s; pointer-events: none; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-.am-flash.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-@media (max-width: 600px) {
-  .am-grid { grid-template-columns: repeat(2, 1fr); }
-  .ab { padding: 0 12px; gap: 8px; }
-  .ab-page-name { display: none; }
-}
-
 </style>
 </head>
 <body>
@@ -367,11 +114,11 @@ body.admin-mode .add-between { display: flex; }
   <a class="drawer-link" href="apologetics.html">Apologetics</a>
   <a class="drawer-link" href="notes.html">Notes</a>
   <a class="drawer-link" href="qa.html">Q&amp;A</a>
-  <a class="drawer-link drawer-admin-link" href="admin.html" style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(15,68,84,0.08);border-bottom:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;color:#2d4a5a;display:flex;align-items:center;gap:8px;">&#128274; Admin</a>
 </div>
 <div class="page-hero-wrap">
   <div class="page-hero">
-    <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span class="page-eyebrow-text">Learn</span></div>
+    <div class="page-eyebrow"><div class="page-eyebrow-line">  <a class="drawer-link" href="#" onclick="event.preventDefault();document.getElementById('am-login-overlay').classList.add('open');closeDrawer()">&#128274; Admin Login</a>
+</div><span class="page-eyebrow-text">Learn</span></div>
     <h1 class="page-title">Notes</h1><p class="page-desc">Lessons, reflections, and studies compiled over time.</p>
   </div>
 </div>
@@ -421,6 +168,10 @@ function toggleNote(btn){
 <div id="rn-extra-blocks-wrap" style="max-width:900px;margin:0 auto;padding:0 48px;">
   <div id="rn-extra-blocks"></div>
 </div>
+<!-- Extra blocks container -->
+<div id="rn-extra-blocks-wrap" style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div id="rn-extra-blocks"></div>
+</div>
 <footer>
   <div class="footer-inner">
     <span class="footer-verse">Freely you have received, freely give. &mdash; Matthew 10:8</span>
@@ -434,40 +185,54 @@ function closeDrawer(){document.getElementById("drawer").classList.remove("open"
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
 </script>
 
-<!-- ═══ ADMIN ENGINE HTML ═══ -->
 
-<!-- Admin bar (bottom) -->
+
+
+
+
+<!-- ═══ ADMIN ENGINE HTML v2 ═══ -->
+
+<!-- Bottom admin bar (hidden until login) -->
 <div class="ab" id="adminBar">
-  <span class="ab-logo">✏️ RAVI'S NOTEBOOK</span>
+  <span class="ab-logo">☩ Admin</span>
   <div class="ab-div"></div>
-  <span class="ab-page-name" id="ab-status"></span>
+  <span class="ab-mode" id="ab-status"></span>
   <button class="ab-btn ab-btn-add" id="ab-add" style="display:none" onclick="ADM.openPicker(null)">＋ Add Block</button>
   <div class="ab-right">
-    <button class="ab-btn ab-btn-pub" id="ab-publish" style="display:none" onclick="ADM.flash('✓ Published — upload this file to GitHub to go live')">✓ Publish</button>
-    <button class="ab-btn ab-btn-ghost" id="ab-exit" style="display:none" onclick="ADM.logout()">Exit Admin</button>
-    <button class="ab-btn ab-btn-ghost" id="ab-login" onclick="document.getElementById('am-login-overlay').classList.add('open')">🔐 Admin Login</button>
+    <button class="ab-btn ab-btn-ghost" id="ab-publish" style="display:none" onclick="ADM.flash('✓ Changes saved — upload to GitHub to go live')">✓ Publish</button>
+    <button class="ab-btn ab-btn-ghost" id="ab-exit" style="display:none" onclick="ADM.logout()">Exit</button>
+    <button class="ab-btn ab-btn-ghost" id="ab-login" onclick="document.getElementById('am-login-overlay').classList.add('open')" style="display:none">🔐 Login</button>
   </div>
 </div>
 
 
 
-<!-- Block picker overlay -->
+<!-- Block picker -->
 <div class="am-overlay" id="am-picker-overlay" onclick="if(event.target===this)ADM.closePicker()">
   <div class="am-picker">
     <div class="am-picker-title">
-      <span>Choose a block type</span>
+      <span>Add a block</span>
       <button class="am-close" onclick="ADM.closePicker()">✕</button>
     </div>
+    <div class="am-picker-section">Content</div>
     <div class="am-grid">
       <div class="am-block-btn" onclick="ADM.pickBlock('note')"><div class="am-block-icon">📝</div>Note / Lesson</div>
-      <div class="am-block-btn" onclick="ADM.pickBlock('text')"><div class="am-block-icon">✏️</div>Text</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('text')"><div class="am-block-icon">✏️</div>Text Block</div>
       <div class="am-block-btn" onclick="ADM.pickBlock('quote')"><div class="am-block-icon">💬</div>Scripture / Quote</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('trilingual')"><div class="am-block-icon">🔤</div>3-Column Text<br/><span style="font-size:10px;opacity:0.6">Eng · Copt · Arabic</span></div>
+    </div>
+    <div class="am-picker-section">Media</div>
+    <div class="am-grid">
       <div class="am-block-btn" onclick="ADM.pickBlock('audio')"><div class="am-block-icon">🎵</div>Audio</div>
       <div class="am-block-btn" onclick="ADM.pickBlock('hymn')"><div class="am-block-icon">🎶</div>Hymn</div>
       <div class="am-block-btn" onclick="ADM.pickBlock('youtube')"><div class="am-block-icon">▶️</div>YouTube</div>
       <div class="am-block-btn" onclick="ADM.pickBlock('soundcloud')"><div class="am-block-icon">☁️</div>SoundCloud</div>
-      <div class="am-block-btn" onclick="ADM.pickBlock('video')"><div class="am-block-icon">🎬</div>Video</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('video')"><div class="am-block-icon">🎬</div>Video File</div>
       <div class="am-block-btn" onclick="ADM.pickBlock('image')"><div class="am-block-icon">🖼️</div>Image</div>
+      <div class="am-block-btn" onclick="ADM.pickBlock('image-text')"><div class="am-block-icon">🖼️✏️</div>Image + Text</div>
+    </div>
+    <div class="am-picker-section">Links & Documents</div>
+    <div class="am-grid">
       <div class="am-block-btn" onclick="ADM.pickBlock('pdf')"><div class="am-block-icon">📄</div>PDF</div>
       <div class="am-block-btn" onclick="ADM.pickBlock('link')"><div class="am-block-icon">🔗</div>Link</div>
       <div class="am-block-btn" onclick="ADM.pickBlock('divider')"><div class="am-block-icon">〰️</div>Divider</div>
@@ -475,7 +240,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   </div>
 </div>
 
-<!-- Editor overlay -->
+<!-- Block editor -->
 <div class="am-overlay" id="am-editor-overlay" onclick="if(event.target===this)ADM.closeEditor()">
   <div class="am-editor" id="am-editor"></div>
 </div>
@@ -493,35 +258,47 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer(
   </div>
 </div>
 
-<!-- Publish flash -->
-<div class="am-flash" id="am-flash"></div>
+<!-- Inline text editor -->
+<div class="am-inline-editor" id="am-inline-editor">
+  <div class="am-inline-editor-title">Edit Text</div>
+  <textarea id="am-inline-ta" rows="4"></textarea>
+  <div class="am-inline-actions">
+    <button class="am-btn am-btn-cancel" style="font-size:11px;padding:5px 12px" id="am-inline-cancel">Cancel</button>
+    <button class="am-btn am-btn-save" style="font-size:11px;padding:5px 12px" id="am-inline-save">Save</button>
+  </div>
+</div>
 
+<!-- Flash message -->
+<div class="am-flash" id="am-flash"></div>
 
 <script>
 // ═══════════════════════════════════════
-// RAVI'S NOTEBOOK — INLINE ADMIN ENGINE
+// RAVI'S NOTEBOOK — ADMIN ENGINE v2
 // ═══════════════════════════════════════
 const ADM = {
-  K: { pass:'rn_pass', auth:'rn_auth', data:'rn_page_' },
-  DEF_PASS: 'coptic2025',
+  K: { pass:'rn_pass', auth:'rn_auth' },
+  DEF: 'coptic2025',
   active: false,
-  insertAfter: null, // index to insert after, null = append
+  insertIdx: null,
   editingId: null,
-  PAGE: document.title.replace(' — Ravi\'s Notebook','').trim(),
+  PAGE: document.title.replace(/\s*—.*/, '').trim(),
 
-  getPass(){ return localStorage.getItem(this.K.pass)||this.DEF_PASS; },
-  isAuth(){ return localStorage.getItem(this.K.auth)==='1'; },
-  setAuth(v){ localStorage.setItem(this.K.auth, v?'1':'0'); },
+  getPass(){ return localStorage.getItem(this.K.pass) || this.DEF; },
+  isAuth(){ return localStorage.getItem(this.K.auth) === '1'; },
+  setAuth(v){ localStorage.setItem(this.K.auth, v ? '1' : '0'); },
 
-  // Persistent block data per page
-  pageKey(){ return this.K.data + this.PAGE; },
-  loadBlocks(){ try{ return JSON.parse(localStorage.getItem(this.pageKey())||'[]'); }catch(e){ return []; } },
-  saveBlocks(b){ localStorage.setItem(this.pageKey(), JSON.stringify(b)); },
-  uid(){ return Date.now()+Math.floor(Math.random()*999); },
+  pageKey(){ return 'rn_page_' + this.PAGE; },
+  loadBlocks(){ try{ return JSON.parse(localStorage.getItem(this.pageKey()) || '[]'); } catch(e){ return []; } },
+  saveBlocks(b){
+    localStorage.setItem(this.pageKey(), JSON.stringify(b));
+    // Also write to a global registry so admin.html can count blocks
+    const reg = JSON.parse(localStorage.getItem('rn_registry') || '{}');
+    reg[this.PAGE] = b.length;
+    localStorage.setItem('rn_registry', JSON.stringify(reg));
+  },
+  uid(){ return Date.now() + Math.floor(Math.random() * 9999); },
 
   init(){
-    // Show the admin bar toggle always (clicking prompts login)
-    document.getElementById('adminBar').classList.add('on');
     if(this.isAuth()) this.activate();
     this.loadExtraBlocks();
   },
@@ -529,186 +306,264 @@ const ADM = {
   activate(){
     this.active = true;
     document.body.classList.add('admin-mode');
-    document.getElementById('ab-status').textContent = '✏️ Editing';
-    document.getElementById('ab-exit').style.display = 'inline-flex';
-    document.getElementById('ab-add').style.display = 'inline-flex';
-    document.getElementById('ab-publish').style.display = 'inline-flex';
-    document.getElementById('ab-login').style.display = 'none';
-    // Wrap existing blocks
-    this.wrapBlocks();
+    document.getElementById('adminBar').classList.add('on');
+    const status = document.getElementById('ab-status');
+    if(status){ status.textContent = 'Editing'; status.className = 'ab-mode editing'; }
+    ['ab-add','ab-publish','ab-exit'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.style.display = 'inline-flex';
+    });
+    const loginBtn = document.getElementById('ab-login');
+    if(loginBtn) loginBtn.style.display = 'none';
+    this.wrapNativeBlocks();
     this.renderAddButtons();
   },
 
   deactivate(){
     this.active = false;
     document.body.classList.remove('admin-mode');
-    document.getElementById('ab-status').textContent = '';
-    document.getElementById('ab-exit').style.display = 'none';
-    document.getElementById('ab-add').style.display = 'none';
-    document.getElementById('ab-publish').style.display = 'none';
-    document.getElementById('ab-login').style.display = 'inline-flex';
-    document.querySelectorAll('.ed-actions').forEach(e=>e.remove());
-    document.querySelectorAll('.add-between').forEach(e=>e.remove());
+    document.getElementById('adminBar').classList.remove('on');
+    document.querySelectorAll('.ed-actions').forEach(e => e.remove());
+    document.querySelectorAll('.add-between').forEach(e => e.remove());
+    document.querySelectorAll('.ed-field-wrap').forEach(el => {
+      el.classList.remove('ed-field-wrap');
+      el.onclick = null;
+    });
   },
 
-  // Wrap native page blocks with ed-block class + action bar
-  wrapBlocks(){
-    // Wrap note-items
-    document.querySelectorAll('.note-item:not(.ed-wrapped)').forEach((el,i)=>{
-      el.classList.add('ed-block','ed-wrapped');
-      el.dataset.edId = 'native-note-'+i;
-      el.dataset.edType = 'note';
+  // ── WRAP NATIVE EDITABLE TEXT FIELDS ──
+  wrapNativeBlocks(){
+    // Wrap page description text
+    document.querySelectorAll('.page-desc:not(.ed-field-wrap)').forEach(el => {
+      el.classList.add('ed-field-wrap');
+      el.title = 'Click to edit';
+      el.onclick = () => this.openInlineEdit(el, el.textContent.trim(), v => { el.textContent = v; });
+    });
+    // Wrap page verse text
+    document.querySelectorAll('.page-verse:not(.ed-field-wrap)').forEach(el => {
+      el.classList.add('ed-field-wrap');
+      const textNode = el.querySelector('em') || el.firstChild;
+      el.onclick = () => this.openInlineEdit(el, el.innerText.trim(), v => { 
+        const ref = el.querySelector('span');
+        const refText = ref ? ref.textContent : '';
+        el.innerHTML = `"${v}"${ref ? `<span>${refText}</span>` : ''}`;
+      });
+    });
+    // Wrap section titles
+    document.querySelectorAll('.section-title:not(.ed-field-wrap), .about-title:not(.ed-field-wrap)').forEach(el => {
+      el.classList.add('ed-field-wrap');
+      el.onclick = () => this.openInlineEdit(el, el.textContent.trim(), v => { el.textContent = v; });
+    });
+    // Wrap hero title
+    document.querySelectorAll('.hero-title:not(.ed-field-wrap)').forEach(el => {
+      el.classList.add('ed-field-wrap');
+      el.onclick = () => this.openInlineEdit(el, el.innerText.trim(), v => { el.innerHTML = v; });
+    });
+    // Wrap about text
+    document.querySelectorAll('.about-text:not(.ed-field-wrap)').forEach(el => {
+      el.classList.add('ed-field-wrap');
+      el.onclick = () => this.openInlineEdit(el, el.textContent.trim(), v => { el.textContent = v; });
+    });
+    // Wrap note items (existing)
+    document.querySelectorAll('.note-item:not(.ed-wrapped)').forEach((el, i) => {
+      el.classList.add('ed-block', 'ed-wrapped');
+      el.style.position = 'relative';
       const acts = document.createElement('div');
       acts.className = 'ed-actions';
       acts.innerHTML = `
-        <button class="ed-act ed-act-edit" onclick="ADM.openEdit(this.closest('.ed-block'))">✏️ Edit</button>
-        <button class="ed-act ed-act-del" onclick="ADM.deleteNative(this.closest('.ed-block'))">🗑</button>
-      `;
-      el.style.position='relative';
+        <button class="ed-act ed-act-edit" onclick="event.stopPropagation();ADM.editNativeNote(this.closest('.note-item'))">✏️ Edit</button>
+        <button class="ed-act ed-act-del"  onclick="event.stopPropagation();ADM.deleteNative(this.closest('.note-item'))">🗑 Delete</button>`;
       el.prepend(acts);
     });
-
-    // Wrap section cards (hymns, pdfs etc)
-    document.querySelectorAll('.season-card:not(.ed-wrapped)').forEach((el,i)=>{
-      el.classList.add('ed-block','ed-wrapped');
-      el.dataset.edId = 'native-season-'+i;
-      el.dataset.edType = 'link';
-      el.style.position='relative';
-      const acts = document.createElement('div');
-      acts.className = 'ed-actions';
-      acts.innerHTML = `<button class="ed-act ed-act-edit" onclick="ADM.openEdit(this.closest('.ed-block'))">✏️ Edit</button>`;
-      el.prepend(acts);
-    });
-
-    // Wrap extra blocks added via admin
-    document.querySelectorAll('.rn-block:not(.ed-wrapped)').forEach(el=>{
-      el.classList.add('ed-block','ed-wrapped');
-      el.style.position='relative';
-      const acts = document.createElement('div');
-      acts.className = 'ed-actions';
+    // Wrap extra blocks
+    document.querySelectorAll('.rn-block:not(.ed-wrapped)').forEach(el => {
+      el.classList.add('ed-block', 'ed-wrapped');
+      el.style.position = 'relative';
       const id = el.dataset.rnId;
+      const acts = document.createElement('div');
+      acts.className = 'ed-actions';
       acts.innerHTML = `
-        <button class="ed-act ed-act-up" onclick="ADM.moveBlock('${id}',-1)">↑</button>
-        <button class="ed-act ed-act-dn" onclick="ADM.moveBlock('${id}',1)">↓</button>
-        <button class="ed-act ed-act-edit" onclick="ADM.openEditById('${id}')">✏️ Edit</button>
-        <button class="ed-act ed-act-del" onclick="ADM.deleteBlock('${id}')">🗑</button>
-      `;
+        <button class="ed-act ed-act-move" onclick="event.stopPropagation();ADM.moveBlock('${id}',-1)">↑</button>
+        <button class="ed-act ed-act-move" onclick="event.stopPropagation();ADM.moveBlock('${id}',1)">↓</button>
+        <button class="ed-act ed-act-edit" onclick="event.stopPropagation();ADM.openEditById('${id}')">✏️ Edit</button>
+        <button class="ed-act ed-act-del"  onclick="event.stopPropagation();ADM.deleteBlock('${id}')">🗑 Delete</button>`;
       el.prepend(acts);
     });
   },
 
+  // ── INLINE TEXT EDITOR ──
+  openInlineEdit(targetEl, currentText, onSave){
+    const editor = document.getElementById('am-inline-editor');
+    const ta = document.getElementById('am-inline-ta');
+    ta.value = currentText;
+    // Position near element
+    const rect = targetEl.getBoundingClientRect();
+    editor.style.top  = Math.max(8, rect.top + window.scrollY - 10) + 'px';
+    editor.style.left = Math.max(8, rect.left) + 'px';
+    editor.classList.add('open');
+    ta.focus();
+    // Save handler
+    document.getElementById('am-inline-save').onclick = () => {
+      onSave(ta.value);
+      editor.classList.remove('open');
+      this.flash('Text updated');
+    };
+    document.getElementById('am-inline-cancel').onclick = () => editor.classList.remove('open');
+  },
+
+  // ── ADD BETWEEN BUTTONS ──
   renderAddButtons(){
-    document.querySelectorAll('.add-between').forEach(e=>e.remove());
+    document.querySelectorAll('.add-between').forEach(e => e.remove());
     const container = document.getElementById('rn-extra-blocks');
     if(!container) return;
-    // Add button at very top of extra area
-    const top = document.createElement('div');
-    top.className = 'add-between';
-    top.innerHTML = `<button class="add-between-btn" onclick="ADM.openPicker(0)">＋ Add block here</button>`;
-    container.parentNode.insertBefore(top, container);
-    // Add button after each extra block
     const blocks = container.querySelectorAll('.rn-block');
-    blocks.forEach((bl,i)=>{
-      const btn = document.createElement('div');
-      btn.className = 'add-between';
-      btn.innerHTML = `<button class="add-between-btn" onclick="ADM.openPicker(${i+1})">＋ Add block here</button>`;
-      bl.after(btn);
+    // Before first block
+    const top = this._makeAddBtn(0);
+    container.parentNode.insertBefore(top, container);
+    // After each block
+    blocks.forEach((bl, i) => {
+      bl.after(this._makeAddBtn(i + 1));
     });
-    if(!blocks.length){
-      const end = document.createElement('div');
-      end.className = 'add-between';
-      end.innerHTML = `<button class="add-between-btn" onclick="ADM.openPicker(0)">＋ Add first block</button>`;
-      container.after(end);
-    }
+  },
+  _makeAddBtn(idx){
+    const div = document.createElement('div');
+    div.className = 'add-between';
+    div.innerHTML = `<button class="add-between-btn" onclick="ADM.openPicker(${idx})">＋ Add block here</button>`;
+    return div;
   },
 
-  // Load and render extra blocks from localStorage
+  // ── EXTRA BLOCKS RENDER ──
   loadExtraBlocks(){
     const container = document.getElementById('rn-extra-blocks');
     if(!container) return;
     const blocks = this.loadBlocks();
-    container.innerHTML = blocks.map(b=>this.renderBlock(b)).join('');
-    if(this.active){ this.wrapBlocks(); this.renderAddButtons(); }
-    // Re-init accordions
-    if(window.toggleNote) document.querySelectorAll('.note-trigger').forEach(btn=>{ btn.onclick=function(){ toggleNote(this); }; });
+    container.innerHTML = blocks.map(b => this.renderBlock(b)).join('');
+    if(this.active){
+      this.wrapNativeBlocks();
+      this.renderAddButtons();
+    }
+    // Re-init note accordions
+    container.querySelectorAll('.note-trigger').forEach(btn => {
+      btn.onclick = function(){ if(window.toggleNote) toggleNote(this); };
+    });
   },
 
   renderBlock(b){
     const id = b.id;
+    const wrap = (inner) => `<div class="rn-block" data-rn-id="${id}">${inner}</div>`;
     switch(b.type){
+      case 'text':
+        return wrap(`<div class="rn-block-text">
+          ${b.heading ? `<h3>${b.heading}</h3>` : ''}
+          <p>${(b.body||'').replace(/\n/g,'<br/>')}</p>
+        </div>`);
       case 'note':
-        return `<div class="note-item rn-block" data-rn-id="${id}">
-          <button class="note-trigger" onclick="toggleNote(this)">
+        return wrap(`<div class="note-item">
+          <button class="note-trigger" onclick="if(window.toggleNote)toggleNote(this)">
             <div><div class="note-cat">${b.cat||''}</div><div class="note-title">${b.title||''}</div></div>
             <div class="note-arrow">+</div>
           </button>
           <div class="note-body"><div class="note-body-inner"><p>${(b.body||'').replace(/\n/g,'</p><p>')}</p></div></div>
-        </div>`;
-      case 'text':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:28px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          ${b.heading?`<h3 style="font-family:'Libre Baskerville',serif;font-size:1.2rem;font-weight:400;color:#0f4454;margin-bottom:12px;">${b.heading}</h3>`:''}
-          <p style="font-size:0.95rem;color:#1c3a48;line-height:1.8;font-weight:400;">${(b.body||'').replace(/\n/g,'<br/>')}</p>
-        </div>`;
+        </div>`);
       case 'audio':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:10px;">${b.title}</div>`:''}
-          <audio controls style="width:100%;"><source src="${b.src||''}"/>Your browser does not support audio.</audio>
-        </div>`;
-      case 'youtube':
-        const vid = ADM.ytId(b.url||'');
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:12px;">${b.title}</div>`:''}
-          ${vid?`<div style="position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden;"><iframe style="position:absolute;inset:0;width:100%;height:100%;" src="https://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen></iframe></div>`:'<p style="color:#8b2020;font-size:13px;">Invalid YouTube URL</p>'}
-        </div>`;
-      case 'soundcloud':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:12px;">${b.title}</div>`:''}
-          <iframe width="100%" height="120" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(b.url||'')}&color=%230f4454&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_teaser=false" style="border-radius:8px;"></iframe>
-        </div>`;
-      case 'video':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          ${b.title?`<div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;margin-bottom:12px;">${b.title}</div>`:''}
-          <video controls style="width:100%;border-radius:10px;"><source src="${b.src||''}"/>Your browser does not support video.</video>
-        </div>`;
-      case 'image':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          <img src="${b.src||''}" alt="${b.alt||''}" style="width:100%;border-radius:10px;display:block;"/>
-          ${b.alt?`<p style="font-size:12px;color:#6a5040;margin-top:8px;font-style:italic;text-align:center;">${b.alt}</p>`:''}
-        </div>`;
-      case 'link':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:20px 0;border-bottom:1px solid rgba(202,181,167,0.25);display:flex;align-items:center;justify-content:space-between;">
-          <div>
-            <a href="${b.url||'#'}" target="_blank" style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;text-decoration:underline;text-underline-offset:3px;">${b.label||b.url||'Link'}</a>
-            ${b.desc?`<p style="font-size:13px;color:#2d4a5a;margin-top:4px;">${b.desc}</p>`:''}
-          </div>
-          <span style="color:#7a5e50;font-size:13px;margin-left:16px;">&#8599;</span>
-        </div>`;
-      case 'pdf':
-        return `<div class="rn-block" data-rn-id="${id}" style="display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          <div style="width:40px;height:40px;background:rgba(139,32,32,0.08);border:1px solid rgba(139,32,32,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📄</div>
-          <div style="flex:1;">
-            <div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:#0f4454;">${b.name||'Document'}</div>
-            ${b.desc?`<div style="font-size:12px;color:#2d4a5a;margin-top:2px;">${b.desc}</div>`:''}
-          </div>
-          <a href="${b.src||'#'}" target="_blank" style="font-size:12px;color:#0f4454;text-decoration:none;border:1px solid rgba(15,68,84,0.2);padding:6px 14px;border-radius:100px;transition:all 0.15s;" onmouseover="this.style.background='rgba(15,68,84,0.05)'" onmouseout="this.style.background=''">Download ↓</a>
-        </div>`;
+        return wrap(`<div class="rn-block-media">
+          ${b.title ? `<div class="rn-block-media-title">${b.title}</div>` : ''}
+          <audio controls style="width:100%"><source src="${b.src||''}"/>Your browser does not support audio.</audio>
+        </div>`);
       case 'hymn':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:24px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          <div style="font-size:10px;color:#6a5040;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">${b.season||'General'}</div>
-          <div style="font-family:'Libre Baskerville',serif;font-size:1.1rem;color:#0f4454;margin-bottom:4px;">${b.name||''}</div>
-          ${b.coptic?`<div style="font-size:12px;color:#2d4a5a;margin-bottom:12px;">${b.coptic}</div>`:''}
-          <audio controls style="width:100%;"><source src="${b.src||''}"/>Your browser does not support audio.</audio>
-          ${b.tag?`<span style="display:inline-block;margin-top:8px;padding:3px 10px;border:1px solid rgba(202,181,167,0.4);font-size:11px;color:#6a5040;border-radius:100px;">${b.tag}</span>`:''}
+        return wrap(`<div class="rn-block-hymn">
+          <div style="font-size:10px;color:#6a5040;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:5px;">${b.season||'General'}</div>
+          <div style="font-family:'Libre Baskerville',serif;font-size:1.05rem;color:#0f4454;margin-bottom:3px;">${b.name||''}</div>
+          ${b.coptic ? `<div style="font-size:12px;color:#2d4a5a;margin-bottom:10px;">${b.coptic}</div>` : ''}
+          <audio controls style="width:100%"><source src="${b.src||''}"/>Your browser does not support audio.</audio>
+          ${b.tag ? `<span style="display:inline-block;margin-top:8px;padding:3px 10px;border:1px solid rgba(202,181,167,0.4);font-size:11px;color:#6a5040;border-radius:100px;">${b.tag}</span>` : ''}
+        </div>`);
+      case 'youtube':{
+        const vid = this.ytId(b.url||'');
+        return wrap(`<div class="rn-block-media">
+          ${b.title ? `<div class="rn-block-media-title">${b.title}</div>` : ''}
+          ${vid ? `<div style="position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden;"><iframe style="position:absolute;inset:0;width:100%;height:100%;border:none;" src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`
+                : `<p style="color:#8b2020;font-size:13px;font-style:italic;">Invalid YouTube URL</p>`}
+        </div>`);
+      }
+      case 'soundcloud':{
+        // Support both regular URLs and embed URLs
+        const rawUrl = b.url || '';
+        const scUrl = rawUrl.includes('w.soundcloud.com/player') ? rawUrl : `https://w.soundcloud.com/player/?url=${encodeURIComponent(rawUrl)}&color=%230f4454&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_teaser=false`;
+        return wrap(`<div class="rn-block-media">
+          ${b.title ? `<div class="rn-block-media-title">${b.title}</div>` : ''}
+          <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" src="${scUrl}" style="border-radius:8px;"></iframe>
+        </div>`);
+      }
+      case 'video':
+        return wrap(`<div class="rn-block-media">
+          ${b.title ? `<div class="rn-block-media-title">${b.title}</div>` : ''}
+          <video controls style="width:100%;border-radius:10px;"><source src="${b.src||''}"/>Your browser does not support video.</video>
+        </div>`);
+      case 'image-text':{
+        const layout = b.layout || 'img-left';
+        const imgSize = b.imgsize || '200px';
+        const imgEl = `<div><img src="${b.imgsrc||''}" alt="${b.imgcaption||''}" style="width:${imgSize};height:auto;"/>
+          ${b.imgcaption ? `<div class="img-caption">${b.imgcaption}</div>` : ''}</div>`;
+        const textEl = `<div class="img-text">
+          ${b.texttitle ? `<h4>${b.texttitle}</h4>` : ''}
+          <p>${(b.textbody||'').replace(/\n/g,'<br/>')}</p>
         </div>`;
-      case 'divider':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:16px 0;"><hr style="border:none;border-top:1px solid rgba(202,181,167,0.4);"/></div>`;
+        const grid = layout === 'img-right'
+          ? `${textEl}${imgEl}`
+          : layout === 'img-top'
+          ? `<div style="grid-column:1/-1">${imgEl}</div>${textEl}`
+          : `${imgEl}${textEl}`;
+        return wrap(`<div class="rn-block-image-text ${layout}">${grid}</div>`);
+      }
+      case 'image':
+        return wrap(`<div class="rn-block-media">
+          <img src="${b.src||''}" alt="${b.alt||''}" style="width:100%;border-radius:10px;display:block;"/>
+          ${b.alt ? `<p style="font-size:11px;color:#6a5040;font-style:italic;text-align:center;margin-top:6px;">${b.alt}</p>` : ''}
+        </div>`);
+      case 'trilingual':
+        return wrap(`<div class="rn-block-trilingual">
+          <div class="tri-col">
+            <div class="tri-label">${b.label1||'English'}</div>
+            <div class="tri-text">${(b.text1||'').replace(/\n/g,'<br/>')}</div>
+          </div>
+          <div class="tri-div"></div>
+          <div class="tri-col">
+            <div class="tri-label">${b.label2||'Coptic'}</div>
+            <div class="tri-text coptic">${(b.text2||'').replace(/\n/g,'<br/>')}</div>
+          </div>
+          <div class="tri-div"></div>
+          <div class="tri-col">
+            <div class="tri-label">${b.label3||'Arabic'}</div>
+            <div class="tri-text arabic">${(b.text3||'').replace(/\n/g,'<br/>')}</div>
+          </div>
+        </div>`);
       case 'quote':
-        return `<div class="rn-block" data-rn-id="${id}" style="padding:28px 0;border-bottom:1px solid rgba(202,181,167,0.25);">
-          <blockquote style="font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:#1c3a48;border-left:2px solid #8a6a55;padding-left:20px;line-height:1.65;">
+        return wrap(`<div class="rn-block-quote">
+          <blockquote style="font-family:'Libre Baskerville',serif;font-size:1.05rem;font-style:italic;color:#1c3a48;border-left:2px solid #8a6a55;padding-left:20px;line-height:1.65;">
             "${b.text||''}"
-            ${b.ref?`<span style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-style:normal;color:#6a5040;margin-top:8px;letter-spacing:0.04em;">${b.ref}</span>`:''}
+            ${b.ref ? `<span style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-style:normal;color:#6a5040;margin-top:8px;letter-spacing:0.04em;">${b.ref}</span>` : ''}
           </blockquote>
-        </div>`;
+        </div>`);
+      case 'link':
+        return wrap(`<div class="rn-block-link">
+          <div>
+            <a href="${b.url||'#'}" target="_blank">${b.label||b.url||'Link'}</a>
+            ${b.desc ? `<div class="link-desc">${b.desc}</div>` : ''}
+          </div>
+          <span style="color:#7a5e50;font-size:13px;margin-left:12px;">&#8599;</span>
+        </div>`);
+      case 'pdf':
+        return wrap(`<div class="rn-block-pdf">
+          <div class="pdf-icon">📄</div>
+          <div style="flex:1">
+            <div class="pdf-name">${b.name||'Document'}</div>
+            ${b.desc ? `<div class="pdf-desc">${b.desc}</div>` : ''}
+          </div>
+          <a class="pdf-dl" href="${b.src||'#'}" target="_blank">Download ↓</a>
+        </div>`);
+      case 'divider':
+        return wrap(`<div class="rn-block-divider"><hr/></div>`);
       default:
         return '';
     }
@@ -721,226 +576,261 @@ const ADM = {
     return null;
   },
 
-  // BLOCK PICKER
-  openPicker(insertIdx){
-    this.insertAfter = insertIdx;
-    const o = document.getElementById('am-picker-overlay');
-    o.classList.add('open');
+  // ── PICKER ──
+  openPicker(idx){
+    this.insertIdx = idx;
+    document.getElementById('am-picker-overlay').classList.add('open');
   },
-  closePicker(){
-    document.getElementById('am-picker-overlay').classList.remove('open');
-  },
-  pickBlock(type){
-    this.closePicker();
-    this.editingId = null;
-    this.openEditorFor(type, null);
-  },
+  closePicker(){ document.getElementById('am-picker-overlay').classList.remove('open'); },
+  pickBlock(type){ this.closePicker(); this.editingId = null; this.openEditorFor(type, null); },
 
-  // EDITOR MODAL
-  BLOCK_DEFS: {
-    note:       { label:'Note / Lesson', icon:'📝', fields:[
-                  {id:'title',label:'Title',type:'text',ph:'e.g. Chastity and the Saints'},
-                  {id:'cat',label:'Category',type:'select',opts:['Sunday School','Theology','Patristics','Hagiography','Liturgy','Diaconate Studies','Other']},
-                  {id:'body',label:'Content (new line = new paragraph)',type:'textarea',ph:'Write your lesson here...'}]},
-    text:       { label:'Text Block', icon:'✏️', fields:[
-                  {id:'heading',label:'Heading (optional)',type:'text',ph:'Section heading'},
-                  {id:'body',label:'Body Text',type:'textarea',ph:'Write content here...'}]},
-    audio:      { label:'Audio', icon:'🎵', fields:[
-                  {id:'title',label:'Title',type:'text',ph:'Hymn or recording name'},
-                  {id:'src',label:'File path or URL',type:'text',ph:'hymns/file.mp3 or https://...',hint:'Upload .mp3 to /hymns/ folder on GitHub, then enter the path.'}]},
-    youtube:    { label:'YouTube', icon:'▶️', fields:[
-                  {id:'title',label:'Title (optional)',type:'text',ph:'Video title'},
-                  {id:'url',label:'YouTube URL or video ID',type:'text',ph:'https://youtube.com/watch?v=... or video ID',hint:'Paste the full YouTube URL or just the 11-character video ID.'}]},
-    soundcloud: { label:'SoundCloud', icon:'☁️', fields:[
-                  {id:'title',label:'Title (optional)',type:'text',ph:'Track name'},
-                  {id:'url',label:'SoundCloud track URL',type:'text',ph:'https://soundcloud.com/artist/track'}]},
-    video:      { label:'Video', icon:'🎬', fields:[
-                  {id:'title',label:'Title (optional)',type:'text',ph:'Video title'},
-                  {id:'src',label:'File path or URL',type:'text',ph:'videos/file.mp4 or https://...',hint:'Upload .mp4 to /videos/ on GitHub.'}]},
-    image:      { label:'Image', icon:'🖼️', fields:[
-                  {id:'alt',label:'Caption / alt text',type:'text',ph:'Describe the image'},
-                  {id:'src',label:'Image URL or path',type:'text',ph:'images/photo.jpg or https://...',hint:'Upload to /images/ on GitHub, or use any direct image URL.'}]},
-    link:       { label:'Link', icon:'🔗', fields:[
-                  {id:'label',label:'Link text',type:'text',ph:'e.g. Visit Tasbeha.org'},
-                  {id:'url',label:'URL',type:'text',ph:'https://...'},
-                  {id:'desc',label:'Description (optional)',type:'text',ph:'What is this link?'}]},
-    pdf:        { label:'PDF', icon:'📄', fields:[
-                  {id:'name',label:'Document name',type:'text',ph:'e.g. The Agpeya — Book of Hours'},
-                  {id:'desc',label:'Description',type:'text',ph:'What is this document?'},
-                  {id:'src',label:'File path or URL',type:'text',ph:'pdfs/file.pdf or https://...',hint:'Upload PDFs to /pdfs/ on GitHub.'}]},
-    hymn:       { label:'Hymn', icon:'🎶', fields:[
-                  {id:'name',label:'Hymn name',type:'text',ph:'e.g. Pi-Epnevma Ethowab'},
-                  {id:'coptic',label:'Coptic / Arabic name (optional)',type:'text',ph:'e.g. Ⲡⲓⲡⲛⲉⲩⲙⲁ'},
-                  {id:'season',label:'Season',type:'select',opts:['General','Kiahk','Nativity','Epiphany','Great Lent','Holy Week','Resurrection','Pentecost','Apostles Fast','Saint Mary','Other']},
-                  {id:'src',label:'Audio file path or URL',type:'text',ph:'hymns/file.mp3',hint:'Upload to /hymns/ on GitHub.'},
-                  {id:'tag',label:'Tag (optional)',type:'text',ph:'e.g. Coptic, Greek, Arabic'}]},
-    quote:      { label:'Scripture / Quote', icon:'💬', fields:[
-                  {id:'text',label:'Quote text',type:'textarea',ph:'Enter the scripture or quote...'},
-                  {id:'ref',label:'Reference',type:'text',ph:'e.g. Psalm 42:2'}]},
-    divider:    { label:'Divider', icon:'〰️', fields:[]},
+  // ── BLOCK DEFS ──
+  DEFS: {
+    note:        { label:'Note / Lesson',    icon:'📝', fields:[
+      {id:'title', l:'Title',    t:'text', ph:'e.g. Chastity and the Saints'},
+      {id:'cat',   l:'Category', t:'select', opts:['Sunday School','Theology','Patristics','Hagiography','Liturgy','Diaconate Studies','Other']},
+      {id:'body',  l:'Content (new line = new paragraph)', t:'textarea', ph:'Write lesson here...'},
+    ]},
+    text:        { label:'Text Block',       icon:'✏️', fields:[
+      {id:'heading', l:'Heading (optional)', t:'text', ph:'Section heading'},
+      {id:'body',    l:'Body Text',          t:'textarea', ph:'Write content here...'},
+    ]},
+    quote:       { label:'Scripture / Quote', icon:'💬', fields:[
+      {id:'text', l:'Quote text', t:'textarea', ph:'Enter the quote...'},
+      {id:'ref',  l:'Reference',  t:'text', ph:'e.g. Psalm 42:2'},
+    ]},
+    audio:       { label:'Audio',            icon:'🎵', fields:[
+      {id:'title', l:'Title',             t:'text', ph:'Recording name'},
+      {id:'src',   l:'File path or URL',  t:'text', ph:'hymns/file.mp3 or https://...', hint:'Upload .mp3 to /hymns/ on GitHub.'},
+    ]},
+    hymn:        { label:'Hymn',             icon:'🎶', fields:[
+      {id:'name',   l:'Hymn Name',      t:'text', ph:'e.g. Pi-Epnevma Ethowab'},
+      {id:'coptic', l:'Coptic Name',    t:'text', ph:'e.g. Ⲡⲓⲡⲛⲉⲩⲙⲁ'},
+      {id:'season', l:'Season',         t:'select', opts:['General','Kiahk','Nativity','Epiphany','Great Lent','Holy Week','Resurrection','Pentecost','Apostles Fast','Saint Mary','Other']},
+      {id:'src',    l:'Audio File Path or URL', t:'text', ph:'hymns/file.mp3', hint:'Upload to /hymns/ on GitHub.'},
+      {id:'tag',    l:'Tag (optional)', t:'text', ph:'Coptic, Greek, Arabic'},
+    ]},
+    youtube:     { label:'YouTube',          icon:'▶️', fields:[
+      {id:'title', l:'Title (optional)',       t:'text', ph:'Video title'},
+      {id:'url',   l:'YouTube URL or video ID',t:'text', ph:'https://youtube.com/watch?v=... or ID', hint:'Paste the full URL or just the 11-char video ID.'},
+    ]},
+    soundcloud:  { label:'SoundCloud',       icon:'☁️', fields:[
+      {id:'title', l:'Title (optional)',       t:'text', ph:'Track name'},
+      {id:'url',   l:'SoundCloud URL or Embed URL', t:'text', ph:'https://soundcloud.com/... or embed src URL', hint:'Paste the track URL OR the full embed src from SoundCloud\'s share → embed → copy src attribute.'},
+    ]},
+    video:       { label:'Video',            icon:'🎬', fields:[
+      {id:'title', l:'Title (optional)',   t:'text', ph:'Video title'},
+      {id:'src',   l:'File path or URL',  t:'text', ph:'videos/file.mp4 or https://...', hint:'Upload .mp4 to /videos/ on GitHub.'},
+    ]},
+    'image-text':{ label:'Image + Text',     icon:'🖼️✏️', fields:[
+      {id:'imgsrc',     l:'Image URL or path',      t:'text', ph:'images/photo.jpg or https://...', hint:'Upload to /images/ on GitHub or use any direct image URL.'},
+      {id:'imgcaption', l:'Image caption (optional)', t:'text', ph:'e.g. St. Athanasius the Apostolic'},
+      {id:'imgsize',    l:'Image width',             t:'select', opts:['160px','200px','260px','320px','50%','100%']},
+      {id:'layout',     l:'Layout',                  t:'select', opts:['img-left','img-right','img-top']},
+      {id:'texttitle',  l:'Text heading (optional)', t:'text', ph:'e.g. St. Athanasius of Alexandria'},
+      {id:'textbody',   l:'Body text',               t:'textarea', ph:'Write about the image here...'},
+    ]},
+    image:       { label:'Image',            icon:'🖼️', fields:[
+      {id:'src', l:'Image URL or path', t:'text', ph:'images/photo.jpg or https://...', hint:'Upload to /images/ on GitHub.'},
+      {id:'alt', l:'Caption / alt text', t:'text', ph:'Describe the image'},
+    ]},
+    trilingual:  { label:'3-Column Text',    icon:'🔤', fields:[
+      {id:'label1', l:'Left column label',   t:'text', ph:'English'},
+      {id:'text1',  l:'Left text',           t:'textarea', ph:'English text...'},
+      {id:'label2', l:'Middle column label', t:'text', ph:'Coptic'},
+      {id:'text2',  l:'Middle text',         t:'textarea', ph:'Ⲕⲟⲡⲧⲓⲕ...'},
+      {id:'label3', l:'Right column label',  t:'text', ph:'Arabic'},
+      {id:'text3',  l:'Right text',          t:'textarea', ph:'النص العربي...'},
+    ]},
+    pdf:         { label:'PDF',              icon:'📄', fields:[
+      {id:'name', l:'Document name', t:'text', ph:'e.g. The Agpeya — Book of Hours'},
+      {id:'desc', l:'Description',   t:'text', ph:'What is this document?'},
+      {id:'src',  l:'File path or URL', t:'text', ph:'pdfs/file.pdf or https://...', hint:'Upload PDFs to /pdfs/ on GitHub.'},
+    ]},
+    link:        { label:'Link',             icon:'🔗', fields:[
+      {id:'label', l:'Link text',             t:'text', ph:'e.g. Visit Tasbeha.org'},
+      {id:'url',   l:'URL',                   t:'text', ph:'https://...'},
+      {id:'desc',  l:'Description (optional)',t:'text', ph:'What is this link?'},
+    ]},
+    divider:     { label:'Divider',          icon:'〰️', fields:[] },
   },
 
   openEditorFor(type, data){
-    const def = this.BLOCK_DEFS[type];
-    if(!def) return;
+    const def = this.DEFS[type]; if(!def) return;
     const overlay = document.getElementById('am-editor-overlay');
-    const editor = document.getElementById('am-editor');
-    editor.innerHTML = `
+    const ed = document.getElementById('am-editor');
+    ed.innerHTML = `
       <div class="am-editor-title">
         <span>${def.icon} ${def.label}</span>
         <button class="am-close" onclick="ADM.closeEditor()">✕</button>
       </div>
-      ${def.fields.map(f=>`
-        <div class="am-field">
-          <label>${f.label}</label>
-          ${f.type==='select'
-            ? `<select id="aef-${f.id}">${(f.opts||[]).map(o=>`<option${data&&data[f.id]===o?' selected':''}>${o}</option>`).join('')}</select>`
-            : f.type==='textarea'
-              ? `<textarea id="aef-${f.id}" placeholder="${f.ph||''}">${data?data[f.id]||'':''}</textarea>`
-              : `<input type="text" id="aef-${f.id}" placeholder="${f.ph||''}" value="${data?data[f.id]||'':''}" />`
-          }
-          ${f.hint?`<div class="am-field-hint">💡 ${f.hint}</div>`:''}
-        </div>`).join('')}
+      ${def.fields.map(f => {
+        const val = (data && data[f.id] != null) ? data[f.id] : '';
+        const valEsc = String(val).replace(/"/g, '&quot;');
+        let inp = '';
+        if(f.t === 'select'){
+          const opts = (f.opts||[]).map(o => `<option${o===val?' selected':''}>${o}</option>`).join('');
+          inp = `<select id="aef-${f.id}">${opts}</select>`;
+        } else if(f.t === 'textarea'){
+          inp = `<textarea id="aef-${f.id}" placeholder="${f.ph||''}">${val}</textarea>`;
+        } else {
+          inp = `<input type="text" id="aef-${f.id}" value="${valEsc}" placeholder="${f.ph||''}"/>`;
+        }
+        return `<div class="am-field">
+          <label>${f.l}</label>${inp}
+          ${f.hint ? `<div class="am-field-hint">💡 ${f.hint}</div>` : ''}
+        </div>`;
+      }).join('')}
       <div id="am-live-preview"></div>
       <div class="am-footer">
         <button class="am-btn am-btn-cancel" onclick="ADM.closeEditor()">Cancel</button>
         <button class="am-btn am-btn-save" onclick="ADM.saveBlock('${type}')">✓ Save Block</button>
       </div>`;
     overlay.classList.add('open');
-    // Live preview on src/url change
-    def.fields.forEach(f=>{
-      const el = document.getElementById('aef-'+f.id);
-      if(el && (f.id==='src'||f.id==='url')) el.addEventListener('input', ()=>ADM.updatePreview(type));
+    // Live preview on media fields
+    def.fields.forEach(f => {
+      if(f.id === 'src' || f.id === 'url' || f.id === 'imgsrc'){
+        const el = document.getElementById('aef-' + f.id);
+        if(el) el.addEventListener('input', () => this.updatePreview(type));
+      }
     });
-    if(data) setTimeout(()=>this.updatePreview(type), 50);
+    if(data) setTimeout(() => this.updatePreview(type), 60);
   },
 
   updatePreview(type){
     const pre = document.getElementById('am-live-preview');
     if(!pre) return;
-    const src = document.getElementById('aef-src')?.value||'';
-    const url = document.getElementById('aef-url')?.value||'';
-    if(type==='audio'||type==='hymn'){
-      if(src) pre.innerHTML=`<div class="am-preview"><audio controls><source src="${src}"/>Browser does not support audio.</audio></div>`;
-    } else if(type==='youtube'){
-      const vid=ADM.ytId(url);
-      if(vid) pre.innerHTML=`<div class="am-preview"><iframe height="180" src="https://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen></iframe></div>`;
-    } else if(type==='soundcloud'){
-      if(url) pre.innerHTML=`<div class="am-preview"><iframe height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%230f4454&auto_play=false"></iframe></div>`;
-    } else if(type==='image'){
-      if(src) pre.innerHTML=`<div class="am-preview"><img src="${src}" alt="preview"/></div>`;
-    } else if(type==='video'){
-      if(src) pre.innerHTML=`<div class="am-preview"><video controls><source src="${src}"/></video></div>`;
+    const src = document.getElementById('aef-src')?.value || '';
+    const url = document.getElementById('aef-url')?.value || '';
+    const imgsrc = document.getElementById('aef-imgsrc')?.value || '';
+    if((type==='audio'||type==='hymn') && src){
+      pre.innerHTML = `<div class="am-preview"><audio controls><source src="${src}"/>Browser does not support audio.</audio></div>`;
+    } else if(type==='youtube' && url){
+      const vid = this.ytId(url);
+      if(vid) pre.innerHTML = `<div class="am-preview"><iframe height="180" src="https://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen></iframe></div>`;
+    } else if(type==='soundcloud' && url){
+      const scUrl = url.includes('w.soundcloud.com/player') ? url : `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%230f4454&auto_play=false`;
+      pre.innerHTML = `<div class="am-preview"><iframe height="100" scrolling="no" frameborder="no" src="${scUrl}"></iframe></div>`;
+    } else if(type==='image' && src){
+      pre.innerHTML = `<div class="am-preview"><img src="${src}" alt="preview"/></div>`;
+    } else if(type==='image-text' && imgsrc){
+      pre.innerHTML = `<div class="am-preview"><img src="${imgsrc}" alt="preview"/></div>`;
+    } else if(type==='video' && src){
+      pre.innerHTML = `<div class="am-preview"><video controls><source src="${src}"/></video></div>`;
     }
   },
 
-  closeEditor(){
-    document.getElementById('am-editor-overlay').classList.remove('open');
-    this.editingId = null;
-  },
+  closeEditor(){ document.getElementById('am-editor-overlay').classList.remove('open'); this.editingId = null; },
 
   saveBlock(type){
-    const def = this.BLOCK_DEFS[type];
-    const data = { type, id: this.editingId||this.uid() };
-    def.fields.forEach(f=>{ const el=document.getElementById('aef-'+f.id); if(el) data[f.id]=el.value; });
+    const def = this.DEFS[type]; if(!def) return;
+    const data = { type, id: this.editingId || this.uid() };
+    def.fields.forEach(f => { const el = document.getElementById('aef-' + f.id); if(el) data[f.id] = el.value; });
     const blocks = this.loadBlocks();
     if(this.editingId){
-      const idx = blocks.findIndex(b=>b.id===this.editingId);
-      if(idx>=0) blocks[idx]=data; else blocks.push(data);
+      const idx = blocks.findIndex(b => b.id === this.editingId);
+      if(idx >= 0) blocks[idx] = data; else blocks.push(data);
     } else {
-      const insertAt = typeof this.insertAfter==='number' ? this.insertAfter : blocks.length;
-      blocks.splice(insertAt, 0, data);
+      const at = typeof this.insertIdx === 'number' ? this.insertIdx : blocks.length;
+      blocks.splice(at, 0, data);
     }
     this.saveBlocks(blocks);
     this.closeEditor();
     this.loadExtraBlocks();
-    this.flash('Block saved');
+    this.flash('✓ Block saved');
   },
-
-  openEdit(el){
-    // Native block edit (notes)
-    const type = el.dataset.edType||'note';
-    if(type==='note'){
-      const cat = el.querySelector('.note-cat')?.textContent||'';
-      const title = el.querySelector('.note-title')?.textContent||'';
-      const body = el.querySelector('.note-body-inner')?.innerText||'';
-      this.editingId = null; // mark as native - no ID
-      this._nativeEl = el;
-      this._nativeType = 'note';
-      this.openEditorFor('note',{cat,title,body});
-      // Override save to edit native
-      setTimeout(()=>{
-        const saveBtn = document.querySelector('#am-editor .am-btn-save');
-        if(saveBtn) saveBtn.onclick = ()=>this.saveNative('note');
-      },50);
-    }
-  },
-
-  saveNative(type){
-    if(!this._nativeEl) return;
-    if(type==='note'){
-      const cat=document.getElementById('aef-cat')?.value||'';
-      const title=document.getElementById('aef-title')?.value||'';
-      const body=document.getElementById('aef-body')?.value||'';
-      const el=this._nativeEl;
-      if(el.querySelector('.note-cat')) el.querySelector('.note-cat').textContent=cat;
-      if(el.querySelector('.note-title')) el.querySelector('.note-title').textContent=title;
-      if(el.querySelector('.note-body-inner')) el.querySelector('.note-body-inner').innerHTML='<p>'+body.replace(/\n/g,'</p><p>')+'</p>';
-    }
-    this.closeEditor();
-    this.flash('Saved');
-  },
-
-  deleteNative(el){ if(confirm('Delete this block?')){ el.remove(); this.flash('Deleted'); } },
 
   openEditById(id){
-    const blocks = this.loadBlocks();
-    const b = blocks.find(x=>String(x.id)===String(id));
+    const b = this.loadBlocks().find(x => String(x.id) === String(id));
     if(!b) return;
     this.editingId = b.id;
     this.openEditorFor(b.type, b);
   },
 
+  // FIX #3: delete properly clears from storage AND DOM
   deleteBlock(id){
     if(!confirm('Delete this block?')) return;
-    let blocks = this.loadBlocks();
-    blocks = blocks.filter(b=>String(b.id)!==String(id));
+    let blocks = this.loadBlocks().filter(b => String(b.id) !== String(id));
     this.saveBlocks(blocks);
+    // Remove from DOM directly
+    const el = document.querySelector(`[data-rn-id="${id}"]`);
+    if(el){
+      // Also remove adjacent add-between buttons
+      const prev = el.previousElementSibling;
+      const next = el.nextElementSibling;
+      if(next && next.classList.contains('add-between')) next.remove();
+      el.remove();
+    }
     this.loadExtraBlocks();
     this.flash('Deleted');
   },
 
   moveBlock(id, dir){
     const blocks = this.loadBlocks();
-    const idx = blocks.findIndex(b=>String(b.id)===String(id));
-    const swap = idx+dir;
-    if(swap<0||swap>=blocks.length) return;
-    [blocks[idx],blocks[swap]]=[blocks[swap],blocks[idx]];
+    const idx = blocks.findIndex(b => String(b.id) === String(id));
+    const swap = idx + dir;
+    if(swap < 0 || swap >= blocks.length) return;
+    [blocks[idx], blocks[swap]] = [blocks[swap], blocks[idx]];
     this.saveBlocks(blocks);
     this.loadExtraBlocks();
   },
 
-  flash(msg){ const f=document.getElementById('am-flash'); f.textContent=msg; f.classList.add('show'); clearTimeout(f._t); f._t=setTimeout(()=>f.classList.remove('show'),2200); },
+  editNativeNote(el){
+    const cat   = el.querySelector('.note-cat')?.textContent || '';
+    const title = el.querySelector('.note-title')?.textContent || '';
+    const body  = el.querySelector('.note-body-inner')?.innerText || '';
+    this._nativeEl = el;
+    this.editingId = null;
+    this.openEditorFor('note', {cat, title, body});
+    setTimeout(() => {
+      document.querySelector('#am-editor .am-btn-save').onclick = () => this.saveNativeNote();
+    }, 40);
+  },
+  saveNativeNote(){
+    if(!this._nativeEl) return;
+    const cat   = document.getElementById('aef-cat')?.value   || '';
+    const title = document.getElementById('aef-title')?.value || '';
+    const body  = document.getElementById('aef-body')?.value  || '';
+    const el = this._nativeEl;
+    if(el.querySelector('.note-cat'))      el.querySelector('.note-cat').textContent = cat;
+    if(el.querySelector('.note-title'))    el.querySelector('.note-title').textContent = title;
+    if(el.querySelector('.note-body-inner')) el.querySelector('.note-body-inner').innerHTML = '<p>' + body.replace(/\n/g,'</p><p>') + '</p>';
+    this.closeEditor();
+    this.flash('✓ Note updated');
+  },
+  deleteNative(el){ if(confirm('Delete this block?')){ el.remove(); this.flash('Deleted'); } },
+
+  flash(msg){ const f = document.getElementById('am-flash'); f.innerHTML = msg; f.classList.add('show'); clearTimeout(f._t); f._t = setTimeout(() => f.classList.remove('show'), 2400); },
 
   login(){
-    const u=document.getElementById('am-lu')?.value.trim();
-    const p=document.getElementById('am-lp')?.value;
-    if(u==='admin'&&p===this.getPass()){
+    const u = document.getElementById('am-lu')?.value.trim();
+    const p = document.getElementById('am-lp')?.value;
+    if(u === 'admin' && p === this.getPass()){
       this.setAuth(true);
       document.getElementById('am-login-overlay').classList.remove('open');
       this.activate();
-      this.flash('Welcome back');
+      this.flash('Welcome back ✓');
     } else {
-      const err=document.getElementById('am-lerr'); if(err){ err.style.display='block'; }
+      const err = document.getElementById('am-lerr'); if(err) err.style.display = 'block';
     }
   },
-  logout(){ this.setAuth(false); this.deactivate(); this.flash('Signed out'); },
+  logout(){
+    this.setAuth(false);
+    this.deactivate();
+    document.getElementById('adminBar').classList.remove('on');
+    this.flash('Signed out');
+  },
 };
 
-document.addEventListener('DOMContentLoaded', ()=>{ ADM.init(); });
-document.addEventListener('keydown', e=>{
-  if(e.key==='Escape'){
-    document.querySelectorAll('.am-overlay').forEach(o=>o.classList.remove('open'));
+document.addEventListener('DOMContentLoaded', () => {
+  ADM.init();
+  // Show admin bar only when authed
+  if(ADM.isAuth()) document.getElementById('adminBar').classList.add('on');
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.am-overlay').forEach(o => o.classList.remove('open'));
+    document.getElementById('am-inline-editor').classList.remove('open');
   }
 });
 </script>
