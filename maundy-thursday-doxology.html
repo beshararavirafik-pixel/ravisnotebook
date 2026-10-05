@@ -4,234 +4,86 @@
 <meta charset="UTF-8"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ravi's Notebook</title>
+<title>Maundy Thursday Doxology — Ravi’s Notebook</title>
 <style>
-  :root { --teal: #0f4454; --sand: #cab5a7; --cream: #f5efe8; --light: #e8ddd5; }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; overflow-x: hidden; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--teal); -webkit-font-smoothing: antialiased; padding-bottom: 60px; }
 
-  /* ── NAV ── */
-  #mainNav {
-    position: fixed;
-    top: 1.2rem; left: 50%;
-    transform: translateX(-50%);
-    z-index: 300;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: calc(100% - 48px);
-    max-width: 500px;
-    padding: 0.8rem 1.4rem;
-    background: rgba(202,181,167,0.18);
-    backdrop-filter: blur(32px) saturate(2.2) brightness(1.05);
-    -webkit-backdrop-filter: blur(32px) saturate(2.2) brightness(1.05);
-    border: 1px solid rgba(202,181,167,0.35);
-    border-radius: 100px;
-    box-shadow: 0 8px 32px rgba(15,68,84,0.1), inset 0 1px 0 rgba(255,255,255,0.45);
-    transition: background 0.3s ease, border-color 0.3s ease;
+  :root{--teal:#0f4454;--sand:#7a5e50;--cream:#f5efe8;--light:#e8ddd5;--mid:#c8d8e0;--text:#1c2b33;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:#1c2b33;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:90px;padding-bottom:60px;}
+
+  /* NAV */
+  #mainNav{position:fixed;top:0.9rem;left:50%;transform:translateX(-50%);z-index:300;display:flex;align-items:center;justify-content:space-between;width:calc(100% - 48px);max-width:500px;padding:0.75rem 1.4rem;background:rgba(245,239,232,0.45);backdrop-filter:blur(32px) saturate(2) brightness(1.04);-webkit-backdrop-filter:blur(32px) saturate(2) brightness(1.04);border:1px solid rgba(202,181,167,0.4);border-radius:100px;box-shadow:0 6px 28px rgba(15,68,84,0.08),inset 0 1px 0 rgba(255,255,255,0.5);}
+  .nav-cross{font-family:serif;font-size:1rem;color:#8A5A44;text-decoration:none;flex-shrink:0;}
+  .nav-center{text-align:center;flex:1;}
+  .nav-brand{font-family:'Cinzel',serif;font-size:0.78rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);text-decoration:none;display:block;}
+  .nav-sub{font-size:0.46rem;letter-spacing:0.1em;color:#2d4a5a;text-transform:uppercase;margin-top:2px;font-family:'DM Sans',sans-serif;font-weight:300;}
+  .nav-menu-btn{background:none;border:none;color:#2d4a5a;cursor:pointer;display:flex;align-items:center;padding:4px;transition:color 0.2s;flex-shrink:0;}
+  .nav-menu-btn:hover{color:var(--teal);}
+
+  /* DRAWER */
+  .drawer-overlay{position:fixed;inset:0;background:rgba(15,68,84,0.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:301;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+  .drawer-overlay.open{opacity:1;pointer-events:all;}
+  .drawer{position:fixed;top:0;right:0;width:300px;height:100%;background:linear-gradient(170deg,#f5efe8 0%,#ddd0c8 40%,#0f4454 100%);backdrop-filter:blur(32px) saturate(2);-webkit-backdrop-filter:blur(32px) saturate(2);border-left:1px solid rgba(202,181,167,0.25);z-index:302;padding:52px 36px;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 48px rgba(15,68,84,0.12);}
+  .drawer.open{transform:translateX(0);}
+  .drawer-close{position:absolute;top:20px;right:20px;background:rgba(15,68,84,0.1);border:1px solid rgba(15,68,84,0.15);color:var(--teal);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .drawer-close:hover{background:rgba(15,68,84,0.15);}
+  .drawer-label{font-family:'Libre Baskerville',serif;font-size:0.7rem;font-style:italic;color:#2d4a5a;letter-spacing:0.06em;margin-top:36px;margin-bottom:14px;}
+  .drawer-link{display:block;padding:14px 0;border-bottom:1px solid rgba(15,68,84,0.08);font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:400;color:var(--teal);text-decoration:none;transition:color 0.2s,padding-left 0.2s;}
+  .drawer-link:hover{color:#8A5A44;padding-left:6px;}
+
+  /* PAGE HERO WRAP - gradient that flows into page */
+  .page-hero-wrap{
+    background:linear-gradient(160deg,#f5efe8 0%,#e4d5cb 30%,#c8d8e0 65%,#a8c4d0 100%);
+    padding-bottom:0;
   }
-  .nav-cross { font-family: serif; font-size: 1.1rem; color: #8A5A44; text-decoration: none; flex-shrink: 0; }
-  .nav-center { text-align: center; flex: 1; }
-  .nav-brand { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: block; }
-  .nav-sub { font-size: 0.48rem; letter-spacing: 0.1em; color:#2d4a5a; text-transform: uppercase; margin-top: 2px; font-family: 'DM Sans', sans-serif; font-weight: 300; }
-  .nav-menu-btn { background: none; border: none; color:#1c3a48; cursor: pointer; display: flex; align-items: center; padding: 4px; transition: color 0.2s; flex-shrink: 0; }
-  .nav-menu-btn:hover { color: var(--teal); }
+  .page-hero{padding:56px 48px 64px;max-width:900px;margin:0 auto;border-bottom:1px solid rgba(202,181,167,0.3);}
+  .page-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+  .page-eyebrow-line{width:28px;height:1px;background:var(--sand);}
+  .page-eyebrow-text{font-family:'Libre Baskerville',serif;font-size:0.85rem;font-style:italic;color:#6a5040;font-weight:400;}
+  .page-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:400;color:var(--teal);letter-spacing:-0.02em;line-height:1.1;margin-bottom:20px;}
+  .page-desc{font-size:0.95rem;color:#1c3a48;font-weight:400;line-height:1.75;max-width:520px;margin-bottom:28px;}
+  .page-verse{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-style:italic;font-weight:400;color:#1c3a48;border-left:2px solid #8a6a55;padding-left:20px;line-height:1.65;max-width:520px;}
+  .page-verse span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-style:normal;color:#6a5040;margin-top:8px;letter-spacing:0.04em;}
 
-  /* ── DRAWER ── */
-  .drawer-overlay { position: fixed; inset: 0; background: rgba(15,68,84,0.2); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 301; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-  .drawer-overlay.open { opacity: 1; pointer-events: all; }
-  .drawer { position: fixed; top: 0; right: 0; width: 300px; height: 100%; background: linear-gradient(160deg, rgba(202,181,167,0.95) 0%, rgba(15,68,84,0.92) 100%); backdrop-filter: blur(32px) saturate(2); -webkit-backdrop-filter: blur(32px) saturate(2); border-left: 1px solid rgba(202,181,167,0.3); z-index: 302; padding: 48px 36px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: -8px 0 48px rgba(15,68,84,0.15); }
-  .drawer.open { transform: translateX(0); }
-  .drawer-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-  .drawer-close:hover { background: rgba(255,255,255,0.25); }
-  .drawer-label { font-family: 'Libre Baskerville', serif; font-size: 0.72rem; font-style: italic; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; margin-top: 36px; margin-bottom: 16px; }
-  .drawer-link { display: block; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-family: 'Libre Baskerville', serif; font-size: 1.3rem; font-weight: 400; color: rgba(255,255,255,0.9); text-decoration: none; transition: color 0.2s, padding-left 0.2s; }
-  .drawer-link:hover { color: var(--sand); padding-left: 6px; }
-  .drawer-link-about { margin-top: 24px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); border-bottom: none; letter-spacing: 0.03em; }
+  /* CONTENT SECTIONS - flowing gradient background */
+  .section{padding:72px 48px;max-width:900px;margin:0 auto;}
+  .section-bg{background:linear-gradient(180deg,#c8d8e0 0%,#dde8ee 30%,#eaf0f4 60%,var(--cream) 100%);}
+  .section-title{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:400;color:var(--teal);margin-bottom:32px;}
+  .coming-soon{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-style:italic;color:#2d4a5a;font-weight:400;}
 
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 2rem 2.5rem 5rem;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse 70% 50% at 75% 15%, rgba(202,181,167,0.35) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 15% 85%, rgba(15,68,84,0.18) 0%, transparent 55%),
-      linear-gradient(155deg, #f5efe8 0%, #ddd0c8 35%, #b8cdd8 70%, #0f4454 100%);
-  }
+  /* FOOTER - centered, cohesive */
+  footer{background:var(--teal);padding:48px 24px;}
+  .footer-inner{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
+  .footer-verse{font-family:'Libre Baskerville',serif;font-size:0.88rem;font-style:italic;color:#8a7060;max-width:400px;line-height:1.6;}
+  .footer-cross{color:var(--sand);font-size:1.3rem;opacity:0.65;display:block;}
+  .footer-name{font-family:'Libre Baskerville',serif;font-size:0.9rem;font-style:italic;color:#8a7060;}
 
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    opacity: 0.45; pointer-events: none; z-index: 0;
-  }
-
-  .hero-watermark {
-    position: absolute; top: 50%; right: 6%; transform: translateY(-50%);
-    font-size: 32rem; line-height: 1;
-    color: rgba(15,68,84,0.04);
-    font-family: serif; pointer-events: none; z-index: 0; user-select: none;
+  /* MOBILE */
+  @media(max-width:768px){
+    body{padding-top:76px;}
+    #mainNav{width:calc(100% - 24px);padding:0.6rem 0.9rem;top:0.6rem;}
+    .nav-brand{font-size:0.6rem;letter-spacing:0.12em;}
+    .nav-sub{display:none;}
+    .page-hero{padding:36px 20px 48px;}
+    .page-title{font-size:clamp(1.9rem,8vw,2.6rem);}
+    .page-desc{font-size:0.9rem;}
+    .page-verse{font-size:0.95rem;}
+    .section{padding:48px 20px;}
+    .drawer{width:100%;border-left:none;}
+    .drawer-link{font-size:1.4rem;padding:15px 0;}
   }
 
-  .hero-content {
-    position: relative; z-index: 10;
-    width: 100%; max-width: 1100px;
-  }
 
-  .hero-eyebrow {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
-    opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards;
-  }
-  .hero-eyebrow-line { width: 28px; height: 1px; background: var(--sand); opacity: 0.8; }
-  .hero-eyebrow-text { font-family: 'Libre Baskerville', serif; font-size: 0.82rem; font-style: italic; color: var(--sand); font-weight: 400; }
+  .seasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .season-card{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:rgba(245,239,232,0.6);border:1px solid rgba(202,181,167,0.3);border-radius:12px;text-decoration:none;color:var(--teal);transition:all 0.2s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+  .season-card:hover{background:rgba(255,255,255,0.8);border-color:var(--sand);transform:translateY(-2px);box-shadow:0 6px 20px rgba(15,68,84,0.08);}
+  .season-card-name{font-family:'Libre Baskerville',serif;font-size:0.92rem;font-weight:400;color:#0f2d3d;line-height:1.3;}
+  .season-card-arrow{color:var(--sand);font-size:13px;flex-shrink:0;margin-left:12px;opacity:0;transition:opacity 0.2s,transform 0.2s;transform:translateX(-4px);}
+  .season-card:hover .season-card-arrow{opacity:1;transform:translateX(0);}
+  @media(max-width:900px){.seasons-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:540px){.seasons-grid{grid-template-columns:1fr;gap:8px;}.season-card{padding:15px 18px;}.season-card-name{font-size:0.88rem;}.season-card-arrow{opacity:1;transform:translateX(0);}}
 
-  .hero-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2.6rem, 6vw, 5rem);
-    font-weight: 400;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
-    max-width: 680px;
-    margin-bottom: 40px;
-    color: var(--teal);
-    opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards;
-  }
-  .hero-title em { font-style: italic; color: var(--sand); }
-
-  .hero-actions {
-    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-    opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards;
-  }
-  .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 0.85rem 2rem; background: var(--teal); color: var(--cream); text-decoration: none; font-size: 0.85rem; font-weight: 400; border-radius: 100px; letter-spacing: 0.01em; transition: all 0.25s ease; }
-  .btn-primary:hover { background: #0a2e3a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(15,68,84,0.25); }
-  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 0.85rem 2rem; background: rgba(202,181,167,0.25); color: var(--teal); text-decoration: none; font-size: 0.85rem; font-weight: 400; border-radius: 100px; border: 1px solid rgba(202,181,167,0.5); backdrop-filter: blur(8px); letter-spacing: 0.01em; transition: all 0.25s ease; }
-  .btn-secondary:hover { background: rgba(202,181,167,0.4); border-color: var(--sand); transform: translateY(-2px); }
-
-  .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeIn 1s ease 1.6s forwards; }
-  .scroll-hint-text { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color:#4a6878; font-weight: 300; }
-  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(202,181,167,0.7), transparent); animation: scrollPulse 2s ease infinite; }
-
-  /* ── TOPICS ── */
-  .topics-section {
-    padding: 100px 48px;
-    background: linear-gradient(180deg, #f5efe8 0%, #e8ddd5 100%);
-    border-top: 1px solid rgba(202,181,167,0.3);
-  }
-  .topics-inner { max-width: 900px; margin: 0 auto; }
-  .section-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .section-eyebrow-line { width: 24px; height: 1px; background: var(--sand); }
-  .section-eyebrow-text { font-family: 'Libre Baskerville', serif; font-size: 0.8rem; font-style: italic; color: var(--sand); font-weight: 400; }
-  .section-title { font-family: 'Libre Baskerville', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; color: var(--teal); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 52px; }
-
-  .topics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .topic-card { display: block; padding: 30px 26px 26px; background: rgba(245,239,232,0.7); border: 1px solid rgba(202,181,167,0.3); border-radius: 14px; text-decoration: none; color: var(--teal); transition: all 0.25s ease; position: relative; overflow: hidden; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-  .topic-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--sand); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; border-radius: 0 0 14px 14px; }
-  .topic-card:hover { background: rgba(255,255,255,0.8); border-color: var(--sand); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(15,68,84,0.1); }
-  .topic-card:hover::after { transform: scaleX(1); }
-  .topic-card-name { font-family: 'Libre Baskerville', serif; font-size: 1.2rem; font-weight: 400; color: var(--teal); letter-spacing: -0.01em; }
-  .topic-card-arrow { position: absolute; bottom: 22px; right: 22px; font-size: 14px; color: var(--sand); opacity: 0; transform: translateX(-4px); transition: all 0.25s ease; }
-  .topic-card:hover .topic-card-arrow { opacity: 1; transform: translateX(0); }
-
-  /* ── VERSE STRIP ── */
-  .verse-strip {
-    padding: 88px 48px;
-    text-align: center;
-    background: linear-gradient(135deg, #0f4454 0%, #1a6070 50%, #0a2e3a 100%);
-    position: relative; overflow: hidden;
-  }
-  .verse-strip::before { content: '☩'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 22rem; color: rgba(202,181,167,0.05); pointer-events: none; font-family: serif; line-height: 1; }
-  .verse-cross { color: var(--sand); font-size: 1.1rem; opacity: 0.7; margin-bottom: 24px; display: block; }
-  .verse-text { font-family: 'Libre Baskerville', serif; font-size: clamp(1.15rem, 2.5vw, 1.55rem); font-weight: 400; font-style: italic; color: rgba(245,239,232,0.88); line-height: 1.7; max-width: 620px; margin: 0 auto 18px; }
-  .verse-ref { font-size: 10px; letter-spacing: 0.12em; color: var(--sand); text-transform: uppercase; font-weight: 400; opacity: 0.8; }
-
-  /* ── ABOUT ── */
-  .about-section {
-    padding: 100px 48px;
-    background: linear-gradient(180deg, #e8ddd5 0%, #f5efe8 100%);
-  }
-  .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .about-title { font-family: 'Libre Baskerville', serif; font-size: 2rem; font-weight: 400; color: var(--teal); letter-spacing: -0.015em; margin-bottom: 20px; line-height: 1.15; }
-  .about-text { font-size: 0.9rem; color:#1c3a48; line-height: 1.85; font-weight: 300; }
-  .about-detail { padding: 18px 0; border-bottom: 1px solid rgba(202,181,167,0.35); }
-  .about-detail:first-child { border-top: 1px solid rgba(202,181,167,0.35); }
-  .about-detail-label { font-size: 10px; color: var(--sand); font-weight: 400; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 4px; }
-  .about-detail-value { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 400; color: var(--teal); line-height: 1.4; }
-
-  /* ── FOOTER ── */
-  footer { background: var(--teal); border-top: none; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; }
-  .footer-left { font-family: 'Libre Baskerville', serif; font-size: 0.9rem; font-style: italic; color:#6e5448; }
-  .footer-cross { color: var(--sand); font-size: 1.1rem; opacity: 0.6; }
-  .footer-right { font-size: 11px; color:#7a5e50; font-weight: 300; }
-
-  /* ── SEARCH ── */
-  .search-overlay { position: fixed; inset: 0; background: rgba(245,239,232,0.65); backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5); z-index: 400; display: flex; flex-direction: column; align-items: center; padding-top: 120px; padding-left: 24px; padding-right: 24px; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
-  .search-overlay.open { opacity: 1; pointer-events: all; }
-  .search-box { width: 100%; max-width: 600px; position: relative; }
-  .search-input-wrap { display: flex; align-items: center; gap: 12px; background: rgba(245,239,232,0.85); border: 1px solid rgba(202,181,167,0.5); border-radius: 100px; padding: 0 20px; box-shadow: 0 8px 40px rgba(15,68,84,0.1); }
-  .search-input-wrap svg { flex-shrink: 0; color: var(--sand); }
-  .search-input { flex: 1; padding: 16px 4px; background: none; border: none; outline: none; font-family: 'Libre Baskerville', serif; font-size: 1.2rem; font-weight: 400; color: var(--teal); }
-  .search-input::placeholder { color:#4a6878; }
-  .search-close-btn { background: none; border: none; cursor: pointer; color:#2d4a5a; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.06em; padding: 4px 8px; transition: color 0.2s; }
-  .search-close-btn:hover { color: var(--teal); }
-  .search-results { width: 100%; max-width: 600px; margin-top: 10px; display: flex; flex-direction: column; gap: 2px; }
-  .search-result-item { display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: rgba(245,239,232,0.85); border: 1px solid rgba(202,181,167,0.25); text-decoration: none; color: var(--teal); transition: all 0.15s; border-radius: 10px; }
-  .search-result-item:hover { background: rgba(255,255,255,0.95); border-color: var(--sand); transform: translateX(4px); }
-  .search-result-tag { font-size: 10px; color: var(--sand); font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; min-width: 80px; }
-  .search-result-name { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 400; color: var(--teal); flex: 1; }
-  .search-result-arrow { color: var(--sand); font-size: 13px; flex-shrink: 0; }
-  .search-empty { padding: 24px 20px; font-family: 'Libre Baskerville', serif; font-size: 1rem; font-style: italic; color:#2d4a5a; text-align: center; }
-  .search-hint { margin-top: 20px; font-size: 11px; color:#4a6878; letter-spacing: 0.08em; text-transform: uppercase; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.9; } }
-
-  @media (max-width: 768px) {
-    #mainNav { width: calc(100% - 28px); padding: 0.65rem 1rem; top: 0.75rem; }
-    .nav-brand { font-size: 0.65rem; letter-spacing: 0.14em; }
-    .nav-sub { display: none; }
-    .nav-cross { font-size: 0.95rem; }
-
-    .hero { padding: 7rem 1.5rem 3.5rem; min-height: 100svh; justify-content: flex-end; }
-    .hero-watermark { display: none; }
-    .hero-title { font-size: clamp(2rem, 9vw, 2.8rem); margin-bottom: 28px; line-height: 1.15; }
-    .hero-eyebrow { margin-bottom: 16px; }
-    .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .btn-primary, .btn-secondary { width: 100%; justify-content: center; padding: 0.9rem 1.5rem; font-size: 0.9rem; }
-    .scroll-hint { display: none; }
-
-    .topics-section { padding: 56px 20px; }
-    .topics-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .topic-card { padding: 22px 16px 40px; border-radius: 12px; }
-    .topic-card-name { font-size: 1rem; }
-    .topic-card-arrow { opacity: 1; transform: translateX(0); bottom: 14px; right: 14px; font-size: 12px; }
-    .section-title { font-size: 1.6rem; margin-bottom: 32px; }
-
-    .verse-strip { padding: 56px 24px; }
-    .verse-strip::before { font-size: 10rem; }
-
-    .about-section { padding: 56px 20px; }
-    .about-inner { grid-template-columns: 1fr; gap: 40px; }
-    .about-title { font-size: 1.6rem; }
-
-    footer { flex-direction: column; gap: 14px; text-align: center; padding: 32px 24px; }
-    .footer-left { font-size: 0.8rem; }
-
-    .drawer { width: 100%; border-left: none; }
-    .drawer-link { font-size: 1.5rem; padding: 16px 0; }
-
-    .search-overlay { padding-top: 80px; padding-left: 16px; padding-right: 16px; }
-    .search-input { font-size: 1rem; }
-  }
 
 
   /* ═══ ADMIN ENGINE v3 — CSS ═══ */
@@ -380,19 +232,10 @@
   .footer-admin-link:hover { color: rgba(202,181,167,0.7); }
 
 </style>
-<link rel="stylesheet" href="assets/notebook.css">
-<script defer src="assets/library-data.js"></script>
-<script defer src="assets/notebook.js"></script>
-</head>
-<body>
-
-<!-- NAV -->
-<a class="skip-link" href="#main-content">Skip to content</a><nav id="mainNav" aria-label="Main navigation"><a href="index.html" class="rn-brand"><span class="mark" aria-hidden="true">☩</span>Ravi’s Notebook</a><div class="rn-nav-links"><a href="hymnology.html">Hymns</a><a href="books.html">Books</a><a href="notes.html">Notes</a><a href="recently-updated.html">Recently updated</a></div><div class="nav-tools"><button class="rn-search-button" data-open-search>⌕ <span>Search</span><kbd>⌘ K</kbd></button><button class="nav-menu-btn" onclick="openDrawer()" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 16h16"/></svg></button></div></nav>
-
-<!-- DRAWER -->
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<link rel="stylesheet" href="assets/notebook.css"><script defer src="assets/library-data.js"></script><script defer src="assets/notebook.js"></script></head>
+<body><a class="skip-link" href="#main-content">Skip to content</a><nav id="mainNav" aria-label="Main navigation"><a href="index.html" class="rn-brand"><span class="mark" aria-hidden="true">☩</span>Ravi’s Notebook</a><div class="rn-nav-links"><a href="hymnology.html">Hymns</a><a href="books.html">Books</a><a href="notes.html">Notes</a><a href="recently-updated.html">Recently updated</a></div><div class="nav-tools"><button class="rn-search-button" data-open-search>⌕ <span>Search</span><kbd>⌘ K</kbd></button><button class="nav-menu-btn" onclick="openDrawer()" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 16h16"/></svg></button></div></nav><div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
-  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <button class="drawer-close" onclick="closeDrawer()">&#x2715;</button>
   <p class="drawer-label">Learn</p>
   <a class="drawer-link" href="hymnology.html">Hymnology</a>
   <a class="drawer-link" href="rites.html">Rites &amp; History</a>
@@ -401,12 +244,7 @@
   <a class="drawer-link" href="books.html">Books</a><a class="drawer-link" href="recently-updated.html">Recently updated</a><a class="drawer-link" href="notes.html">Notes</a>
   <a class="drawer-link" href="qa.html">Q&amp;A</a>
 </div>
-
-<main id="main-content" class="rn-shell"><section class="rn-home-hero"><div class="rn-hero-grid"><div><span class="rn-kicker">A Coptic Orthodox learning library</span><h1 class="rn-title">An ancient faith.<br>A lifetime of<br><em>discovery.</em></h1><p class="rn-intro">A quiet place for the hymns, books, and teachings of our Church. Listen closely. Read deeply. Keep growing.</p><div class="hero-buttons"><a class="rn-button light" href="hymnology.html">Explore the library <span>↗</span></a><a class="rn-link" href="notes.html">Open the notebook →</a></div></div><div class="rn-art"><svg viewBox="0 0 430 460" fill="none" aria-hidden="true"><circle cx="215" cy="222" r="204" stroke="#8ca47e" stroke-opacity=".23"/><circle cx="215" cy="222" r="177" stroke="#8ca47e" stroke-opacity=".16"/><path d="M83 414V179C83 106 142 47 215 47s132 59 132 132v235" fill="#314c3c" stroke="#9bab7e" stroke-width="1.2"/><path d="M104 414V179a111 111 0 0 1 222 0v235" stroke="#9bab7e" stroke-opacity=".7"/><path d="M127 413V181a88 88 0 0 1 176 0v232" fill="#3c5944" stroke="#9bab7e" stroke-opacity=".4"/><circle cx="215" cy="187" r="65" fill="#c8d59c" fill-opacity=".12"/><path d="M208 122h14v50h42v14h-42v94h-14v-94h-42v-14h42z" fill="#c8d59c"/><path d="M60 414h310M39 430h352M17 446h396" stroke="#9bab7e" stroke-opacity=".7"/><path d="M154 354q26-14 61 2v45q-35-16-61-2v-45zm61 2q35-16 61-2v45q-26-14-61 2v-45z" stroke="#c8d59c" stroke-width="1.5"/><path d="M164 367q18-5 39 3m-39 10q18-5 39 3m22-13q21-8 39-3m-39 16q21-8 39-3" stroke="#c8d59c" stroke-opacity=".5"/><path d="M342 64v28m-14-14h28M55 276v18m-9-9h18" stroke="#c8d59c" stroke-opacity=".8"/></svg><span class="art-caption">Rooted in faith. Open to discovery.</span></div></div><div class="rn-hero-bottom"><span><span><b data-count="hymns"></b> hymns to discover</span><span><b data-count="books"></b> books to explore</span><span>English · Coptic · Arabic</span></span><span>Freely shared, for every learner.</span></div></section>
-<section class="rn-section"><div class="rn-section-head"><div><span class="rn-kicker">Find your starting point</span><h2>Small steps. Deeper roots.</h2></div><p>Three collections, one living tradition.</p></div><div class="rn-collections"><a class="rn-collection" href="hymnology.html"><div class="collection-art" aria-hidden="true">♪</div><h3>The hymn library</h3><p>Discover the melodies of the Church through seasons, texts, and recordings.</p><div class="collection-meta"><span><span data-count="hymns"></span> HYMNS · 34 SEASONS & SERVICES</span><span class="arrow">↗</span></div></a><a class="rn-collection" href="books.html"><div class="collection-art" aria-hidden="true">☷</div><h3>The reading room</h3><p>Spiritual books, liturgical resources, and a little wisdom for the everyday.</p><div class="collection-meta"><span><span data-count="books"></span> BOOKS · PDF & EPUB</span><span class="arrow">↗</span></div></a><a class="rn-collection" href="notes.html"><div class="collection-art" aria-hidden="true">Aa</div><h3>Pages from the notebook</h3><p>Sunday school lessons, reflections, and studies to return to as you grow.</p><div class="collection-meta"><span>LESSONS · REFLECTIONS · STUDIES</span><span class="arrow">↗</span></div></a></div></section>
-<section class="rn-feature"><div class="rn-feature-art"><span class="cross" aria-hidden="true">☩</span></div><div class="rn-feature-content"><span class="rn-kicker">A hymn to spend time with</span><h2>Maundy Thursday<br><em>Doxology</em></h2><div class="feature-tags"><span class="rn-tag">Holy Week</span><span class="rn-tag">Matins</span><span class="rn-tag">Read & listen</span></div><p>Enter the upper room through the words of this traditional hymn. Follow the text in English, Coptic, and Arabic as you listen.</p><a href="maundy-thursday-doxology.html" class="rn-button">Discover the hymn <span>↗</span></a></div></section>
-<section class="rn-section"><div class="rn-section-head"><div><span class="rn-kicker">From the reading desk</span><h2>Something to reflect on.</h2></div><a class="rn-link" href="recently-updated.html">All recent reading ↗</a></div><div data-recent-list></div><p class="rn-result-info">Reading links from Fr Maximus’ Notes · Catalogue checked October 5, 2026</p></section><section class="rn-about" id="about"><div><span class="rn-kicker">A note from Ravi</span><h2>Freely shared.<br>Thoughtfully gathered.</h2></div><div><p>This notebook brings together hymn recordings, Sunday school lessons, liturgical texts, and resources for anyone who wants to understand the Coptic Orthodox faith more deeply.</p><p>Rooted in St. Anthony Coptic Orthodox Church, Winter Springs, Florida, in the Diocese of the Southern United States.</p><a class="rn-link" href="rites.html">Explore rites & history →</a> &nbsp; <a class="rn-link" href="patristics.html">The Church Fathers →</a></div></section></main><div id="rn-extra-blocks-wrap" style="max-width:1196px;margin:0 auto;padding:0 20px;"><div id="rn-extra-blocks"></div></div><footer class="rn-footer"><a href="index.html">☩ &nbsp; Ravi’s Notebook</a><span>Freely you have received, freely give. — Matthew 10:8</span><a href="admin.html">Admin</a></footer>
-<!-- ═══ ADMIN ENGINE HTML v2 ═══ -->
+<div class="page-hero-wrap"><div class="page-hero" id="main-content" tabindex="-1"><span class="rn-kicker">Holy Week / Covenant Thursday / Matins</span><h1 class="page-title">Maundy Thursday Doxology</h1><p class="page-desc">Ⲁϥⲓ̀ ⲛ̀ϫⲉ Ⲓⲏ̅ⲥ̅ Ⲡⲭ̅ⲥ̅ · ذكصولوجية خميس العهد</p></div></div><section class="section"><div class="reader-layout"><div><div class="reader-tabs" aria-label="Text language"><button class="rn-chip" data-language="compare" aria-pressed="true">Side by side</button><button class="rn-chip" data-language="english" aria-pressed="false">English</button><button class="rn-chip" data-language="coptic" aria-pressed="false">Coptic</button><button class="rn-chip" data-language="arabic" aria-pressed="false">العربية</button><button class="rn-chip" data-language="arabized" aria-pressed="false">Pronunciation</button></div><div id="reader-text" class="reader-text"></div></div><aside class="reader-sidebar"><div class="reader-panel"><h2>A moment in the upper room.</h2><p>This traditional doxology recalls the Last Supper, the New Covenant, and Christ as the Bread of Life.</p><p>8 verses · Matins of Holy Thursday</p><div class="rn-panel-actions"><button class="rn-chip" data-font="-2" aria-label="Decrease text size">A−</button><button class="rn-chip" data-font="2" aria-label="Increase text size">A+</button><button class="rn-chip" id="print-hymn">Print</button><button class="save-button" data-save="hymns-maundy-thursday-doxology" aria-label="Save Maundy Thursday Doxology" aria-pressed="false">☆</button></div><p>Coptic and Arabic texts: St. George, Nazlet El Saman. English is a study rendering of the traditional Arabic text.</p><a class="rn-link" href="https://stgeorgesaman.com/libraries/hymns-library/occasionsandfeasts/holy-week/holy-thursday/matins-holy-thursday/maundy-thursday-doxology/" target="_blank" rel="noopener">Original text & analysis ↗</a></div></aside></div><div class="reader-audio"><div><h3>Maundy Thursday Doxology</h3><p>Andro Bakhit · Coptic · St. George church recording</p></div><audio controls preload="metadata" id="hymn-audio" aria-label="Maundy Thursday doxology recording"></audio><select id="playback-speed" aria-label="Playback speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></div><p id="audio-error" hidden class="rn-result-info">The recording could not load. Please use the original source link above.</p></section><div id="rn-extra-blocks-wrap" style="max-width:1196px;margin:0 auto;padding:0 20px;"><div id="rn-extra-blocks"></div></div><footer class="rn-footer"><a href="index.html">☩ &nbsp; Ravi’s Notebook</a><span>Freely you have received, freely give. — Matthew 10:8</span><a href="admin.html">Admin</a></footer><!-- ═══ ADMIN ENGINE HTML v2 ═══ -->
 
 <!-- Bottom admin bar (hidden until login) -->
 <div class="ab" id="adminBar">
@@ -1051,5 +889,4 @@ document.addEventListener('keydown', e => {
 });
 </script>
 
-</body>
-</html>
+</body></html>
