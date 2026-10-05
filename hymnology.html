@@ -232,18 +232,12 @@
   .footer-admin-link:hover { color: rgba(202,181,167,0.7); }
 
 </style>
+<link rel="stylesheet" href="assets/notebook.css">
+<script defer src="assets/library-data.js"></script>
+<script defer src="assets/notebook.js"></script>
 </head>
 <body>
-<nav id="mainNav">
-  <a href="index.html" class="nav-cross">&#9769;</a>
-  <div class="nav-center">
-    <a href="index.html" class="nav-brand">RAVI'S NOTEBOOK</a>
-    <div class="nav-sub">Coptic Orthodox Learning</div>
-  </div>
-  <button class="nav-menu-btn" onclick="openDrawer()" aria-label="Menu">
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
-  </button>
-</nav>
+<a class="skip-link" href="#main-content">Skip to content</a><nav id="mainNav" aria-label="Main navigation"><a href="index.html" class="rn-brand"><span class="mark" aria-hidden="true">☩</span>Ravi’s Notebook</a><div class="rn-nav-links"><a href="hymnology.html">Hymns</a><a href="books.html">Books</a><a href="notes.html">Notes</a><a href="recently-updated.html">Recently updated</a></div><div class="nav-tools"><button class="rn-search-button" data-open-search>⌕ <span>Search</span><kbd>⌘ K</kbd></button><button class="nav-menu-btn" onclick="openDrawer()" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 16h16"/></svg></button></div></nav>
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <button class="drawer-close" onclick="closeDrawer()">&#x2715;</button>
@@ -252,17 +246,10 @@
   <a class="drawer-link" href="rites.html">Rites &amp; History</a>
   <a class="drawer-link" href="patristics.html">Patristics</a>
   <a class="drawer-link" href="apologetics.html">Apologetics</a>
-  <a class="drawer-link" href="notes.html">Notes</a>
+  <a class="drawer-link" href="books.html">Books</a><a class="drawer-link" href="recently-updated.html">Recently updated</a><a class="drawer-link" href="notes.html">Notes</a>
   <a class="drawer-link" href="qa.html">Q&amp;A</a>
 </div>
-<div class="page-hero-wrap">
-  <div class="page-hero">
-    <div class="page-eyebrow"><div class="page-eyebrow-line"></div><span class="page-eyebrow-text">Learn</span></div>
-    <h1 class="page-title">Hymnology</h1><p class="page-desc">Hymn recordings, texts, hazzat, and history.</p><blockquote class="page-verse">"I will praise You, O Lord, with my whole heart; I will tell of all Your marvelous works."<span>Psalm 9:1</span></blockquote>
-  </div>
-</div>
-<div class="section-bg">
-<div class="section"><h2 class="section-title">Browse by Season</h2><div class="seasons-grid"><a class="season-card" href="annual.html"><span class="season-card-name">Annual</span><span class="season-card-arrow">&#8594;</span></a>
+<div class="page-hero-wrap"><div class="page-hero" id="main-content" tabindex="-1"><span class="rn-kicker">The sound of a living tradition</span><h1 class="page-title">The hymn library.</h1><p class="page-desc">Find a hymn by name, opening words, or occasion. Explore Coptic texts and recordings, from everyday prayers to the great feasts.</p></div></div><section class="section"><div class="rn-library-banner"><p>Texts, recordings, and analysis from St. George, Nazlet El Saman. Full hymn pages open at the original source.</p><a class="rn-link" href="https://stgeorgesaman.com/libraries/hymns-library/" target="_blank" rel="noopener">Source library ↗</a></div><a class="rn-button" href="maundy-thursday-doxology.html">Featured: Maundy Thursday Doxology →</a><div class="rn-toolbar"><input type="search" class="rn-input" id="library-search" aria-label="Search hymns" placeholder="Search hymns, names, or topics…"><select id="library-category" aria-label="Filter by topic"><option>All topics</option></select><button class="rn-chip" id="saved-only" aria-pressed="false">☆ Saved</button><div class="rn-view-switch" aria-label="Display style"><button class="rn-chip" data-view="grid" aria-label="Grid view" aria-pressed="true">Grid</button><button class="rn-chip" data-view="list" aria-label="List view" aria-pressed="false">List</button></div></div><p class="rn-result-info" id="library-count" aria-live="polite"></p><div class="rn-library-grid" data-library="hymns"></div><button class="rn-button outline rn-load-more" id="load-more">Show more hymns ↓</button><noscript><p>Enable JavaScript to search this catalogue, or use the source library linked above.</p></noscript><details style="margin-top:40px"><summary class="rn-heading">Browse 34 seasons & services</summary><div class="seasons-grid" style="margin-top:24px"><a class="season-card" href="annual.html"><span class="season-card-name">Annual</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="nairouz.html"><span class="season-card-name">Nairouz</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="feast-of-the-cross.html"><span class="season-card-name">Feast of the Cross</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="kiahk.html"><span class="season-card-name">Kiahk</span><span class="season-card-arrow">&#8594;</span></a>
@@ -291,21 +278,15 @@
 <a class="season-card" href="apostles-feast.html"><span class="season-card-name">Apostles Feast</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="saint-marys-fastfeast.html"><span class="season-card-name">Saint Mary's Fast / Feast</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="transfiguration.html"><span class="season-card-name">Transfiguration</span><span class="season-card-arrow">&#8594;</span></a>
-<a class="season-card" href="#" ><span class="season-card-name">Venerations</span><span class="season-card-arrow">&#8594;</span></a>
+<a class="season-card" href="venerations.html" class="season-card"><span class="season-card-name">Venerations</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="coptic-weddings.html"><span class="season-card-name">Coptic Weddings</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="funeral.html"><span class="season-card-name">Funeral</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="papal.html"><span class="season-card-name">Papal</span><span class="season-card-arrow">&#8594;</span></a>
 <a class="season-card" href="reception-of-new-priest.html"><span class="season-card-name">Reception of New Priest</span><span class="season-card-arrow">&#8594;</span></a>
-</div></div>
-</div>
-<!-- Extra blocks container (rendered after page content) -->
-<div id="rn-extra-blocks-wrap" style="max-width:900px;margin:0 auto;padding:0 48px;">
-  <div id="rn-extra-blocks"></div>
-</div>
+</div></details><p class="rn-result-info">Catalogue checked October 5, 2026. Saved items stay in this browser.</p></section><!-- Extra blocks container (rendered after page content) -->
+<div id="rn-extra-blocks-wrap" style="max-width:1196px;margin:0 auto;padding:0 20px;"><div id="rn-extra-blocks"></div></div>
 <!-- Extra blocks container -->
-<div id="rn-extra-blocks-wrap" style="max-width:900px;margin:0 auto;padding:0 48px;">
-  <div id="rn-extra-blocks"></div>
-</div>
+
 <footer>
   <div class="footer-inner">
     <span class="footer-verse">Freely you have received, freely give. &mdash; Matthew 10:8</span>
