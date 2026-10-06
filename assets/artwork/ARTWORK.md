@@ -31,3 +31,11 @@ A single original `iota-frieze.svg` now anchors the homepage. Wallpaper, corner 
 The current frieze is an original monochrome vector interlace: two linked rows of angular ribbons with alternating over/under crossings. Ravi’s supplied woven-pattern reference and https://www.istockphoto.com/illustrations/coptic-art informed the restrained direction. No stock artwork is copied into the site. The frieze appears once in the homepage hero; library surfaces remain quiet.
 
 Current IOTA foundation: original vector illumination using serif-ended angular I units, alternating crossings, stepped headpieces, and ivory/gold/terracotta/teal colors from Ravi’s manuscript references. The artwork is concentrated in one homepage panel. Modern library cards use restrained color edges rather than repeating the ornament throughout.
+
+## Manuscript artwork revision
+
+`iota-headpiece-v1.png` is an original AI generated transparent ornament, guided directly by Ravi’s manuscript reference images `codex-clipboard-8266d03b-839e-4ffc-ab04-c96b2bc17143.png` and `codex-clipboard-1e4738dc-4c5c-479e-959d-e37da24c6106.png`. It replaces the simplified tiled vector artwork in the homepage.
+
+Direction: a wide Coptic ornamental headpiece with connected serif-ended angular interlace, fine dark ink outlines, matte red/gold/ivory pigments, restrained green/lapis accents, and twin shallow arch cutouts. No photograph, book, page, or lettering. Original generation retained in Codex generated images; the project copy preserves transparency.
+
+Layout uses the headpiece above the typography, following the source manuscript composition. Library surfaces remain clear and rounded.
