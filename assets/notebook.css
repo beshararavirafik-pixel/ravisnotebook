@@ -156,3 +156,16 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 @media(max-width:650px){.rn-hero-grid>div:first-child{padding:78px 24px}.rn-hero-grid>div:first-child:before,.rn-hero-grid:after{left:28px;right:28px;height:27px;background-size:97px 27px;border-radius:6px}.rn-hero-grid>div:first-child:before{top:22px}.rn-hero-grid:after{bottom:22px}.rn-daily-hymn:before{width:110px;opacity:.14}.rn-daily-hymn .rn-feature-content{padding:28px}.rn-resource:after{opacity:.8}}
 
 .rn-hero-grid>div:first-child{max-width:none}
+
+/* Each area has a different ornament density and construction. */
+.rn-home-hero:after{opacity:.5;background:url('artwork/iota-corner.svg?v=variation-20261006') left 16px bottom 16px/100px 100px no-repeat}
+.rn-hero-grid:after{left:50%;right:auto;transform:translateX(-50%);width:260px;height:28px;background:url('artwork/iota-divider.svg?v=variation-20261006') center/contain no-repeat;border:0;border-radius:0;opacity:.8}
+.rn-daily-hymn:before{background:url('artwork/iota-stepped.svg?v=variation-20261006') center/contain no-repeat;opacity:.65;mask-image:none;width:200px;right:38px}
+.page-hero:after{width:200px;height:24px;background:url('artwork/iota-divider.svg?v=variation-20261006') left center/contain no-repeat;border-radius:0}
+.rn-resource:after{display:none}
+.resource-source{padding-right:0}
+.drawer{background-image:none}
+.rn-footer:before{display:none}
+.rn-footer{padding-top:36px}
+.rn-daily-hymn .rn-feature-content{padding-right:270px}
+@media(max-width:650px){.rn-home-hero:after{background-size:70px 70px;background-position:left 12px bottom 12px;opacity:.3}.rn-hero-grid:after{left:50%;right:auto;width:200px;height:22px;background-size:contain}.rn-daily-hymn:before{width:85px;right:16px;opacity:.25}.rn-daily-hymn .rn-feature-content{padding-right:28px}.rn-daily-hymn h3{padding-right:60px}}
