@@ -380,7 +380,7 @@
   .footer-admin-link:hover { color: rgba(202,181,167,0.7); }
 
 </style>
-<link rel="stylesheet" href="assets/notebook.css?v=iota-20261006">
+<link rel="stylesheet" href="assets/notebook.css?v=rounded-iota-20261006">
 <script defer src="assets/library-data.js?v=local-library-3"></script>
 <script defer src="assets/notebook.js?v=local-library-3"></script>
 </head>
@@ -406,14 +406,14 @@
 <section class="rn-home-hero">
   <div class="rn-hero-grid">
     <div><span class="rn-kicker">Coptic Orthodox Library</span>
-      <h1 class="rn-title">An ancient faith.<br>A lifetime of<br><em>discovery.</em></h1>
+      <h1 class="rn-title">An ancient faith.<br>A lifetime of <em>discovery.</em></h1>
       <div class="hero-buttons"><a class="rn-button light" href="hymnology.html">The Hymn Library <span aria-hidden="true">↗</span></a><a class="rn-button outline" href="books.html">The Book Library <span aria-hidden="true">↗</span></a></div>
     </div>
-    <figure class="rn-art"><img src="assets/artwork/iota-manuscript.webp" width="1122" height="1402" alt="Original artwork of an illuminated manuscript with intricate gold interlace, red borders, and deep blue details." fetchpriority="high" decoding="async"></figure>
+
   </div>
 </section>
 <section class="rn-feature rn-daily-hymn" aria-labelledby="daily-heading">
-  <div class="rn-feature-art" aria-hidden="true"><img src="assets/artwork/iota-medallion.svg" alt="" width="360" height="360" loading="lazy"></div>
+
   <div class="rn-feature-content"><h2 id="daily-heading" class="rn-kicker">Hymn of the day</h2><time data-daily-date></time>
     <h3 data-daily-title>Discover today’s hymn</h3><div class="feature-tags" data-daily-tags></div>
     <a href="hymnology.html" data-daily-link class="rn-button">Read hymn <span aria-hidden="true">↗</span></a>
@@ -573,7 +573,7 @@ const ADM = {
     document.querySelectorAll('.page-verse:not(.ed-field-wrap)').forEach(el => {
       el.classList.add('ed-field-wrap');
       const textNode = el.querySelector('em') || el.firstChild;
-      el.onclick = () => this.openInlineEdit(el, el.innerText.trim(), v => { 
+      el.onclick = () => this.openInlineEdit(el, el.innerText.trim(), v => {
         const ref = el.querySelector('span');
         const refText = ref ? ref.textContent : '';
         el.innerHTML = `"${v}"${ref ? `<span>${refText}</span>` : ''}`;
