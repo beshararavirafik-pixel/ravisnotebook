@@ -9,7 +9,7 @@ let saved;try{saved=new Set(JSON.parse(localStorage.getItem('rn_saved_resources'
 const saveMarkup=item=>`<button class="save-button" data-save="${esc(item.id)}" aria-label="Save ${esc(item.title)}" aria-pressed="${saved.has(item.id)}">${saved.has(item.id)?'★':'☆'}</button>`;
 const catalogue=[...data.hymns,...data.books,...data.notes];
 [...document.querySelectorAll('.note-item')].map((el,i)=>{el.id=el.id||'note-'+(i+1);return {id:el.id,title:el.querySelector('.note-title')?.textContent||'',tags:[el.querySelector('.note-cat')?.textContent||''],url:'notes.html#'+el.id,type:'notes',source:'Ravi’s Notebook'};});
-const pages=[{title:'Notes & reflections',url:'notes.html',type:'Pages'},{title:'Hymn library',url:'hymnology.html',type:'Pages'},{title:'Books & reading',url:'books.html',type:'Pages'},{title:'Recently updated notes',url:'recently-updated.html',type:'Pages'},{title:'Rites & History',url:'rites.html',type:'Pages'},{title:'Patristics',url:'patristics.html',type:'Pages'},{title:'Apologetics',url:'apologetics.html',type:'Pages'}];
+const pages=[{title:'Notes & reflections',url:'notes.html',type:'Pages'},{title:'The Hymn Library',url:'hymnology.html',type:'Pages'},{title:'The Book Library',url:'books.html',type:'Pages'},{title:'Rites & History',url:'rites.html',type:'Pages'},{title:'Patristics',url:'patristics.html',type:'Pages'},{title:'Apologetics',url:'apologetics.html',type:'Pages'}];
 const localNoteIndex=[{title:'Chastity and the Saints',url:'notes.html#note-1',type:'notes',source:'Ravi’s Notebook'},{title:'St. Athanasius and the defense of Orthodoxy',url:'notes.html#note-2',type:'notes',source:'Ravi’s Notebook'},{title:'The Order of Reader – roles and responsibilities',url:'notes.html#note-3',type:'notes',source:'Ravi’s Notebook'},{title:'St. Macarius the Great – Desert Father of Egypt',url:'notes.html#note-4',type:'notes',source:'Ravi’s Notebook'},{title:'Understanding the Divine Liturgy of St. Basil',url:'notes.html#note-5',type:'notes',source:'Ravi’s Notebook'}];
 const searchItems=[...pages,...localNoteIndex,...catalogue];
 const dialog=document.createElement('dialog');dialog.className='rn-search-dialog';dialog.setAttribute('aria-label','Search Ravi’s Notebook');dialog.innerHTML='<div class="search-dialog-top"><input class="rn-input" aria-label="Search all resources" placeholder="Search hymns, books, notes…" type="search"><button type="button" aria-label="Close search">Close ×</button></div><div class="search-results-list" aria-live="polite"></div><p class="rn-result-info">Search in English, Arabic, or Coptic · Esc to close</p>';document.body.append(dialog);
@@ -32,7 +32,29 @@ const path=location.pathname.split('/').pop()||'index.html';document.querySelect
 const menu=document.querySelector('.nav-menu-btn'),drawer=document.querySelector('#drawer');
 if(menu&&drawer){const oldOpen=window.openDrawer,oldClose=window.closeDrawer;window.openDrawer=()=>{if(oldOpen)oldOpen();else{drawer.classList.add("open");document.querySelector("#drawerOverlay").classList.add("open");document.body.style.overflow="hidden";}menu.setAttribute('aria-expanded','true');drawer.setAttribute('aria-hidden','false');drawer.inert=false;drawer.querySelector('button')?.focus();};window.closeDrawer=()=>{const wasOpen=drawer.classList.contains('open');if(oldClose)oldClose();else{drawer.classList.remove("open");document.querySelector("#drawerOverlay").classList.remove("open");document.body.style.overflow="";}menu.setAttribute('aria-expanded','false');drawer.setAttribute('aria-hidden','true');drawer.inert=true;if(wasOpen)menu.focus();};drawer.inert=true;drawer.setAttribute('aria-hidden','true');drawer.addEventListener('keydown',e=>{if(e.key==='Tab'){const els=[...drawer.querySelectorAll('a,button')];if(e.shiftKey&&document.activeElement===els[0]){e.preventDefault();els.at(-1).focus();}else if(!e.shiftKey&&document.activeElement===els.at(-1)){e.preventDefault();els[0].focus();}}});}
 document.querySelectorAll('[data-count]').forEach(el=>el.textContent=data[el.dataset.count].length);
-const recent=document.querySelector('[data-recent-list]');if(recent)recent.innerHTML=data.notes.slice(0,4).map((x,i)=>`<a class="rn-row" href="${esc(x.url)}"${external(x.url)}><span class="row-num">0${i+1}</span><div><h3>${esc(x.title)}</h3><p>${esc(x.tags.join(' / '))} · Fr Maximus’ Notes</p></div><span aria-hidden="true">↗</span></a>`).join('');
+// One selection per calendar day in the church's Eastern time zone.
+const daily=document.querySelector('.rn-daily-hymn');
+if(daily&&data.hymns.length){
+  let renderedDay;
+  const updateDailyHymn=()=>{
+    const now=new Date();
+    const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'numeric',day:'numeric'}).formatToParts(now);
+    const part=type=>Number(parts.find(p=>p.type===type).value);
+    const day=Math.floor(Date.UTC(part('year'),part('month')-1,part('day'))/86400000);
+    if(day===renderedDay)return;
+    renderedDay=day;
+    const hymn=data.hymns[((day%data.hymns.length)+data.hymns.length)%data.hymns.length];
+    daily.querySelector('[data-daily-title]').textContent=hymn.title;
+    daily.querySelector('[data-daily-link]').href=hymn.url;
+    daily.querySelector('[data-daily-tags]').innerHTML=(hymn.tags||[]).slice(0,3).map(tag=>`<span class="rn-tag">${esc(tag)}</span>`).join('');
+    const date=daily.querySelector('[data-daily-date]');
+    date.dateTime=`${part('year')}-${String(part('month')).padStart(2,'0')}-${String(part('day')).padStart(2,'0')}`;
+    date.textContent=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',month:'long',day:'numeric'}).format(now);
+  };
+  updateDailyHymn();
+  setInterval(updateDailyHymn,30000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDailyHymn();});
+}
 const library=document.querySelector('[data-library]');let renderLibrary;
 if(library){const kind=library.dataset.library,items=data[kind]||[],input=document.querySelector('#library-search'),category=document.querySelector('#library-category'),format=document.querySelector('#library-format'),savedOnly=document.querySelector('#saved-only'),info=document.querySelector('#library-count'),more=document.querySelector('#load-more');let limit=24;let onlySaved=false;
 const tags=[...new Set(items.flatMap(x=>x.tags))].sort((a,b)=>a.localeCompare(b));category.innerHTML='<option value="">All topics</option>'+tags.map(t=>`<option>${esc(t)}</option>`).join('');
