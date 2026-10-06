@@ -67,3 +67,22 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 .drawer{background:var(--ink)}.page-title{color:var(--ink)}
 @media(max-width:1000px){.rn-title{font-size:60px}.hero-buttons{align-items:center;flex-direction:row}}
 @media(max-width:650px){#mainNav{padding:22px 20px}.rn-brand{font-size:24px}.rn-home-hero{padding:26px 0 32px}.rn-hero-grid{gap:26px}.rn-headpiece{width:100%}.rn-title{font-size:49px;line-height:1.08;margin:20px 0 27px}.rn-title em{display:block}.hero-buttons{align-items:stretch;gap:10px}.hero-buttons .rn-button{padding:12px 16px;font-size:11px}.rn-daily-hymn .rn-feature-content{padding:25px}.rn-daily-hymn time{top:25px;right:25px}}
+
+/* Full-width illuminated arches and compact glass navigation. */
+#mainNav{width:max-content;max-width:calc(100% - 32px);margin:24px auto 30px;padding:0;gap:10px;justify-content:center;position:relative;z-index:300}
+.rn-brand,.rn-search-button,.nav-menu-btn{background:linear-gradient(145deg,#FFFFFFB8,#FFFFFF35);border:1px solid #FFFFFFD9;box-shadow:inset 0 1px 1px #FFFFFFE6,inset 0 -1px 2px #AD9E8130,0 6px 22px #594B3510;backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+.rn-brand{border-radius:100px;padding:12px 24px;font-size:26px;white-space:nowrap;line-height:1;min-height:50px}
+.nav-tools{gap:8px}.rn-search-button,.nav-menu-btn{width:50px;height:50px;min-width:50px;min-height:50px;padding:0;border-radius:50%;display:grid;place-items:center;color:var(--ink)}
+.rn-search-button:hover,.nav-menu-btn:hover{background:#FFFFFFB0}.rn-search-button[aria-expanded=true]{opacity:0;pointer-events:none}
+.rn-search-dialog{background:linear-gradient(145deg,#FFFCF5F0,#FFFCF5D9);border:1px solid #FFFFFFE6;border-radius:26px;backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);box-shadow:inset 0 1px 1px white,0 15px 45px #594B3520}
+.search-dialog-top{background:transparent;border-radius:26px;padding:7px 10px}.search-dialog-top input{background:transparent;min-height:36px}.search-dialog-top button{background:none;color:var(--ink)}
+.rn-shell{max-width:1440px;padding:0 24px}.rn-home-hero.rn-arch-hero{padding:0 0 36px;margin:0;overflow:visible}
+.rn-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.rn-arch-art{position:relative;width:100%;overflow:hidden}
+.rn-arch-art>img{display:block;width:100%;height:auto;margin-top:-6%}
+.rn-arch-button{position:absolute;left:30%;top:63%;transform:translate(-50%,-50%);width:20%;aspect-ratio:2.4;display:flex;align-items:center;justify-content:center;gap:16px;text-decoration:none;border-radius:999px 999px 36px 36px;border:1px solid #FFFFFFE6;background:linear-gradient(160deg,#FFFFFFC9,#FFFFFF40);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 2px 3px #FFFFFFF0,inset 0 -2px 4px #B69A6A20,0 7px 20px #5F492012;color:var(--ink);font:400 clamp(16px,2.2vw,32px) var(--serif);padding:14px 12px 5px;transition:background .2s,box-shadow .2s}
+.rn-arch-button.book-arch{left:70%}.rn-arch-button:hover{background:linear-gradient(160deg,#FFFFFFF0,#FFFFFF90);box-shadow:inset 0 2px 3px white,0 10px 24px #5F492025}.arch-arrow{font:18px var(--sans)}
+.rn-daily-hymn{max-width:1196px;margin:0 auto 40px}.rn-footer{max-width:1244px}
+@media(max-width:650px){#mainNav{margin:20px auto 28px;gap:8px}.rn-brand{font-size:23px;padding:12px 20px;min-height:46px}.nav-tools{gap:7px}.rn-search-button,.nav-menu-btn{width:46px;height:46px;min-width:46px;min-height:46px}.rn-shell{padding:0 12px}.rn-home-hero.rn-arch-hero{padding-bottom:30px}.rn-arch-button{width:20%;gap:4px;padding:7px 3px 3px;border-radius:80px 80px 14px 14px;font-size:17px;aspect-ratio:2}.arch-arrow{font-size:11px}.rn-daily-hymn{margin-left:8px;margin-right:8px}.rn-daily-hymn .rn-feature-content{padding:25px}}
+@media(max-width:360px){.rn-brand{font-size:21px;padding:12px 16px}.rn-search-button,.nav-menu-btn{min-width:42px;width:42px;min-height:42px;height:42px}.rn-arch-button{font-size:15px}.arch-arrow{display:none}}
+@media(max-width:650px){.rn-arch-button:after{content:'';position:absolute;inset:-7px -3px;border-radius:inherit}}

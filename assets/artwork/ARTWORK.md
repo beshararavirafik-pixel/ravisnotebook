@@ -39,3 +39,7 @@ Current IOTA foundation: original vector illumination using serif-ended angular 
 Direction: a wide Coptic ornamental headpiece with connected serif-ended angular interlace, fine dark ink outlines, matte red/gold/ivory pigments, restrained green/lapis accents, and twin shallow arch cutouts. No photograph, book, page, or lettering. Original generation retained in Codex generated images; the project copy preserves transparency.
 
 Layout uses the headpiece above the typography, following the source manuscript composition. Library surfaces remain clear and rounded.
+
+## Full-width arch navigation
+
+`iota-headpiece-v2.png` edits the approved v1 artwork using image generation to remove the three top flame-like ornaments. Remaining interlace, twin arch openings, and hand-painted texture are preserved. The transparent project asset is displayed across the page with library links fitted into the arches. Compact glass controls provide the brand, three-line menu, and expanding search.
