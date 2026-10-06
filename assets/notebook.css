@@ -101,3 +101,19 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 .rn-arch-art{height:auto;aspect-ratio:2172/280;border:0;border-radius:4px;box-shadow:none}
 .rn-arch-art>img{min-width:0;transform:translate(-50%,-29%)}
 @media(max-width:650px){.rn-arch-art{height:auto;border-radius:2px}}
+
+/* The illumination is the shared header, rather than a standalone picture. */
+.rn-site-canopy{position:absolute;top:0;left:0;right:0;height:142px;background-color:#874432;background-image:url('artwork/iota-band-v1.png');background-size:max(100%,1100px) auto;background-position:center;background-repeat:no-repeat;border-top:3px solid #B78A46;border-bottom:3px solid #B78A46;box-shadow:0 3px 0 #87443218;pointer-events:none}
+#mainNav{margin:42px auto 64px;position:relative}
+.rn-brand,.rn-search-button,.nav-menu-btn{background:linear-gradient(145deg,#FFFCF5ED,#F5EFDFB8);border-color:#FFF8E8;box-shadow:inset 0 1px 2px #FFFFFF,0 6px 20px #321F1D30;backdrop-filter:blur(20px) saturate(130%);-webkit-backdrop-filter:blur(20px) saturate(130%)}
+.rn-home-hero.rn-arch-hero{padding:0 0 38px}.rn-library-links{padding:20px 0 0;gap:0;max-width:700px;margin:auto}
+.rn-library-links .rn-arch-button{min-width:0;flex:1;border:0;border-radius:0;box-shadow:none;background:none!important;color:var(--ink)!important;font:400 30px var(--serif);padding:12px 24px;min-height:60px;justify-content:space-between;gap:24px;position:relative}
+.rn-library-links .rn-arch-button+ .rn-arch-button{border-left:1px solid #A8874F50}
+.rn-library-links .rn-arch-button:hover{color:var(--red)!important;box-shadow:none}.rn-library-links .arch-arrow{color:var(--gold);font-size:20px}
+.rn-daily-hymn{border:0;border-top:1px solid #A8874F70;border-bottom:1px solid #A8874F35;border-radius:0;background:transparent;margin-bottom:36px}
+.rn-daily-hymn .rn-feature-content{padding:32px 20px}.rn-daily-hymn #daily-heading{color:var(--red)}.rn-daily-hymn .rn-button{border-color:#A8874F60;color:var(--red);background:#FFFCF570}
+.rn-footer{border-color:#A8874F35}.rn-resource{background:#FFFCF5;border-color:#A8874F35}.page-hero-wrap{background:transparent}
+@media(max-width:650px){.rn-site-canopy{height:124px;background-size:1100px auto}#mainNav{margin:36px auto 52px}.rn-library-links{padding:12px 8px 0}.rn-library-links .rn-arch-button{font-size:22px;padding:12px 14px;gap:8px;min-height:52px}.rn-library-links .arch-arrow{font-size:16px}.rn-home-hero.rn-arch-hero{padding-bottom:25px}.rn-daily-hymn .rn-feature-content{padding:28px 8px}.rn-daily-hymn time{right:8px;top:28px}}
+@media(max-width:360px){.rn-library-links .rn-arch-button{font-size:20px;padding:12px 10px}}
+.rn-library-links .rn-arch-button{left:auto;top:auto}
+.rn-brand,.rn-search-button,.nav-menu-btn{isolation:isolate;overflow:hidden;clip-path:inset(0 round 100px)}
