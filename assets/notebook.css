@@ -31,60 +31,24 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 
 
 
-/* Editorial reset: warm paper, ink typography, two sculptural library panels. */
-:root{color-scheme:light;--background:#F5F1E8;--ink:#282823;--muted:#6B6A61;--line:#28282325;--red:#733B45;--accent:#733B45;--gold:#733B45;--panel:#FFFFFF;--navy:#282823;--text:#282823;--light:#FFFFFF;--mid:#DCD8CF;--teal:#282823;--cream:#F5F1E8;--sand:#E5E1D6}
-#mainNav{max-width:1300px;padding:32px 40px 24px;border-bottom:1px solid var(--line)}
-.rn-brand{font:500 22px var(--sans);letter-spacing:-.8px;color:var(--ink)}
-.rn-search-button{color:var(--ink);border-color:var(--line);background:transparent}
-.rn-shell{max-width:1300px;padding:0 40px}
-.rn-home-hero{padding:70px 0 64px;background:none;color:var(--ink);border:0;border-radius:0;overflow:visible}
-.rn-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.rn-kicker{color:var(--muted);font-size:10px;letter-spacing:.16em;font-weight:500}
-.rn-kicker:before{display:none}
-.rn-title{font:400 clamp(78px,8.5vw,120px)/.95 var(--serif);letter-spacing:-.045em;margin:35px 0 0}
-.rn-title em{color:var(--red);font-weight:400}
-.hero-buttons{display:grid;grid-template-columns:1fr;gap:16px;margin:0}
-.library-door{position:relative;overflow:hidden;min-height:206px;border-radius:26px;padding:26px 30px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;transition:transform .25s,box-shadow .25s}
-.library-door:hover{transform:translateY(-4px);box-shadow:0 12px 24px #28282315}
-.library-door.hymns{background:#733B45;color:#F5F1E8}
-.library-door.books{background:#DCE1D2;color:#31392F}
-.door-index{font:500 10px var(--sans);letter-spacing:.14em;position:relative;z-index:1}
-.door-label{display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:1;font:400 33px var(--serif);letter-spacing:-.5px}
-.door-arrow{width:42px;height:42px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font:20px var(--sans)}
-.door-art{position:absolute;right:32px;top:-26px;font:italic 170px var(--serif);opacity:.18;pointer-events:none;letter-spacing:-14px}
-.books .door-art{font-style:normal;font-size:160px;top:-15px;letter-spacing:-22px}
-.rn-daily-hymn{display:block;background:#FFFFFF;border:0;border-radius:26px;min-height:0;margin:0 0 55px;overflow:hidden}
-.rn-daily-hymn .rn-feature-content{padding:30px 36px;display:grid;grid-template-columns:170px 1fr auto;gap:10px 36px;align-items:center}
-.rn-daily-hymn #daily-heading{font:500 10px var(--sans);letter-spacing:.12em;margin:0;color:var(--red);grid-column:1;grid-row:1}
-.rn-daily-hymn time{grid-column:1;grid-row:2;color:var(--muted);font-size:12px}
-.rn-daily-hymn h3{grid-column:2;grid-row:1;margin:0;font:400 34px/1.1 var(--serif);overflow-wrap:anywhere}
-.feature-tags{grid-column:2;grid-row:2;display:flex;gap:10px}
-.rn-tag{background:none;color:var(--muted);border:0;padding:0;font-size:10px}
-.rn-daily-hymn .rn-button{grid-column:3;grid-row:1/3;background:transparent;color:var(--ink);border-color:var(--line)}
-.rn-button{background:var(--red);border-color:var(--red);color:#FFFFFF;border-radius:100px}
-.rn-button.light{background:var(--red);border-color:var(--red);color:#FFFFFF}
-.rn-button.outline{color:var(--ink);border-color:var(--line)}
-.rn-footer,footer{max-width:1300px;margin:auto;background:none;color:var(--muted);padding:28px 40px;border-top:1px solid var(--line)}
-.rn-footer a,.footer-name,.footer-verse,.footer-left,.footer-right,.footer-admin-link{color:var(--muted)!important}
-.rn-footer>a:first-child{font:500 13px var(--sans)}
-.page-hero{padding-top:58px;padding-bottom:36px}.page-title{font-size:clamp(55px,6vw,78px)}
-.rn-resource{background:#FFFFFF;border:0;border-radius:22px;padding:28px;box-shadow:0 1px 0 #28282310;transition:box-shadow .2s,transform .2s}
-.rn-resource:hover{box-shadow:0 8px 24px #2828230C;transform:translateY(-2px)}
-.resource-symbol{color:var(--red)}.resource-arabic{color:var(--muted)}
-.rn-chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#FFFFFF}
-.rn-toolbar{padding:18px 0;margin:0 0 16px;border-top:1px solid var(--line)}
-.rn-input,.rn-toolbar select{background:#FFFFFF;color:var(--ink)}
-.rn-library-grid{gap:20px}.rn-resource h3{font-size:30px}
-.drawer{background:var(--background);border-left:1px solid var(--line)}
-.drawer-link{color:var(--ink)}.drawer-close{color:var(--ink)}.drawer-label{color:var(--muted)}.drawer-overlay{background:#28282380}
-.rn-search-dialog{background:#FFFFFF;box-shadow:0 20px 60px #28282320}.search-dialog-top{background:#FFFFFF}.search-result:hover{background:var(--background)}
-.reader-panel,.note-item,.season-card{background:#FFFFFF;border-color:var(--line);border-radius:20px}
-.reader-panel p,.resource-details,.resource-source{color:var(--muted)}.season-card:hover{background:#E5E9DC}
-.reader-audio{background:var(--red)}.rn-library-banner{background:#E5E9DC}.form-submit{color:white}
-@media(max-width:900px){.rn-hero-grid{gap:35px}.rn-title{font-size:86px}.door-label{font-size:29px}.rn-daily-hymn .rn-feature-content{grid-template-columns:135px 1fr;gap:12px 24px}.rn-daily-hymn .rn-button{grid-column:2;grid-row:3;justify-self:start}}
-@media(max-width:650px){#mainNav{padding:24px 20px}.rn-brand{font-size:18px;letter-spacing:-.5px}.rn-shell{padding:0 20px}.rn-home-hero{padding:45px 0 32px}.rn-hero-grid{grid-template-columns:1fr;gap:35px}.rn-title{font-size:76px;margin-top:22px}.hero-buttons{gap:12px}.library-door{min-height:170px;padding:24px;border-radius:22px}.door-label{font-size:30px}.door-art{font-size:140px}.books .door-art{font-size:140px}.rn-daily-hymn{border-radius:22px;margin-bottom:32px}.rn-daily-hymn .rn-feature-content{padding:26px;display:flex;flex-direction:column;align-items:start;gap:13px}.rn-daily-hymn time{position:absolute;right:26px;top:26px;font-size:10px}.rn-daily-hymn .rn-feature-content{position:relative}.rn-daily-hymn h3{font-size:32px;margin-top:12px}.rn-daily-hymn .rn-button{margin-top:8px}.rn-footer,footer{padding:25px 20px}.rn-resource{padding:25px}.rn-title em{white-space:nowrap}}
 
-.hymns .door-art{font-family:Coptic,serif;font-style:normal;font-size:135px;top:4px;right:32px}
-.books .door-art{font-size:0;top:24px;right:36px;width:80px;height:92px;border:3px solid currentColor;border-radius:3px;transform:rotate(12deg);opacity:.14}
-.books .door-art:before,.books .door-art:after{content:'';position:absolute;top:-3px;bottom:-3px;border-left:3px solid currentColor;width:22px;left:22px}
-.books .door-art:after{left:48px}
+/* IOTA foundation: illuminated geometry, modern soft frames, clear reading surfaces. */
+:root{color-scheme:light;--background:#F3EDE0;--ink:#0A2947;--muted:#65665D;--line:#0A294725;--red:#85463F;--accent:#85463F;--gold:#BC9458;--panel:#FFFCF5;--navy:#0A2947;--text:#0A2947;--light:#FFFCF5;--mid:#D3D4C0;--teal:#40756F;--cream:#F3EDE0;--sand:#D3D4C0}
+#mainNav{max-width:1280px;padding:30px 40px;background:none;border:0}.rn-brand{color:var(--ink);font:400 28px var(--serif);letter-spacing:-.4px}.rn-search-button{color:var(--ink);border-color:var(--line)}
+.rn-shell{max-width:1280px;padding:0 40px}.rn-home-hero{background:none;color:var(--ink);border-radius:0;padding:30px 0 50px;overflow:visible}
+.rn-hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:90px;align-items:center}.rn-hero-copy{padding:12px 0}
+.rn-kicker{font:500 10px var(--sans);letter-spacing:.17em;color:var(--muted)}.rn-kicker:before{display:none}
+.rn-title{font:400 clamp(60px,7.5vw,100px)/1.02 var(--serif);letter-spacing:-.035em;margin:28px 0 38px}.rn-title em{color:var(--red);font-weight:400}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}.rn-button{background:var(--ink);color:var(--cream);border:1px solid var(--ink);border-radius:100px;font-size:12px;padding:13px 22px;gap:20px}.rn-button.light{background:var(--ink);border-color:var(--ink);color:var(--cream)}.rn-button.outline{background:none;color:var(--ink);border-color:var(--line)}.rn-button:hover{transform:translateY(-2px);box-shadow:0 6px 16px #0A294713}
+.rn-illumination{margin:0;display:flex;justify-content:end}.rn-illumination img{display:block;width:100%;max-width:420px;height:auto;box-shadow:0 18px 40px #0A294711;border-radius:30px}
+.rn-daily-hymn{background:var(--ink);color:var(--cream);border-radius:24px;min-height:0;display:block;margin:0 0 48px;position:relative;overflow:hidden}
+.rn-daily-hymn .rn-feature-content{padding:28px 34px;display:grid;grid-template-columns:165px 1fr auto;gap:10px 34px;align-items:center;border-left:6px solid var(--gold)}
+.rn-daily-hymn #daily-heading{font:500 10px var(--sans);letter-spacing:.12em;color:#D4B37C;grid-column:1;grid-row:1;margin:0}.rn-daily-hymn time{grid-column:1;grid-row:2;font-size:11px;color:#D3D4C0}.rn-daily-hymn h3{grid-column:2;grid-row:1;font:400 33px/1.1 var(--serif);margin:0;overflow-wrap:anywhere}.feature-tags{grid-column:2;grid-row:2;gap:10px}.rn-tag{background:none;border:0;padding:0;color:#D3D4C0;font-size:10px}.rn-daily-hymn .rn-button{grid-column:3;grid-row:1/3;background:none;color:var(--cream);border-color:#F3EDE050}
+.rn-footer,footer{max-width:1280px;margin:auto;background:none;color:var(--muted);padding:26px 40px;border-top:1px solid var(--line)}.rn-footer a,.footer-name,.footer-left,.footer-right,.footer-verse,.footer-admin-link{color:var(--muted)!important}.rn-footer>a:first-child{font:400 18px var(--serif)}
+.page-hero{padding-top:40px;padding-bottom:34px}.page-title{font-size:clamp(52px,6vw,76px);color:var(--ink)}.page-desc,.page-subtitle{color:var(--muted)}
+.rn-resource{background:var(--panel);border:1px solid #0A294718;border-radius:20px;padding:26px;border-top:3px solid var(--gold);transition:transform .2s,box-shadow .2s}.rn-resource:nth-child(3n+2){border-top-color:var(--red)}.rn-resource:nth-child(3n){border-top-color:var(--teal)}.rn-resource:hover{transform:translateY(-2px);box-shadow:0 6px 24px #0A29470C}.resource-symbol{color:var(--red)}.resource-arabic{color:var(--muted)}.rn-resource h3{font-size:29px}.rn-library-grid{gap:18px}
+.rn-input,.rn-toolbar select{color:var(--ink);background:var(--panel)}.rn-toolbar{padding-top:18px;border-top:1px solid var(--line)}.rn-chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.drawer{background:var(--ink);border-left:1px solid var(--gold)}.drawer-link{color:var(--cream)}.drawer-label{color:#D4B37C}.drawer-close{color:var(--cream)}.drawer-overlay{background:#0A294780}.rn-search-dialog{background:var(--panel);box-shadow:0 20px 60px #0A294725}.search-dialog-top{background:var(--panel)}.search-result:hover{background:var(--background)}
+.reader-panel,.note-item,.season-card{background:var(--panel);border-color:var(--line);border-radius:18px}.reader-panel p,.resource-details,.resource-source{color:var(--muted)}.season-card:hover{background:#E6E5D5}.rn-library-banner{background:#E6E5D5}.reader-audio{background:var(--ink)}.form-submit{color:var(--cream)}
+@media(max-width:1000px){.rn-hero-grid{gap:40px}.rn-title{font-size:76px}.hero-buttons{flex-direction:column;align-items:start}.rn-daily-hymn .rn-feature-content{grid-template-columns:135px 1fr;gap:12px 24px}.rn-daily-hymn .rn-button{grid-column:2;grid-row:3;justify-self:start}}
+@media(max-width:650px){#mainNav{padding:24px 20px}.rn-brand{font-size:24px}.rn-shell{padding:0 20px}.rn-home-hero{padding:18px 0 30px}.rn-hero-grid{grid-template-columns:1fr;gap:32px}.rn-title{font-size:65px;margin:22px 0 26px}.hero-buttons{flex-direction:row;align-items:stretch;gap:10px}.hero-buttons .rn-button{font-size:11px;padding:12px 16px;gap:12px;flex:1}.rn-illumination{justify-content:center}.rn-illumination img{max-width:350px;border-radius:24px}.rn-daily-hymn{border-radius:20px;margin-bottom:32px}.rn-daily-hymn .rn-feature-content{padding:25px;display:flex;flex-direction:column;align-items:start;gap:13px;position:relative}.rn-daily-hymn time{position:absolute;right:25px;top:25px;font-size:10px}.rn-daily-hymn h3{font-size:32px;margin-top:12px}.rn-daily-hymn .rn-button{margin-top:8px}.rn-footer,footer{padding:25px 20px}.rn-resource{padding:24px}}

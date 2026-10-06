@@ -29,3 +29,5 @@ The homepage retains the colored woven headband, with a separate outlined divide
 A single original `iota-frieze.svg` now anchors the homepage. Wallpaper, corner ornaments, stepped daily-hymn artwork, decorative markers, and repeated page/card ornaments are removed from the visible interface. The palette and typography are softened, with open space around the art and a simpler daily hymn section.
 
 The current frieze is an original monochrome vector interlace: two linked rows of angular ribbons with alternating over/under crossings. Ravi’s supplied woven-pattern reference and https://www.istockphoto.com/illustrations/coptic-art informed the restrained direction. No stock artwork is copied into the site. The frieze appears once in the homepage hero; library surfaces remain quiet.
+
+Current IOTA foundation: original vector illumination using serif-ended angular I units, alternating crossings, stepped headpieces, and ivory/gold/terracotta/teal colors from Ravi’s manuscript references. The artwork is concentrated in one homepage panel. Modern library cards use restrained color edges rather than repeating the ornament throughout.
