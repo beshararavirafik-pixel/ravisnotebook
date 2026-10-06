@@ -23,3 +23,9 @@ The October 6 correction replaces curved units with angular, serif-ended IOTA sh
 ## Ornament variation
 
 The homepage retains the colored woven headband, with a separate outlined divider and single corner. The daily hymn uses a stepped diamond arrangement. Reading page headings use the light divider; catalogue cards, the menu, and footer are deliberately simpler. New original vector assets: `iota-stepped.svg`, `iota-divider.svg`, and `iota-corner.svg`.
+
+## Quiet art direction
+
+A single original `iota-frieze.svg` now anchors the homepage. Wallpaper, corner ornaments, stepped daily-hymn artwork, decorative markers, and repeated page/card ornaments are removed from the visible interface. The palette and typography are softened, with open space around the art and a simpler daily hymn section.
+
+The current frieze is an original monochrome vector interlace: two linked rows of angular ribbons with alternating over/under crossings. Ravi’s supplied woven-pattern reference and https://www.istockphoto.com/illustrations/coptic-art informed the restrained direction. No stock artwork is copied into the site. The frieze appears once in the homepage hero; library surfaces remain quiet.

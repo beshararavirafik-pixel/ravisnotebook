@@ -169,3 +169,46 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 .rn-footer{padding-top:36px}
 .rn-daily-hymn .rn-feature-content{padding-right:270px}
 @media(max-width:650px){.rn-home-hero:after{background-size:70px 70px;background-position:left 12px bottom 12px;opacity:.3}.rn-hero-grid:after{left:50%;right:auto;width:200px;height:22px;background-size:contain}.rn-daily-hymn:before{width:85px;right:16px;opacity:.25}.rn-daily-hymn .rn-feature-content{padding-right:28px}.rn-daily-hymn h3{padding-right:60px}}
+
+/* Quiet art direction: one frieze, generous space, no scattered motifs. */
+:root{--gold:#C4A36B;--accent:#C4A36B;--muted:#B9B5A8;--line:#C4A36B26;--red:#70413E;--ink:#EDE7D8}
+#mainNav{padding-top:30px;padding-bottom:30px}
+#mainNav:after{display:none}
+.rn-brand{color:var(--ink);font-size:27px}
+.rn-shell{max-width:1190px}
+.rn-home-hero{border-radius:28px;border:1px solid var(--line);background:#0C2939}
+.rn-home-hero:before,.rn-home-hero:after,.rn-hero-grid:after{display:none}
+.rn-hero-grid>div:first-child{padding:126px 48px 72px;position:relative}
+.rn-hero-grid>div:first-child:before{left:50%;right:auto;transform:translateX(-50%);top:28px;width:min(440px,70%);height:66px;background:url('artwork/iota-frieze.svg?v=elegance-20261006') center/contain no-repeat;border:0;border-radius:0;opacity:.8}
+.rn-home-hero .rn-kicker{font-weight:400;letter-spacing:.23em;font-size:9px;color:var(--muted)}
+.rn-kicker:before{display:none}
+.rn-title{font-size:clamp(48px,6.1vw,78px);line-height:1.13;letter-spacing:-.02em;margin:30px 0 34px}
+.rn-title em{color:var(--gold)}
+.hero-buttons{gap:14px;margin-top:8px}
+.rn-button{font-size:12px;min-height:46px;font-weight:400}
+.rn-button.light{background:var(--gold);border-color:var(--gold)}
+.hero-buttons .rn-button.outline{border-color:#C4A36B66;color:var(--ink)}
+.rn-button:hover{background:#D6B884;border-color:#D6B884}
+.rn-daily-hymn{background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;margin:54px 0 70px;overflow:visible}
+.rn-daily-hymn:before{display:none}
+.rn-daily-hymn .rn-feature-content{padding:38px 10px 0;padding-right:10px;gap:14px;position:relative}
+.rn-daily-hymn #daily-heading{padding:0;min-height:0;color:var(--muted);font-weight:400;font-size:9px;letter-spacing:.2em}
+.rn-daily-hymn #daily-heading:before{display:none}
+.rn-daily-hymn time{position:absolute;right:10px;top:36px;color:var(--muted);font-size:11px}
+.rn-daily-hymn h3{font-size:40px;font-weight:400;margin:5px 0 8px;padding:0}
+.rn-tag,.rn-tag:nth-child(n){border:0;background:none;padding:0;color:var(--muted);font-size:10px}
+.feature-tags{gap:0}
+.feature-tags .rn-tag+.rn-tag:before{content:'·';padding:0 10px;color:var(--gold)}
+.rn-daily-hymn .rn-button{background:none;color:var(--gold);border:0;border-bottom:1px solid #C4A36B66;border-radius:0;padding:8px 0;min-height:0;margin-top:6px}
+.rn-daily-hymn .rn-button:hover{color:var(--ink);border-color:var(--ink);transform:none}
+.page-hero:after,.rn-footer:before,.rn-resource:after{display:none}
+.rn-resource:nth-child(n){border-color:var(--line)}
+.rn-resource{padding:28px;background:#0C2939}
+.rn-resource:hover{border-color:#C4A36B66}
+.resource-symbol{color:var(--gold);opacity:.8}
+.rn-resource .resource-arabic{color:var(--muted)}
+.rn-footer{background:transparent;padding-top:30px;padding-bottom:30px}
+.rn-footer a,.rn-footer>a:first-child{color:var(--muted)}
+.drawer{border-color:var(--line);background-image:none}
+@media(max-width:650px){#mainNav{padding:24px 20px}.rn-brand{font-size:23px}.rn-home-hero{border-radius:24px}.rn-hero-grid>div:first-child{padding:110px 24px 42px}.rn-hero-grid>div:first-child:before{top:24px;left:50%;right:auto;width:75%;height:46px;background-size:contain}.rn-title{font-size:clamp(43px,11vw,57px);line-height:1.1;margin:22px 0 28px}.hero-buttons{gap:12px}.rn-daily-hymn{margin:34px 0 48px}.rn-daily-hymn .rn-feature-content{padding:28px 5px 0}.rn-daily-hymn time{right:5px;top:27px}.rn-daily-hymn h3{font-size:35px;padding:0}.rn-resource{padding:24px}.rn-footer{padding:26px 20px}}
+.rn-chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:var(--background)}
