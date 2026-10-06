@@ -19,3 +19,7 @@ The book illustration is no longer displayed. IOTA-inspired woven units now form
 ## Manuscript reference correction
 
 The October 6 correction replaces curved units with angular, serif-ended IOTA shapes, dark outlines, ivory spacers, and alternating terracotta, ochre, teal, and green fills. The user’s seven supplied manuscript and painted-cross images guided the original vector construction; none of those photographs is displayed on the website. The rounded interface is retained. `iota-rosette.svg` is the new daily-hymn marker.
+
+## Ornament variation
+
+The homepage retains the colored woven headband, with a separate outlined divider and single corner. The daily hymn uses a stepped diamond arrangement. Reading page headings use the light divider; catalogue cards, the menu, and footer are deliberately simpler. New original vector assets: `iota-stepped.svg`, `iota-divider.svg`, and `iota-corner.svg`.
