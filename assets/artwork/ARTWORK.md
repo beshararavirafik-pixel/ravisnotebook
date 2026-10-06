@@ -43,3 +43,7 @@ Layout uses the headpiece above the typography, following the source manuscript 
 ## Full-width arch navigation
 
 `iota-headpiece-v2.png` edits the approved v1 artwork using image generation to remove the three top flame-like ornaments. Remaining interlace, twin arch openings, and hand-painted texture are preserved. The transparent project asset is displayed across the page with library links fitted into the arches. Compact glass controls provide the brand, three-line menu, and expanding search.
+
+## Slim band revision
+
+`iota-band-v1.png` is an image-generation edit of the approved v2 headpiece, recomposed into a complete narrow rectangular interlace with finished gold top and bottom borders. The arches and projecting ornaments are removed. Original painting style and colors are retained. The layout displays the narrow band above two small library buttons; CSS trims only surrounding transparent canvas.
