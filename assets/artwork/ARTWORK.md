@@ -15,3 +15,7 @@ Use case: historical-scene. Asset type: detailed original artwork for the hero o
 ## Rounded IOTA interface
 
 The book illustration is no longer displayed. IOTA-inspired woven units now form the interface’s surface patterns, border bands, page dividers, card details, and daily hymn marker. `iota-field.svg` is an original repeating vector pattern. Modern rounded panels, pill buttons, and rounded readers share this language across the site.
+
+## Manuscript reference correction
+
+The October 6 correction replaces curved units with angular, serif-ended IOTA shapes, dark outlines, ivory spacers, and alternating terracotta, ochre, teal, and green fills. The user’s seven supplied manuscript and painted-cross images guided the original vector construction; none of those photographs is displayed on the website. The rounded interface is retained. `iota-rosette.svg` is the new daily-hymn marker.
