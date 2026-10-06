@@ -20,3 +20,7 @@ BioForge (large type and structured spacing), Bloom (soft panels), Emerald Fairw
 The built-in PDF reader vendors Mozilla PDF.js (pdfjs-dist 6.4.299) under the Apache 2.0 license, included at `assets/vendor/pdfjs/LICENSE`. Fonts and other supporting assets retain their included licenses.
 
 Only Ravi’s original lessons are included in Notes. The supplied external notes site was a reference for future functionality; its catalogue entries and links have been removed.
+
+## IOTA design update
+
+The October 6 update uses the palette sampled from Ravi’s supplied reference and original IOTA-inspired ornaments. The manuscript artwork is generated decorative imagery. Its creation prompt and asset details are in [assets/artwork/ARTWORK.md](assets/artwork/ARTWORK.md).
