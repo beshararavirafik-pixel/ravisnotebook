@@ -52,3 +52,18 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 .reader-panel,.note-item,.season-card{background:var(--panel);border-color:var(--line);border-radius:18px}.reader-panel p,.resource-details,.resource-source{color:var(--muted)}.season-card:hover{background:#E6E5D5}.rn-library-banner{background:#E6E5D5}.reader-audio{background:var(--ink)}.form-submit{color:var(--cream)}
 @media(max-width:1000px){.rn-hero-grid{gap:40px}.rn-title{font-size:76px}.hero-buttons{flex-direction:column;align-items:start}.rn-daily-hymn .rn-feature-content{grid-template-columns:135px 1fr;gap:12px 24px}.rn-daily-hymn .rn-button{grid-column:2;grid-row:3;justify-self:start}}
 @media(max-width:650px){#mainNav{padding:24px 20px}.rn-brand{font-size:24px}.rn-shell{padding:0 20px}.rn-home-hero{padding:18px 0 30px}.rn-hero-grid{grid-template-columns:1fr;gap:32px}.rn-title{font-size:65px;margin:22px 0 26px}.hero-buttons{flex-direction:row;align-items:stretch;gap:10px}.hero-buttons .rn-button{font-size:11px;padding:12px 16px;gap:12px;flex:1}.rn-illumination{justify-content:center}.rn-illumination img{max-width:350px;border-radius:24px}.rn-daily-hymn{border-radius:20px;margin-bottom:32px}.rn-daily-hymn .rn-feature-content{padding:25px;display:flex;flex-direction:column;align-items:start;gap:13px;position:relative}.rn-daily-hymn time{position:absolute;right:25px;top:25px;font-size:10px}.rn-daily-hymn h3{font-size:32px;margin-top:12px}.rn-daily-hymn .rn-button{margin-top:8px}.rn-footer,footer{padding:25px 20px}.rn-resource{padding:24px}}
+
+/* Manuscript composition: the headpiece crowns the text, as in the source references. */
+:root{--background:#F5EFDF;--ink:#192E3A;--red:#833D32;--gold:#A8874F;--panel:#FFFCF5;--line:#192E3A20}
+#mainNav{padding-top:24px;padding-bottom:20px}.rn-brand{font-size:27px}
+.rn-home-hero{padding:20px 0 48px}.rn-hero-grid{display:flex;flex-direction:column;gap:18px;text-align:center}
+.rn-headpiece{margin:0;width:min(700px,100%)}.rn-headpiece img{display:block;width:100%;height:auto}
+.rn-hero-copy{padding:0;width:100%}.rn-hero-copy .rn-kicker{justify-content:center;font-size:9px;letter-spacing:.2em}
+.rn-title{font-size:clamp(46px,6vw,78px);line-height:1.1;margin:22px 0 28px;letter-spacing:-.03em}.rn-title em{white-space:nowrap;color:var(--red)}
+.hero-buttons{justify-content:center;flex-direction:row;gap:12px}.rn-button.light{background:var(--red);border-color:var(--red)}.rn-button{font-size:12px}
+.rn-daily-hymn{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:22px;margin-bottom:38px}.rn-daily-hymn .rn-feature-content{border-left:0;padding:28px 34px}
+.rn-daily-hymn #daily-heading{color:var(--red)}.rn-daily-hymn time,.rn-daily-hymn .rn-tag{color:var(--muted)}.rn-daily-hymn .rn-button{color:var(--ink);border-color:var(--line)}
+.rn-resource{border-top-width:1px;border-top-color:var(--line)}.rn-resource:nth-child(n){border-top-color:var(--line)}.resource-symbol{color:var(--gold)}
+.drawer{background:var(--ink)}.page-title{color:var(--ink)}
+@media(max-width:1000px){.rn-title{font-size:60px}.hero-buttons{align-items:center;flex-direction:row}}
+@media(max-width:650px){#mainNav{padding:22px 20px}.rn-brand{font-size:24px}.rn-home-hero{padding:26px 0 32px}.rn-hero-grid{gap:26px}.rn-headpiece{width:100%}.rn-title{font-size:49px;line-height:1.08;margin:20px 0 27px}.rn-title em{display:block}.hero-buttons{align-items:stretch;gap:10px}.hero-buttons .rn-button{padding:12px 16px;font-size:11px}.rn-daily-hymn .rn-feature-content{padding:25px}.rn-daily-hymn time{top:25px;right:25px}}
