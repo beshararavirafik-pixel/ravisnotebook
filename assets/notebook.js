@@ -52,7 +52,11 @@ if(daily&&data.hymns.length){
     daily.querySelector('[data-daily-tags]').innerHTML=(hymn.tags||[]).slice(0,3).map(tag=>`<span class="rn-tag">${esc(tag)}</span>`).join('');
     const date=daily.querySelector('[data-daily-date]');
     date.dateTime=`${part('year')}-${String(part('month')).padStart(2,'0')}-${String(part('day')).padStart(2,'0')}`;
-    date.textContent=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',month:'long',day:'numeric'}).format(now);
+    const civilDate=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',month:'long',day:'numeric'}).format(now);
+    const copticParts=new Intl.DateTimeFormat('en-US-u-ca-coptic',{timeZone:'America/New_York',year:'numeric',month:'numeric',day:'numeric'}).formatToParts(now);
+    const copticPart=type=>Number(copticParts.find(p=>p.type===type).value);
+    const copticMonths=['Thout','Paopi','Hathor','Koiak','Tobi','Meshir','Paremhat','Parmouti','Pashons','Paoni','Epip','Mesori','Pi Kogi Enavot'];
+    date.textContent=`${civilDate} · ${copticPart('day')} ${copticMonths[copticPart('month')-1]} ${copticPart('year')} AM`;
   };
   updateDailyHymn();
   setInterval(updateDailyHymn,30000);
