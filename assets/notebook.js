@@ -2,7 +2,7 @@
 'use strict';
 const data=window.RN_DATA;
 const siteNav=document.querySelector('#mainNav');
-if(siteNav){const canopy=document.createElement('div');canopy.className='rn-site-canopy';canopy.setAttribute('aria-hidden','true');siteNav.before(canopy);}
+
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f\u064b-\u065f]/g,'').toLowerCase();

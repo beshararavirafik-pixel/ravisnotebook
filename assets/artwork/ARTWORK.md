@@ -47,3 +47,7 @@ Layout uses the headpiece above the typography, following the source manuscript 
 ## Slim band revision
 
 `iota-band-v1.png` is an image-generation edit of the approved v2 headpiece, recomposed into a complete narrow rectangular interlace with finished gold top and bottom borders. The arches and projecting ornaments are removed. Original painting style and colors are retained. The layout displays the narrow band above two small library buttons; CSS trims only surrounding transparent canvas.
+
+## Coptic sculpture v1
+
+`coptic-sculpture-v1.png` is original generated artwork for the fresh Butter-inspired layout. A cobalt sculptural alpha, chrome ribbon, and amber glass sphere, rendered on transparency. Generated with the built-in image tool on October 7, 2026. The composition does not reuse Butter’s artwork or branding.
