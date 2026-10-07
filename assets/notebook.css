@@ -120,8 +120,8 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 
 /* Modern library surfaces with the manuscript band as an architectural accent. */
 :root{--background:#F8F6F0;--panel:#FFFFFF;--ink:#0A2947;--line:#0A294714;--muted:#68716F}
-.rn-site-canopy{height:104px;border-width:2px;background-size:max(100%,1100px) auto;box-shadow:none}
-#mainNav{margin:25px auto 48px;gap:12px}
+.rn-site-canopy{height:32px;border-width:1px;background-size:300px auto;background-repeat:repeat-x;box-shadow:none}
+#mainNav{margin:48px auto 16px;gap:12px}
 .rn-brand{font:600 18px/1.2 var(--sans);letter-spacing:-.6px;padding:15px 23px}
 .page-hero{padding:34px 0 12px}.page-title{font:600 clamp(36px,4.5vw,58px)/1.12 var(--sans);letter-spacing:-.055em;margin:0 0 14px}
 .page-desc,.page-subtitle{font-size:15px;line-height:1.65;margin:0;color:var(--muted)}
@@ -145,5 +145,8 @@ html{scroll-behavior:smooth}body{margin:0;padding:0;background:var(--background)
 .rn-library-links .rn-arch-button+.rn-arch-button{border-left:1px solid var(--line)}.rn-library-links .rn-arch-button:hover{border-color:#A8874F66;box-shadow:0 10px 25px #0A294709}.rn-library-links .arch-arrow{color:var(--ink)}
 .rn-daily-hymn{background:white;border:1px solid var(--line);border-radius:28px;max-width:820px;margin:0 auto 48px;box-shadow:0 4px 18px #0A294704}.rn-daily-hymn .rn-feature-content{padding:36px}.rn-daily-hymn .rn-button{background:var(--ink);color:white;border-color:var(--ink)}
 .rn-tag{background:#F5F3EC;border:0;color:#68716F;padding:6px 11px;font-size:10px}.rn-footer{border-color:var(--line)}
-@media(max-width:650px){.rn-site-canopy{height:98px}#mainNav{margin:22px auto 38px}.rn-brand{font-size:17px;padding:15px 19px}.page-hero{padding:28px 0 12px}.page-title{font-size:36px;letter-spacing:-1.7px}.page-desc{font-size:14px}.rn-toolbar{padding:10px;gap:8px;border-radius:20px}.rn-toolbar select{font-size:13px}.rn-toolbar .rn-input{font-size:16px}.rn-chip{padding:10px 13px}.rn-resource{padding:24px}.rn-library-links{padding:20px 6px 0;gap:12px}.rn-library-links .rn-arch-button{font-size:17px;padding:20px 16px;gap:12px;min-height:96px}.rn-daily-hymn .rn-feature-content{padding:28px 24px}.rn-daily-hymn time{right:24px;top:28px}.rn-home-hero.rn-arch-hero{padding-bottom:24px}}
+@media(max-width:650px){.rn-site-canopy{height:24px;background-size:220px auto}#mainNav{margin:40px auto 8px}.rn-brand{font-size:17px;padding:15px 19px}.page-hero{padding:28px 0 12px}.page-title{font-size:36px;letter-spacing:-1.7px}.page-desc{font-size:14px}.rn-toolbar{padding:10px;gap:8px;border-radius:20px}.rn-toolbar select{font-size:13px}.rn-toolbar .rn-input{font-size:16px}.rn-chip{padding:10px 13px}.rn-resource{padding:24px}.rn-library-links{padding:20px 6px 0;gap:12px}.rn-library-links .rn-arch-button{font-size:17px;padding:20px 16px;gap:12px;min-height:96px}.rn-daily-hymn .rn-feature-content{padding:28px 24px}.rn-daily-hymn time{right:24px;top:28px}.rn-home-hero.rn-arch-hero{padding-bottom:24px}}
 @media(prefers-reduced-motion:reduce){.rn-resource{transition:none}.rn-resource:hover{transform:none}}
+
+/* Glass controls float on the quiet reading surface beneath the narrow illumination. */
+.rn-brand,.rn-search-button,.nav-menu-btn{background:linear-gradient(145deg,#FFFFFFE6,#FFFFFF80);border-color:#FFFFFF;box-shadow:inset 0 1px 2px #FFFFFF,0 3px 14px #0A29470C}
