@@ -151,7 +151,7 @@ p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-tex
 .rn-daily-hymn h2{font-size:22px}
 .rn-resource h3,.season-card-name{font-size:28px;line-height:1.2}
 .reader-panel h2{font-size:30px}
-[lang=ar],[lang=ar] p{font-family:Changa,Tahoma,Arial,sans-serif!important;letter-spacing:normal!important}
+[lang=ar],[lang=ar] p{font-family:Amiri,Georgia,serif!important;letter-spacing:normal!important}
 [lang=cop],[lang=cop] p,.coptic{font-family:Coptic1,'Noto Sans Coptic',serif!important;letter-spacing:normal!important}
 @media(max-width:650px){.rn-fresh-copy h1{font-size:58px}}
 p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-text,.tri-text{font-family:var(--paragraph-lettering)!important}
@@ -196,8 +196,8 @@ p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-tex
 @media print{.rn-parallel-scroll{overflow:visible}.rn-parallel-text{min-width:0}.rn-parallel-text thead{display:table-header-group}.rn-parallel-text tr{break-inside:avoid}.rn-parallel-text th,.rn-parallel-text td{padding:12px}.rn-parallel-text .verse-copy{font-size:15px}}
 
 @font-face{font-family:Changa;src:url('../fonts/Changa.ttf?v=arabic-mobile-1') format('truetype');font-weight:200 800;font-style:normal;font-display:swap}
-.resource-arabic,.native-resource .verse-copy[lang=ar]{font-family:Changa,Tahoma,Arial,sans-serif!important;font-weight:400;line-height:2.1;letter-spacing:normal}
-.rn-parallel-label[lang=ar],[lang=ar].rn-parallel-label{font-family:Changa,Tahoma,Arial,sans-serif!important}
+.resource-arabic,.native-resource .verse-copy[lang=ar]{font-family:Amiri,Georgia,serif!important;font-weight:400;line-height:2.1;letter-spacing:normal}
+.rn-parallel-label[lang=ar],[lang=ar].rn-parallel-label{font-family:Amiri,Georgia,serif!important}
 .rn-mobile-language{display:none}
 @media screen and (max-width:800px){
  .rn-parallel-scroll{overflow:visible;margin:16px 0}
@@ -213,3 +213,5 @@ p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-tex
  .reader-tabs{gap:6px}
  .reader-tabs .rn-chip{padding:8px 12px}
 }
+
+@font-face{font-family:Amiri;src:url('../fonts/Amiri.ttf?v=elegant-arabic-1') format('truetype');font-weight:400;font-style:normal;font-display:swap}
