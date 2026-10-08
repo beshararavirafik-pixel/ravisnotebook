@@ -1,5 +1,6 @@
 (async()=>{
 'use strict';
+await window.RN_CMS?.ready;
 const data=window.RN_DATA,root=document.querySelector('#resource-content');if(!root)return;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const id=document.body.dataset.resourceId||new URLSearchParams(location.search).get('id');
@@ -9,7 +10,7 @@ document.title=item.title+' — Ravi’s Notebook';document.querySelector('#reso
 document.querySelector('#resource-subtitle').textContent=item.arabic||'';document.querySelector('#resource-topics').textContent=item.tags.join(' / ');
 const back=document.querySelector('#resource-back');back.href=item.type==='books'?'books.html':'hymnology.html';back.textContent=item.type==='books'?'← Book library':'← Hymn library';
 try{
-const response=await fetch('assets/resources/'+encodeURIComponent(item.id)+'.json');if(!response.ok)throw Error('Resource unavailable');const content=await response.json();
+let original=window.RN_CMS.config.resources?.[item.id]?.content;if(!original){const response=await fetch('assets/resources/'+encodeURIComponent(item.id)+'.json');if(!response.ok)throw Error('Resource unavailable');original=await response.json();}const content=await window.RN_CMS.resource(item.id,original);
 if(item.type==='books'){
  const pdf=content.files.find(f=>f.format.includes('PDF'));
  root.innerHTML=`<div class="rn-library-banner"><div><p>${esc(item.author||'')}</p><p>${esc(item.tags.join(' · '))}</p></div><div class="rn-panel-actions">${content.files.map(f=>`<a class="rn-button outline" href="${esc(f.url)}" download>${esc(f.format)} ↓</a>`).join('')}</div></div>${pdf?`<div class="book-reader" id="book-reader" aria-label="${esc(item.title)} book reader"></div>`:''}<p class="rn-result-info">Book credit: ${esc(item.source)}.</p>`;
@@ -29,6 +30,7 @@ return `<section class="hymn-unit-section" id="unit-${n}">${content.units.length
 }).join('');};
 root.querySelectorAll('[data-reader-language]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.readerLanguage;root.querySelectorAll('[data-reader-language]').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
 root.querySelectorAll('[data-reader-font]').forEach(b=>b.addEventListener('click',()=>{size=Math.max(16,Math.min(32,size+Number(b.dataset.readerFont)));text.style.setProperty('--reader-size',size+'px');}));
+if(content.recordings?.length){const recordings=root.querySelector('.recording-placeholder');recordings.replaceChildren();for(const recording of content.recordings){if(!window.RN_CMS.safeURL(recording.url))continue;const box=document.createElement('div'),label=document.createElement('p'),audio=document.createElement('audio');label.textContent=recording.title||'Recording';audio.controls=true;audio.preload='none';audio.src=recording.url;box.append(label,audio);recordings.append(box);}}
 root.querySelector('#resource-print').addEventListener('click',()=>window.print());root.querySelector('#unit-jump')?.addEventListener('change',e=>document.getElementById(e.target.value)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));render();
 }catch(e){root.innerHTML='<p class="rn-empty">This resource could not load. Please refresh the page and try again.</p>';console.error('Resource reader:',e);}
 })();
