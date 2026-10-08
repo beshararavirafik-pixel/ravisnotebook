@@ -174,3 +174,6 @@ p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-tex
 .rn-fresh-copy p{font-size:clamp(10px,3vw,20px)}
 
 @font-face{font-family:'RNLOGO';src:url('../fonts/RNLOGO.ttf?v=logo-alphabet-2') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+
+@font-face{font-family:'Coptic1';src:url('../fonts/Coptic1.ttf?v=inline-fonts-1') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Hazzat';src:url('../fonts/hazzat1_10a.ttf?v=inline-fonts-1') format('truetype');font-weight:400;font-style:normal;font-display:swap}
