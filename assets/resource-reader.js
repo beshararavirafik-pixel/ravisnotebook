@@ -8,7 +8,7 @@ const id=document.body.dataset.resourceId||new URLSearchParams(location.search).
 const item=[...data.hymns,...data.books].find(x=>x.id===id);
 if(!item){document.querySelector('#resource-title').textContent='Resource not found';root.innerHTML='<p class="rn-empty">Choose a hymn or book from the library.</p>';return;}
 document.title=item.title+' — Ravi’s Notebook';document.querySelector('#resource-title').textContent=item.title;
-const subtitle=document.querySelector('#resource-subtitle');subtitle.textContent=item.id==='hymns-thok-te-tigom'?'Pascha Doxology':'';subtitle.lang='en';subtitle.hidden=!subtitle.textContent;document.querySelector('#resource-topics').textContent=item.tags.join(' / ');
+const subtitle=document.querySelector('#resource-subtitle');subtitle.textContent=item.id==='hymns-thok-te-tigom'?'Pascha Doxology':'';subtitle.lang='en';subtitle.hidden=!subtitle.textContent;document.querySelector('#resource-topics').textContent=item.tags.slice(0,3).join(' · ');
 const back=document.querySelector('#resource-back');back.href=item.type==='books'?'books.html':'hymnology.html';back.textContent=item.type==='books'?'← Book library':'← Hymn library';
 try{
 let original=window.RN_CMS.config.resources?.[item.id]?.content;if(!original){const response=await fetch('assets/resources/'+encodeURIComponent(item.id)+'.json?v=english-library-1');if(!response.ok)throw Error('Resource unavailable');original=await response.json();}const content=await window.RN_CMS.resource(item.id,original);
