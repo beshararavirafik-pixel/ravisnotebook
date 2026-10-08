@@ -3,6 +3,7 @@
 await window.RN_CMS?.ready;
 const data=window.RN_DATA,root=document.querySelector('#resource-content');if(!root)return;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const copticMarkup=value=>String(value??'').split(/([\u2C80-\u2CFF\u03E2-\u03EF][\u2C80-\u2CFF\u03E2-\u03EF\u0300\u0305\uFE26]*)/g).map(part=>/^[\u2C80-\u2CFF\u03E2-\u03EF]/.test(part)?'<span lang="cop">'+esc(part)+'</span>':esc(part)).join('');
 const id=document.body.dataset.resourceId||new URLSearchParams(location.search).get('id');
 const item=[...data.hymns,...data.books].find(x=>x.id===id);
 if(!item){document.querySelector('#resource-title').textContent='Resource not found';root.innerHTML='<p class="rn-empty">Choose a hymn or book from the library.</p>';return;}
@@ -25,7 +26,7 @@ const text=root.querySelector('#native-hymn-text');
 const render=()=>{text.innerHTML=content.units.map((unit,n)=>{
 const chosen=mode==='compare'?available.filter(l=>l!=='arabized'&&unit.verses[l]?.length):[mode];
 const count=Math.max(0,...chosen.map(l=>unit.verses[l]?.length||0));
-const analysis=unit.analysis?.length?`<details class="hymn-analysis"><summary>Coptic word study & analysis</summary><div class="analysis-scroll"><table>${unit.analysis.map(row=>`<tr>${row.map(c=>`<td dir="auto" colspan="${c.span}">${esc(c.text)}</td>`).join('')}</tr>`).join('')}</table></div></details>`:'';
+const analysis=unit.analysis?.length?`<details class="hymn-analysis"><summary>Coptic word study & analysis</summary><div class="analysis-scroll"><table>${unit.analysis.map(row=>`<tr>${row.map(c=>`<td dir="auto" colspan="${c.span}">${copticMarkup(c.text)}</td>`).join('')}</tr>`).join('')}</table></div></details>`:'';
 return `<section class="hymn-unit-section" id="unit-${n}">${content.units.length>1?`<h2 class="rn-heading" lang="ar" dir="auto">${esc(unit.title||'Section '+(n+1))}</h2>`:''}${count?Array.from({length:count},(_,i)=>`<div class="verse-row"><span class="verse-number">${String(i+1).padStart(2,'0')}</span><div class="verse-columns" style="--verse-columns:${chosen.length}">${chosen.map(l=>`<p class="verse-copy" data-rn-verse="${n}-${i}-${l}" lang="${labels[l][1]}" dir="${labels[l][2]}"><span class="verse-lang">${labels[l][0]}</span>${esc(unit.verses[l]?.[i]||'')}</p>`).join('')}</div></div>`).join(''):'<p class="rn-result-info">This section does not have text in the selected language.</p>'}${analysis}</section>`;
 }).join('');};
 root.querySelectorAll('[data-reader-language]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.readerLanguage;root.querySelectorAll('[data-reader-language]').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
