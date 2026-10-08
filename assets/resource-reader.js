@@ -8,10 +8,10 @@ const id=document.body.dataset.resourceId||new URLSearchParams(location.search).
 const item=[...data.hymns,...data.books].find(x=>x.id===id);
 if(!item){document.querySelector('#resource-title').textContent='Resource not found';root.innerHTML='<p class="rn-empty">Choose a hymn or book from the library.</p>';return;}
 document.title=item.title+' — Ravi’s Notebook';document.querySelector('#resource-title').textContent=item.title;
-document.querySelector('#resource-subtitle').textContent=item.arabic||'';document.querySelector('#resource-topics').textContent=item.tags.join(' / ');
+document.querySelector('#resource-subtitle').textContent=item.arabic||'';document.querySelector('#resource-subtitle').lang=item.arabic?'ar':'';document.querySelector('#resource-topics').textContent=item.tags.join(' / ');
 const back=document.querySelector('#resource-back');back.href=item.type==='books'?'books.html':'hymnology.html';back.textContent=item.type==='books'?'← Book library':'← Hymn library';
 try{
-let original=window.RN_CMS.config.resources?.[item.id]?.content;if(!original){const response=await fetch('assets/resources/'+encodeURIComponent(item.id)+'.json?v=parallel-languages-1');if(!response.ok)throw Error('Resource unavailable');original=await response.json();}const content=await window.RN_CMS.resource(item.id,original);
+let original=window.RN_CMS.config.resources?.[item.id]?.content;if(!original){const response=await fetch('assets/resources/'+encodeURIComponent(item.id)+'.json?v=arabic-mobile-1');if(!response.ok)throw Error('Resource unavailable');original=await response.json();}const content=await window.RN_CMS.resource(item.id,original);
 if(item.type==='books'){
  const pdf=content.files.find(f=>f.format.includes('PDF'));
  root.innerHTML=`<div class="rn-library-banner"><div><p>${esc(item.author||'')}</p><p>${esc(item.tags.join(' · '))}</p></div><div class="rn-panel-actions">${content.files.map(f=>`<a class="rn-button outline" href="${esc(f.url)}" download>${esc(f.format)} ↓</a>`).join('')}</div></div>${pdf?`<div class="book-reader" id="book-reader" aria-label="${esc(item.title)} book reader"></div>`:''}<p class="rn-result-info">Book credit: ${esc(item.source)}.</p>`;
@@ -32,7 +32,7 @@ const render=()=>{text.innerHTML=content.units.map((unit,n)=>{
  const analysis=unit.analysis?.length?`<details class="hymn-analysis"><summary>Coptic word study & analysis</summary><div class="analysis-scroll"><table>${unit.analysis.map(row=>`<tr>${row.map(c=>`<td dir="auto" colspan="${c.span}">${copticMarkup(c.text)}</td>`).join('')}</tr>`).join('')}</table></div></details>`:'';
  let verses='<p class="rn-result-info">This section does not have text in the selected language.</p>';
  if(count&&mode==='compare'){
-  verses=`<div class="rn-parallel-scroll" role="region" aria-label="${esc(item.title)} parallel language text" tabindex="0"><table class="rn-parallel-text" style="--parallel-count:${chosen.length}"><thead><tr>${chosen.map(l=>`<th scope="col" lang="${labels[l][1]==='cop'?'en':labels[l][1]}" dir="${labels[l][2]}"><p class="rn-parallel-label">${labels[l][0]}</p></th>`).join('')}</tr></thead><tbody>${Array.from({length:count},(_,i)=>`${unit.notes?.[i]?`<tr class="rn-parallel-note"><td colspan="${chosen.length}">${note(i)}</td></tr>`:''}<tr>${chosen.map(l=>`<td>${copy(l,i)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  verses=`<div class="rn-parallel-scroll" role="region" aria-label="${esc(item.title)} parallel language text" tabindex="0"><table class="rn-parallel-text" style="--parallel-count:${chosen.length}"><thead><tr>${chosen.map(l=>`<th scope="col" lang="${labels[l][1]==='cop'?'en':labels[l][1]}" dir="${labels[l][2]}"><p class="rn-parallel-label">${labels[l][0]}</p></th>`).join('')}</tr></thead><tbody>${Array.from({length:count},(_,i)=>`${unit.notes?.[i]?`<tr class="rn-parallel-note"><td colspan="${chosen.length}">${note(i)}</td></tr>`:''}<tr>${chosen.map(l=>`<td><span class="rn-mobile-language" lang="${l==='arabic'?'ar':'en'}">${labels[l][0]}</span>${copy(l,i)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
  }else if(count){
   verses=Array.from({length:count},(_,i)=>`${note(i)}<div class="verse-row"><span class="verse-number">${String(i+1).padStart(2,'0')}</span><div class="verse-columns">${copy(chosen[0],i)}</div></div>`).join('');
  }
