@@ -34,7 +34,7 @@ function apply(){
  for(const [parentSelector,sequence] of Object.entries(p.order||{})){let root;try{root=document.querySelector(parentSelector);}catch{continue;}if(!eligible(root))continue;const children=sequence.map(sel=>document.querySelector(sel));for(const child of children)if(eligible(child)&&child.parentElement===root)root.append(child);}
  for(const [sel,e] of Object.entries(p.elements||{})){
   let el;try{el=document.querySelector(sel);}catch{continue;}if(!eligible(el))continue;
-  if(e.text){const nodes=[...el.childNodes].filter(n=>n.nodeType===3);e.text.forEach((v,i)=>{if(nodes[i]&&nodes[i].textContent!==v)nodes[i].textContent=v;});}
+  if(e.text||e.inlineFonts)RN_TEXT.render(el,e.text,e.inlineFonts);
   for(const [attr,val] of Object.entries(e.attrs||{})){if(!['href','src','alt','title','placeholder','aria-label','poster'].includes(attr))continue;if(['href','src','poster'].includes(attr)&&!safeURL(val))continue;if(el.getAttribute(attr)!==val)el.setAttribute(attr,val);}
   if(e.style)styles(sel,{...e.style,...(e.style['font-weight']?{'font-synthesis':'weight'}:{})});
   if(e.hidden)styles(sel,{display:'none'});
@@ -48,7 +48,7 @@ function apply(){
 const api=window.RN_CMS={key,pageKey,empty,clone,eligible,selector,safeURL,get config(){return config;},setConfig(c){config=clone(c);api.applyCatalogue();apply();},apply,
  async resource(id,content){return clone(config.resources?.[id]?.content||content);},
  applyCatalogue(){for(const type of ['hymns','books','notes']){const list=window.RN_DATA?.[type];if(!list)continue;for(const item of list){const edits=config.resources?.[item.id]?.metadata;if(edits)Object.assign(item,edits);}list.push(...Object.entries(config.resources||{}).filter(([,v])=>v.new&&v.metadata.type===type&&!list.some(x=>x.id===v.metadata.id)).map(([,v])=>clone(v.metadata)));}},
- select(el){if(!eligible(el))return;document.querySelector('[data-rn-selected]')?.removeAttribute('data-rn-selected');el.setAttribute('data-rn-selected','');parent.RN_STUDIO?.select(selector(el));}};
+ select(el){const wrapper=el.closest('rn-text[data-rn-text-slot]');if(wrapper)el=wrapper.parentElement;if(!eligible(el))return;document.querySelector('[data-rn-selected]')?.removeAttribute('data-rn-selected');el.setAttribute('data-rn-selected','');parent.RN_STUDIO?.select(selector(el));}};
 api.ready=(async()=>{try{const response=await fetch('site-settings.json',{cache:'no-cache'});if(response.ok)config=Object.assign(empty(),await response.json());}catch{}
  if(new URLSearchParams(location.search).get('rn-preview')==='1'){try{config=await window.RN_DRAFT.load()||config;}catch{}}
  if(document.readyState==='loading')await new Promise(r=>document.addEventListener('DOMContentLoaded',r,{once:true}));

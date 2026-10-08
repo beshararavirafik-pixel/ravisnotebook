@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),runs=require('../assets/text-runs.js');
+const text='Alleluia zxc. Amen';
+let marks=runs.format(text,[],9,13,'Hazzat');
+assert.deepEqual(marks,[{start:9,end:13,font:'Hazzat'}]);
+marks=runs.format(text,marks,10,12,'Coptic1');
+assert.deepEqual(marks,[{start:9,end:10,font:'Hazzat'},{start:10,end:12,font:'Coptic1'},{start:12,end:13,font:'Hazzat'}]);
+marks=runs.format(text,marks,10,12,'');
+assert.deepEqual(marks,[{start:9,end:10,font:'Hazzat'},{start:12,end:13,font:'Hazzat'}]);
+assert.deepEqual(runs.edit(text,'New '+text,marks),[{start:13,end:14,font:'Hazzat'},{start:16,end:17,font:'Hazzat'}]);
+assert.deepEqual(runs.edit('azxcb','azqxcb',[{start:1,end:4,font:'Hazzat'}]),[{start:1,end:5,font:'Hazzat'}]);
+assert.deepEqual(runs.edit('azxcb','ab',[{start:1,end:4,font:'Hazzat'}]),[]);
+assert.deepEqual(runs.normalize(text,[{start:-1,end:6,font:'Hazzat'},{start:1,end:99,font:'Hazzat'},{start:1,end:5,font:'bad; color:red'}]),[]);
+const unicode='Ⲁ العربية zc';assert.deepEqual(runs.format(unicode,[],10,12,'Hazzat'),[{start:10,end:12,font:'Hazzat'}]);
+console.log('Selected-text checks passed: overlapping fonts, clearing, insertion, deletion, Unicode and invalid ranges.');
