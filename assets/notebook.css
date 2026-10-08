@@ -199,19 +199,23 @@ p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-tex
 .resource-arabic,.native-resource .verse-copy[lang=ar]{font-family:Amiri,Georgia,serif!important;font-weight:400;line-height:2.1;letter-spacing:normal}
 .rn-parallel-label[lang=ar],[lang=ar].rn-parallel-label{font-family:Amiri,Georgia,serif!important}
 .rn-mobile-language{display:none}
+/* Keep corresponding verses beside one another on every screen. */
+.native-resource .reader-text{--reading-size:var(--reader-size)}
+.native-resource .verse-copy{font-size:var(--reading-size);line-height:1.9}
+.native-resource .verse-copy[lang=cop]{font-size:calc(var(--reading-size) * .9)}
+.native-resource .verse-copy[lang=ar]{font-size:calc(var(--reading-size) * 1);line-height:1.9}
+.rn-parallel-text .verse-copy{overflow-wrap:anywhere;min-width:0}
 @media screen and (max-width:800px){
+ .native-resource .reader-text{--reading-size:calc(var(--reader-size) * .7)}
  .rn-parallel-scroll{overflow:visible;margin:16px 0}
- .rn-parallel-text,.rn-parallel-text tbody,.rn-parallel-text tr,.rn-parallel-text td{display:block;width:100%;min-width:0;max-width:100%}
- .rn-parallel-text thead{display:none}
- .rn-parallel-text tr{margin:0 0 22px;padding:0 0 20px;border-bottom:1px solid #20202014}
- .rn-parallel-text td,.rn-parallel-text td:last-child{border:0;padding:12px 0}
- .rn-parallel-text .verse-copy{width:100%;overflow-wrap:anywhere;line-height:1.9}
- .rn-parallel-text .verse-copy[lang=ar]{line-height:2.1}
- .rn-mobile-language{display:inline-block;margin:0 0 7px;padding:3px 10px;border-radius:6px;background:#0A294709;color:#0A2947;font:500 12px/1.5 var(--sans)}
- .rn-parallel-text .rn-parallel-note{margin:0;padding:0;border:0}
- .rn-parallel-text .rn-parallel-note td{padding:12px 0 6px}
+ .rn-parallel-text{min-width:0;width:100%;table-layout:fixed}
+ .rn-parallel-text th,.rn-parallel-text td{padding:12px 5px}
+ .rn-parallel-text th{padding-bottom:12px}
+ .rn-parallel-text .rn-parallel-label{font-size:12px;padding:8px 2px;border-radius:6px}
+ .rn-parallel-text .rn-parallel-note td{padding:10px 5px}
  .reader-tabs{gap:6px}
  .reader-tabs .rn-chip{padding:8px 12px}
 }
+@media print{.native-resource .reader-text{--reading-size:15px}}
 
 @font-face{font-family:Amiri;src:url('../fonts/Amiri.ttf?v=elegant-arabic-1') format('truetype');font-weight:400;font-style:normal;font-display:swap}
