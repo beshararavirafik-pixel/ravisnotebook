@@ -238,3 +238,11 @@ p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-tex
 .rn-view-switch[hidden],.rn-load-more[hidden]{display:none!important}
 
 .rn-folder-nav{scroll-margin-top:90px}
+
+/* Event symbols stay recognizable at both card and compact mobile sizes. */
+.rn-folder-symbol{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:16px;background:#f5f2ea;margin-bottom:8px}
+.rn-folder-symbol svg{width:42px;height:42px}
+.rn-event-title{display:flex;align-items:center;gap:14px}
+.rn-event-heading-icon{display:inline-flex;color:#0a2947;flex:0 0 38px}
+.rn-event-heading-icon svg{width:38px;height:38px}
+@media(max-width:420px){.rn-event-folder{grid-template-columns:48px 1fr auto}.rn-folder-symbol{width:44px;height:44px;border-radius:12px;margin:0}.rn-folder-symbol svg{width:34px;height:34px}.rn-event-title{gap:10px}.rn-event-heading-icon{flex-basis:32px}.rn-event-heading-icon svg{width:32px;height:32px}}

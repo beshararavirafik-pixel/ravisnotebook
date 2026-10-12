@@ -11,7 +11,7 @@ const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f\u064b-\u065
 const tags=[...new Set(items.flatMap(x=>x.tags))].sort((a,b)=>a.localeCompare(b));category.innerHTML='<option value="">All topics</option>'+tags.map(t=>`<option>${esc(t)}</option>`).join('');
 let folder=null,all=false,onlySaved=false,limit=48,grid=false;
 const nav=document.createElement('div');nav.className='rn-folder-nav';root.before(nav);
-const folderIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10H3Z"/></svg>';
+const eventIcon=id=>window.RN_EVENT_ICONS?.render(id)||'';
 const saved=()=>{try{return new Set(JSON.parse(localStorage.getItem('rn_saved_resources')||'[]'));}catch{return new Set();}};
 const accepts=(x,stars)=>!x?false:(!onlySaved||stars.has(x.id))&&(!category.value||x.tags.includes(category.value))&&norm([x.title,x.arabic,x.coptic,...x.tags,...(aliases.get(x.id)||[])].join(' ')).includes(norm(input.value.trim()));
 function readURL(){const q=new URLSearchParams(location.search);folder=byFolder.get(q.get('event'))||null;all=q.get('all')==='1';input.value=q.get('q')||'';category.value=tags.includes(q.get('topic'))?q.get('topic'):'';limit=48;render();}
@@ -23,10 +23,10 @@ function render(){
  const stars=saved(),searching=!!input.value.trim()||!!category.value||onlySaved;
  view.hidden=!folder&&!all&&!searching;
  root.className='rn-event-browser'+(grid?' rn-event-grid':'');more.hidden=true;
- nav.innerHTML=folder||all||searching?`<button type="button" class="rn-folder-back" data-open-event="">← All events</button>${folder?`<h2 class="rn-event-title">${esc(folder.name)}</h2>`:all?'<h2 class="rn-event-title">All hymns</h2>':'<h2 class="rn-event-title">Search results</h2>'}`:`<div class="rn-folder-intro"><p>Browse by event</p><button type="button" class="rn-folder-back" data-open-event="all">All ${items.length} hymns →</button></div>`;
+ nav.innerHTML=folder||all||searching?`<button type="button" class="rn-folder-back" data-open-event="">← All events</button>${folder?`<h2 class="rn-event-title"><span class="rn-event-heading-icon">${eventIcon(folder.id)}</span>${esc(folder.name)}</h2>`:all?'<h2 class="rn-event-title">All hymns</h2>':'<h2 class="rn-event-title">Search results</h2>'}`:`<div class="rn-folder-intro"><p>Browse by event</p><button type="button" class="rn-folder-back" data-open-event="all">All ${items.length} hymns →</button></div>`;
  if(!folder&&!all&&!searching){
   info.textContent=`${folders.length} folders · ${items.length} hymns`;
-  root.innerHTML='<div class="rn-event-folders">'+folders.map(f=>`<a class="rn-event-folder" href="hymnology.html?event=${encodeURIComponent(f.id)}" data-open-event="${esc(f.id)}"><span class="rn-folder-symbol">${folderIcon}</span><span class="rn-folder-name">${esc(f.name)}</span><span class="rn-folder-count">${f.count} ${f.count===1?'hymn':'hymns'}</span><span class="rn-folder-arrow" aria-hidden="true">↗</span></a>`).join('')+'</div>';return;
+  root.innerHTML='<div class="rn-event-folders">'+folders.map(f=>`<a class="rn-event-folder" href="hymnology.html?event=${encodeURIComponent(f.id)}" data-open-event="${esc(f.id)}"><span class="rn-folder-symbol">${eventIcon(f.id)}</span><span class="rn-folder-name">${esc(f.name)}</span><span class="rn-folder-count">${f.count} ${f.count===1?'hymn':'hymns'}</span><span class="rn-folder-arrow" aria-hidden="true">↗</span></a>`).join('')+'</div>';return;
  }
  if(folder){
   const services=folder.services.map(s=>({...s,entries:s.entries.filter(e=>accepts(byId.get(e.id),stars))})).filter(s=>s.entries.length);
