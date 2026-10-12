@@ -35,7 +35,7 @@ aliases={
 names={'annual':'Annual & Everyday Services','paramoune-of-nativity':'Nativity Paramoun','paramoune-of-epiphany':'Theophany Paramoun','epiphany':'Theophany','the-wedding-at-cana-of-galilee':'Wedding at Cana','the-lords-entry-into-the-temple':'Presentation in the Temple','great-lent-saturdays-sundays':'Great Lent — Saturdays & Sundays','great-lent-weekdays':'Great Lent — Weekdays','the-lords-entry-into-jerusalem-palm-sunday':'Palm Sunday','passion-week-general-hours':'Holy Week — General Hours','passion-pascha-week-covenant-thursday':'Covenant Thursday','passion-pascha-week-good-friday':'Good Friday','saint-marys-fastfeast':'St. Mary’s Fast & Feast','papal':'Patriarch & Bishop','reception-of-new-priest':'Reception of a New Priest','apostles-fast':'Apostles’ Fast','apostles-feast':'Feast of the Apostles'}
 # Explicit equivalences for alternate transliterations and shared Holy Week hymns.
 manual={
- ('passion-pascha-week-good-friday','6th-hour'):['hymns-taishouri-paschal','hymns-fai-etaf-enf','hymns-tiepistoli-paschal','hymns-sixth-hour-litanies-paschal','hymns-omonogenis','hymns-trisagion-etribi',None,None,'hymns-dimas','hymns-the-confession-of-the-right-hand-thief'],
+ ('passion-pascha-week-good-friday','6th-hour'):['hymns-taishouri-paschal','hymns-fai-etaf-enf','hymns-tiepistoli-paschal','hymns-sixth-hour-litanies-paschal','hymns-omonogenis','hymns-trisagion-etribi',None,None,'hymns-the-confession-of-the-right-hand-thief','hymns-dimas'],
  ('passion-pascha-week-good-friday','9th-hour'):['hymns-tishouri-paschal','hymns-fai-etaf-enf','hymns-tianastasis-paschal','hymns-ninth-hour-litanies-paschal','hymns-trisagion-etribi',None],
  ('passion-pascha-week-good-friday','12th-hour'):['hymns-pekethronos-paschal','hymns-gholghotha'],
 }

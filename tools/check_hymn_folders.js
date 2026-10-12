@@ -9,6 +9,7 @@ assert.deepEqual([...covered].sort(),[...ids].sort());
 const friday=folders.find(f=>f.id==='passion-pascha-week-good-friday');
 const services=friday.services.filter(s=>s.id!=='additional');
 assert.deepEqual(Array.from(services,s=>s.id),['6th-hour','9th-hour','12th-hour']);
+assert.deepEqual(Array.from(services[0].entries.slice(-2),e=>e.id),['hymns-the-confession-of-the-right-hand-thief','hymns-dimas']);
 assert.deepEqual(Array.from(services[2].entries,e=>e.id),['hymns-pekethronos-paschal','hymns-gholghotha']);
 for(const service of services.slice(0,2)){assert(service.entries.some(e=>e.id==='hymns-fai-etaf-enf'));assert(service.entries.some(e=>e.title==='Mournful Agios'));}
 const html=fs.readFileSync(path.join(root,'hymnology.html'),'utf8');
