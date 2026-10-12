@@ -10,6 +10,17 @@ source=json.loads(Path(sys.argv[1]).read_text())
 def norm(s):return re.sub(r'[^a-z0-9 ]',' ',s.lower()).strip()
 def compact(s):return norm(s).replace(' ','')
 def words(s):return set(norm(s).split())
+def compatible(source_title,local_title):
+ a,b=norm(source_title),norm(local_title)
+ # Several liturgical roles share opening words; do not interchange those roles.
+ for source_role,local_roles in [
+  ('acts response',['praxis response']),('gospel response',['gospel response','bible response']),
+  ('psalm response',['psalm response']),('cymbal',['cymbal']),
+  ('aspasmos',['aspasmos']),('intercessions',['hiten','intercession']),
+ ]:
+  if source_role in a and not any(role in b for role in local_roles):return False
+ if 'doxology for st  mary' in a and not any(t in b for t in ['mary','theotokos']):return False
+ return True
 def sim(a,b):
  a,b=words(a),words(b)
  return len(a&b)/max(1,len(a|b))
@@ -58,7 +69,7 @@ for season in sorted(source,key=lambda x:x['order']):
      local=x['id'] in selected
      score=max(text,title*.9)+(0.12 if local else 0)
      # Do not equate short, generic replies or similar feast variants across events.
-     if (local and (text>=.72 or title>=.78)) or (text>=.85 and len(h.get('english',''))>70):scores.append((score,x['id']))
+     if local and compatible(h['name'],x['title']) and (text>=.72 or title>=.78):scores.append((score,x['id']))
     if scores:target=max(scores)[1]
    if target and target not in used:
     assert target in byid,target
