@@ -239,10 +239,15 @@ p,.page-desc,.page-subtitle,.page-verse,.note-body-inner,.rn-block-text,.img-tex
 
 .rn-folder-nav{scroll-margin-top:90px}
 
-/* Event symbols stay recognizable at both card and compact mobile sizes. */
-.rn-folder-symbol{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:16px;background:#f5f2ea;margin-bottom:8px}
-.rn-folder-symbol svg{width:42px;height:42px}
-.rn-event-title{display:flex;align-items:center;gap:14px}
-.rn-event-heading-icon{display:inline-flex;color:#0a2947;flex:0 0 38px}
-.rn-event-heading-icon svg{width:38px;height:38px}
-@media(max-width:420px){.rn-event-folder{grid-template-columns:48px 1fr auto}.rn-folder-symbol{width:44px;height:44px;border-radius:12px;margin:0}.rn-folder-symbol svg{width:34px;height:34px}.rn-event-title{gap:10px}.rn-event-heading-icon{flex-basis:32px}.rn-event-heading-icon svg{width:32px;height:32px}}
+/* Painted iconography is shown in full, with room to recognize each scene. */
+.rn-event-folder{grid-template-columns:96px minmax(0,1fr) 14px;grid-template-rows:1fr auto;gap:8px 18px;align-items:center;min-height:168px;padding:16px}
+.rn-folder-symbol{grid-column:1;grid-row:1/3;display:flex;align-items:center;justify-content:center;width:96px;height:132px;margin:0;border-radius:8px;overflow:hidden;background:transparent}
+.rn-folder-symbol img{display:block;width:100%;height:100%;object-fit:contain}
+.rn-folder-name{grid-column:2;align-self:end;font-size:20px;line-height:1.4}
+.rn-folder-count{grid-column:2;align-self:start}
+.rn-folder-arrow{position:static;grid-column:3;grid-row:1/3;align-self:center}
+.rn-event-title{display:flex;align-items:center;gap:16px}
+.rn-event-heading-icon{display:flex;align-items:center;justify-content:center;width:46px;height:62px;flex:0 0 46px;overflow:hidden;border-radius:4px}
+.rn-event-heading-icon img{width:100%;height:100%;object-fit:contain}
+@media(max-width:1000px){.rn-event-folders{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.rn-event-folders{grid-template-columns:1fr}.rn-event-folder{grid-template-columns:82px minmax(0,1fr) 14px;min-height:138px;padding:14px;column-gap:16px}.rn-folder-symbol{width:82px;height:112px}.rn-folder-name{font-size:20px}}
