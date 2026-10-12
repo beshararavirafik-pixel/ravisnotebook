@@ -1,0 +1,201 @@
+{
+  "retrieved": "2026-10-12",
+  "source": "St. George Church, Nazlet El Semman artwork catalogue",
+  "artwork": {
+    "nairouz-feast": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/07/Many-saints.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/nairouz-feast/",
+      "file": "assets/artwork/events/nairouz-feast.jpg",
+      "bytes": 137313
+    },
+    "cross-feast-occ": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/09/Jesus-on-the-cross.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/cross-feast-occ/",
+      "file": "assets/artwork/events/cross-feast-occ.jpg",
+      "bytes": 301930
+    },
+    "kiahk-month": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2025/09/c8111ab14ad2300a6fea7148730e28fc.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/kiahk-month/",
+      "file": "assets/artwork/events/kiahk-month.jpg",
+      "bytes": 174196
+    },
+    "nativity-and-paramone": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2022/11/316287644_631646585344728_3802217549595121031_n.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/nativity-and-paramone/",
+      "file": "assets/artwork/events/nativity-and-paramone.jpg",
+      "bytes": 241486
+    },
+    "circumcision-s": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2025/01/The-feast-of-Circumcision.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/circumcision-s/",
+      "file": "assets/artwork/events/circumcision-s.jpg",
+      "bytes": 623486
+    },
+    "epiphany-s": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2024/01/Theophany2.png",
+      "sourcePage": "https://stgeorgesaman.com/occasions/epiphany-s/",
+      "file": "assets/artwork/events/epiphany-s.png",
+      "bytes": 1245238
+    },
+    "nineveh-fast-s": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2024/02/Jonah.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/nineveh-fast-s/",
+      "file": "assets/artwork/events/nineveh-fast-s.jpg",
+      "bytes": 155813
+    },
+    "great-lent-occasion": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/02/83811416_1903584143100182_7382589409301889024_n_cr.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/great-lent-occasion/",
+      "file": "assets/artwork/events/great-lent-occasion.jpg",
+      "bytes": 518366
+    },
+    "ascension": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/05/ascensioniconupscaled-700x1024.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/ascension/",
+      "file": "assets/artwork/events/ascension.jpg",
+      "bytes": 148624
+    },
+    "pentecost": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2026/05/pentecost1.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/pentecost/",
+      "file": "assets/artwork/events/pentecost.jpg",
+      "bytes": 111052
+    },
+    "apostles-fast-feast": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/06/I-am-the-grapevine-you-are-the-branches-683x1024.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/apostles-fast-feast/",
+      "file": "assets/artwork/events/apostles-fast-feast.jpg",
+      "bytes": 150689
+    },
+    "christ": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/09/PantocratorWhitenorangecomp.jpg",
+      "sourcePage": "https://stgeorgesaman.com/",
+      "file": "assets/artwork/events/christ.jpg",
+      "bytes": 187529
+    },
+    "lazarus": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/03/Lazarus-768x1056.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/holy-week/",
+      "file": "assets/artwork/events/lazarus.jpg",
+      "bytes": 179861
+    },
+    "palm-sunday": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/09/a0c15216dd8cfb432ed1d8b2327c96da-768x1070.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/holy-week/",
+      "file": "assets/artwork/events/palm-sunday.jpg",
+      "bytes": 177898
+    },
+    "holy-week": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/03/Our-good-saviour-768x1189.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/holy-week/",
+      "file": "assets/artwork/events/holy-week.jpg",
+      "bytes": 173530
+    },
+    "covenant-thursday": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/03/Last-Supper-768x1024.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/holy-week/",
+      "file": "assets/artwork/events/covenant-thursday.jpg",
+      "bytes": 170591
+    },
+    "good-friday": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/09/Jesus-on-the-cross-768x1066.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/holy-week/",
+      "file": "assets/artwork/events/good-friday.jpg",
+      "bytes": 111053
+    },
+    "bright-saturday": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/05/RedAnastasiscompressed.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/holy-week/",
+      "file": "assets/artwork/events/bright-saturday.jpg",
+      "bytes": 282964
+    },
+    "resurrection": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/05/AnastasisCrosscomp_cr.jpg",
+      "sourcePage": "https://stgeorgesaman.com/occasions/resurrection/",
+      "file": "assets/artwork/events/resurrection.jpg",
+      "bytes": 347386
+    },
+    "transfiguration": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/05/transfiguration.jpg",
+      "sourcePage": "https://stgeorgesaman.com/",
+      "file": "assets/artwork/events/transfiguration.jpg",
+      "bytes": 115310
+    },
+    "annunciation": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/03/ezgif-3-f2b98e52e8-scaled.jpg",
+      "sourcePage": "https://stgeorgesaman.com/wp-json/wp/v2/media?search=annunciation&per_page=20",
+      "file": "assets/artwork/events/annunciation.jpg",
+      "bytes": 830743
+    },
+    "cana": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/09/34e6a6d0dc658ea56066d3b87e92982b.jpg",
+      "sourcePage": "https://stgeorgesaman.com/wp-json/wp/v2/media?search=cana&per_page=20",
+      "file": "assets/artwork/events/cana.jpg",
+      "bytes": 135155
+    },
+    "presentation": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/09/Presentation-of-Jesus-in-the-Temple.png",
+      "sourcePage": "https://stgeorgesaman.com/wp-json/wp/v2/media?search=presentation&per_page=20",
+      "file": "assets/artwork/events/presentation.png",
+      "bytes": 949886
+    },
+    "mary": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2021/07/Mary.jpg",
+      "sourcePage": "https://stgeorgesaman.com/wp-json/wp/v2/media?search=mary&per_page=20",
+      "file": "assets/artwork/events/mary.jpg",
+      "bytes": 159750
+    },
+    "mark": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2023/08/stmark.jpg",
+      "sourcePage": "https://stgeorgesaman.com/wp-json/wp/v2/media?search=mark&per_page=20",
+      "file": "assets/artwork/events/mark.jpg",
+      "bytes": 364623
+    },
+    "cyril": {
+      "url": "https://stgeorgesaman.com/wp-content/uploads/2024/01/Pope-Cyril-the-great.jpg",
+      "sourcePage": "https://stgeorgesaman.com/wp-json/wp/v2/media?search=cyril&per_page=20",
+      "file": "assets/artwork/events/cyril.jpg",
+      "bytes": 57805
+    }
+  },
+  "folderArtwork": {
+    "annual": "christ",
+    "nairouz": "nairouz-feast",
+    "feast-of-the-cross": "cross-feast-occ",
+    "kiahk": "kiahk-month",
+    "paramoune-of-nativity": "nativity-and-paramone",
+    "nativity": "nativity-and-paramone",
+    "feast-of-circumcision": "circumcision-s",
+    "paramoune-of-epiphany": "epiphany-s",
+    "epiphany": "epiphany-s",
+    "the-wedding-at-cana-of-galilee": "cana",
+    "the-lords-entry-into-the-temple": "presentation",
+    "ninevehs-fast": "nineveh-fast-s",
+    "ninevehs-feast": "nineveh-fast-s",
+    "great-lent-saturdays-sundays": "great-lent-occasion",
+    "great-lent-weekdays": "great-lent-occasion",
+    "annunciation": "annunciation",
+    "lazarus-saturday": "lazarus",
+    "the-lords-entry-into-jerusalem-palm-sunday": "palm-sunday",
+    "passion-week-general-hours": "holy-week",
+    "passion-pascha-week-covenant-thursday": "covenant-thursday",
+    "passion-pascha-week-good-friday": "good-friday",
+    "bright-saturday": "bright-saturday",
+    "resurrection": "resurrection",
+    "ascension": "ascension",
+    "pentecost": "pentecost",
+    "apostles-fast": "apostles-fast-feast",
+    "apostles-feast": "apostles-fast-feast",
+    "saint-marys-fastfeast": "mary",
+    "transfiguration": "transfiguration",
+    "glorifications": "nairouz-feast",
+    "coptic-weddings": "cana",
+    "funeral": "resurrection",
+    "papal": "cyril",
+    "reception-of-new-priest": "mark",
+    "saints-angels": "nairouz-feast",
+    "agpeya": "christ",
+    "other-hymns": "christ"
+  }
+}
